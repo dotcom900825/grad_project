@@ -1,0 +1,125 @@
+﻿{% load new_pin %}
+{% load compress %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>{{ site_name }} - {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    {% compress css %}
+    <link href="/static/vendor/bootstrap/2.0.3/css/bootstrap.css" rel="stylesheet" />
+    <link href="/static/vendor/bootstrap/2.0.3/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="/static/vendor/tile/css/social-buttons.css" rel="stylesheet" />
+    <link href="/static/vendor/tile/css/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/vendor/fancybox/2.0.6/jquery.fancybox.css">
+    <link rel="stylesheet" href="/static/core/css/pinry.css">
+    {% endcompress %}
+
+    {% compress js %}
+    <script src="/static/vendor/jquery/1.7.2/jquery.js"></script>
+    <script src="/static/vendor/bootstrap/2.0.3/js/bootstrap.js"></script>
+    <script src="/static/vendor/tile/js/custom.js"></script>
+    <script src="/static/vendor/wookmark/0.5/jquery.wookmark.js"></script>
+    <script src="/static/vendor/fancybox/2.0.6/jquery.fancybox.js"></script>
+    <script src="/static/vendor/imagesloaded/2.0.1/jquery.imagesloaded.js"></script>
+    <script src="/static/vendor/js-url/1.7.2/js-url.js"></script>
+
+    <script src="/static/core/js/pinry.js"></script>
+    <script src="/static/core/js/messages.js"></script>
+    {% endcompress %}
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="navbar" data-scrollspy="scrollspy">
+                <div style="background-color:#333;"  class="navbar-inner">
+                    <div class="container" style="width:1170px">
+                        <a class="brand" style="padding:0px 0px"href="/" data-original-title>
+                            <img width="100px" src="https://s3-ap-northeast-1.amazonaws.com/staticohblist/image/ohbooklistlogo.gif" />
+                        </a>
+                        <ul class='nav pull-right'>     
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <input type='button' class='btn btn-primary' onclick="location.href='new-pin'" value='New Pin'/>
+                                </li>
+                                <li style="height:50px">
+                                    {% if user.get_profile.renren.avatar %}
+                                    <a style="padding-top:0px" target='_blank' href="http://www.renren.com/profile?id={{user.username }}"><img src="{{user.get_profile.renren.avatar}}" alt="Index page"/> </a>
+                                    {% else %}
+                                    <a style="padding-top:0px" target='_blank' href="/accounts/{{ profile.user.get_full_name }}"><img style='width:50px; height:50px'src="{{profile.get_mugshot_url}}" alt="Index page"/> </a>
+                                    {% endif %}
+                                </li>
+                                <li class="dropdown">
+                                    <a class='dropdown-toggle' data-toggle="dropdown" target='_blank' href="http://www.renren.com/profile?id={{user.username}}">
+                                        {% if user.get_profile.renren.name %}
+                                            {{user.get_profile.renren.name }}
+                                        {% else %}
+                                            {{user.username}}
+                                        {% endif %}
+                                    <b class='caret'> </b>
+                                    </a>
+                                    <ul class='dropdown-menu'>
+                                        <li>
+                                            <a href='#'>Item List</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Account management</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% endif %}      
+                            
+                            {% if user.is_authenticated %}
+                                  <li><a href="{% url userena_signout %}">退出</a></li>
+                            {% else %}
+                                <li>
+                                    <a href="{% url core:renren_login %}">人人登录</a>
+                                </li>
+                                <li>
+                                    <a href="#">新浪微博登录</a>
+                                </li>
+                                <li>
+                                    <a href="{% url userena_signup %}">注册</a>
+                                </li>
+                                <li>
+                                    <a href="{% url userena_signin %}">登录</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+    </div>
+    <div class="container">
+         {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+
+        <div class="row">
+            <div class="span12" id="content">
+                {% block yield %}
+                    <div class="content_title">
+                        {% block content_title %}{% endblock %}
+                    </div>
+                    <div class="content">
+                        {% block content %}{% endblock %}
+                    </div>
+                {% endblock %}
+
+        {% new_pin request %}
+                
+        
+    </div>
+</body>
+
+</html>

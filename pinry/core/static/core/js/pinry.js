@@ -26,8 +26,9 @@ function applyLayout() {
       handler = $('#pins .pin');
       handler.wookmark({
           autoResize: true,
-          offset: 3,
-          itemWidth: 242
+          offset: 10,
+          itemWidth: 280,
+          container: $('#pins')
       });
   });
 };
@@ -42,7 +43,7 @@ function loadData(tag) {
     if (tag !== undefined) {
         globalTag = tag;
         window.history.pushState(tag, 'Pinry - Tag - '+tag, '/pins/tag/'+tag+'/');
-    } else if (url(2) == 'tag') {
+    } else if (url(2) == 'tag') { //hard coded way to detect user input tag url
         tag = url(3);
         globalTag = tag;
         window.history.pushState(tag, 'Pinry - Tag - '+tag, '/pins/tag/'+tag+'/');
@@ -82,6 +83,8 @@ function onLoadData(data) {
     var i=0, length=data.length, image;
     for(; i<length; i++) {
       image = data[i];
+    //  if(image.valid)
+      {
       html += '<div class="pin">';
           html += '<div class="pin-options">';
               html += '<a href="/pins/delete-pin/'+image.id+'">';
@@ -99,7 +102,9 @@ function onLoadData(data) {
               }
               html += '</p>';
           }
+          html += "<div class='write convo clearfix' style='display:block'><a href='//' title='' class='img x'><img style='width:30px; height:30px'  src='/static/core/img/error.png'></a><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='添加评论或把采集@给好友' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
       html += '</div>';
+      }
     }
     
     $('#pins').append(html);

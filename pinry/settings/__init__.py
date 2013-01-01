@@ -7,7 +7,7 @@ SITE_ROOT = os.path.join(os.path.realpath(os.path.dirname(__file__)), '../../')
 
 # Changes the naming on the front-end of the website.
 SITE_NAME = 'Pinry'
-
+SITE_ID = 1
 # Set to False to disable people from creating new accounts.
 ALLOW_NEW_REGISTRATIONS = True
 
@@ -53,6 +53,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "pinry.core.context_processors.template_settings",
 )
 
+TEMPLATE_DIRS = (
+   "/home/thomas/Desktop/pinry2/pinry/core/templates",
+)
+
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 ROOT_URLCONF = 'pinry.urls'
 LOGIN_REDIRECT_URL = '/'
@@ -65,6 +69,13 @@ MESSAGE_TAGS = {
 }
 API_LIMIT_PER_PAGE = 30
 
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,6 +83,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.sites',
     'south',
     'compressor',
     'taggit',
@@ -79,4 +91,29 @@ INSTALLED_APPS = (
     'pinry.core',
     'pinry.pins',
     'pinry.api',
+    'pinry.renren_oauth',
+    'accounts',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
 )
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'dotcom900825@gmail.com'
+EMAIL_HOST_PASSWORD = '19900825'
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+
+RENREN_APP_API_KEY = "666f30c795b94ed4a29a08659541e4b1"
+RENREN_APP_SECRET_KEY = '6a194d095c3a409b8675ca77c6c1aa75'
+
+
+

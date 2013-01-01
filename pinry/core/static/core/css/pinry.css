@@ -1,11 +1,11 @@
 body {
-    margin-top: 70px;
-    background: url("/static/core/img/background.png");
+   // margin-top: 70px;
+   // background: url(/static/vendor/tile/img/bg.png);
 }
 
 .navbar-inner {
     background-image: none;
-    background: white;
+    //background: white;
     filter: none;
     border-bottom: 1px solid #999;
     height: 48px;
@@ -19,14 +19,14 @@ body {
     }
 
     .navbar .nav > li > a {
-        color: #333;
+        color: #ffffff;
         text-shadow: none;
-        border-left: 1px solid #ccc;
+       // border-left: 1px solid #ccc;
         padding: 14px 20px 15px;
     }
 
     .navbar .nav > li > a:hover {
-        color: #333;
+        color: #0088cc;
         text-decoration: underline;
     }
 
@@ -69,15 +69,17 @@ body {
     }
 
 #pins {
-    top: 70px;
-    position: absolute;
-    background: #eee;
-    z-index: 100;
+  //  top: 70px;
+    position: relative;
+    margin-left: -11%;
+  //  width: 1500px;
+  //  background: #eee;
+  //  z-index: 100;
 }
 
     .pin {
         background: #fff;
-        width: 200px;
+        width: 240px;
         float: left;
         border: 1px solid #ccc;
         padding: 20px;
@@ -85,7 +87,7 @@ body {
     }
 
         .pin img {
-            width: 200px;
+            width: 212px;
             padding: 0;
             margin: 0;
         }
@@ -144,3 +146,78 @@ body {
         .form-actions {
             margin-bottom: 0;
         }
+.convo:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.write {
+    border-top: 1px solid #D9D4D4;
+    box-shadow: 0 1px #FCFAFA inset;
+}
+.convo {
+    background: none repeat scroll 0 0 #FAFAFA;
+    margin: 0 -15px;
+    padding: 10px 15px;
+}
+
+.write a.img {
+    height: 0;
+    visibility: hidden;
+    width: 0;
+}
+.convo a.img {
+    float: left;
+    margin-right: 6px;
+    width: 30px;
+}
+.pin a.img, .Board a.img {
+    position: relative;
+}
+a.img {
+    background-color: #FFFFFF;
+    display: block;
+}
+.write form {
+    height: 34px;
+    position: relative;
+}
+
+
+.write textarea {
+    -moz-transition: width 0.25s ease-in-out 0s;
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #DDDDDD;
+    font-size: 12px;
+    height: 23px;
+    line-height: 1.1em;
+    overflow: hidden;
+    padding: 4px 40px 3px 3px;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 147px;
+}
+.write .grid_comment_button {
+    background: url("/img/comment_button.png?new.png") no-repeat scroll right 4px transparent;
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 30px;
+}
