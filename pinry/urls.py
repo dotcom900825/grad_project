@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     (r'^accounts/signup/$',
  	'userena.views.signup',{'signup_form': SignupForm}),
     url(r'^accounts/', include('userena.urls')),
+    url(r'^messages/', include('userena.contrib.umessages.urls')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

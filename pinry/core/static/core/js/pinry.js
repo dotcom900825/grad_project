@@ -73,6 +73,9 @@ function loadData(tag) {
  * Receives data from the API, creates HTML for images and updates the layout
  */
 function onLoadData(data) {
+    var user_auth = Boolean(user_auth_flag.toLowerCase());
+    var user_pic = user_pic_url;
+    var user_name = username;
     data = data.objects;
     isLoading = false;
     $('#loader').hide();
@@ -83,7 +86,7 @@ function onLoadData(data) {
     var i=0, length=data.length, image;
     for(; i<length; i++) {
       image = data[i];
-    //  if(image.valid)
+      //if(image.valid)
       {
       html += '<div class="pin">';
           html += '<div class="pin-options">';
@@ -102,7 +105,14 @@ function onLoadData(data) {
               }
               html += '</p>';
           }
-          html += "<div class='write convo clearfix' style='display:block'><a href='//' title='' class='img x'><img style='width:30px; height:30px'  src='/static/core/img/error.png'></a><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='添加评论或把采集@给好友' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
+          if(user_auth)
+          {
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
+          }
+          else
+          {
+            html += "<div class='write convo clearfix' style='display:block'><img src='/static/vendor/utility/smile.jpg' style='width:30px; height:30px'><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
+          }
       html += '</div>';
       }
     }

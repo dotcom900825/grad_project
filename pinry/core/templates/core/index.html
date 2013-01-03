@@ -26,9 +26,20 @@
     <script src="/static/vendor/fancybox/2.0.6/jquery.fancybox.js"></script>
     <script src="/static/vendor/imagesloaded/2.0.1/jquery.imagesloaded.js"></script>
     <script src="/static/vendor/js-url/1.7.2/js-url.js"></script>
+    
+    <script type="text/javascript">
+    var user_auth_flag = ' {{user.is_authenticated}} ';
+    var username = '{{user.username}}';
+    {% if user.get_profile.renren.avatar %}
+    var user_pic_url = '{{ user.get_profile.renren.avatar }}';
+    {% else %}
+    var user_pic_url = '{{ user.get_profile.get_mugshot_url }}';
+    {% endif %}
 
+    </script>
     <script src="/static/core/js/pinry.js"></script>
     <script src="/static/core/js/messages.js"></script>
+
     {% endcompress %}
 
     <!--[if lt IE 9]>
@@ -40,19 +51,19 @@
     <div class="navbar" data-scrollspy="scrollspy">
                 <div style="background-color:#333;"  class="navbar-inner">
                     <div class="container" style="width:1170px">
-                        <a class="brand" style="padding:0px 0px"href="/" data-original-title>
+                        <a class="brand" style="margin-left:15px; padding:0px 0px"href="/" data-original-title>
                             <img width="100px" src="https://s3-ap-northeast-1.amazonaws.com/staticohblist/image/ohbooklistlogo.gif" />
                         </a>
                         <ul class='nav pull-right'>     
                             {% if user.is_authenticated %}
                                 <li>
-                                    <input type='button' class='btn btn-primary' onclick="location.href='new-pin'" value='New Pin'/>
+                                    <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
                                 </li>
                                 <li style="height:50px">
                                     {% if user.get_profile.renren.avatar %}
                                     <a style="padding-top:0px" target='_blank' href="http://www.renren.com/profile?id={{user.username }}"><img src="{{user.get_profile.renren.avatar}}" alt="Index page"/> </a>
                                     {% else %}
-                                    <a style="padding-top:0px" target='_blank' href="/accounts/{{ profile.user.get_full_name }}"><img style='width:50px; height:50px'src="{{profile.get_mugshot_url}}" alt="Index page"/> </a>
+                                    <a style="padding-top:0px"  href="/accounts/{{ user.username }}"><img style='width:50px; height:50px' src="{{user.get_profile.get_mugshot_url}}" alt="Index page"/> </a>
                                     {% endif %}
                                 </li>
                                 <li class="dropdown">
@@ -104,7 +115,6 @@
             </ul>
         {% endif %}
         
-
         <div class="row">
             <div class="span12" id="content">
                 {% block yield %}
@@ -115,9 +125,9 @@
                         {% block content %}{% endblock %}
                     </div>
                 {% endblock %}
-
-        {% new_pin request %}
-                
+            </div>
+        
+        </div>
         
     </div>
 </body>

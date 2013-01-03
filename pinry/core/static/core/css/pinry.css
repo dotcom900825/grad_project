@@ -71,7 +71,7 @@ body {
 #pins {
   //  top: 70px;
     position: relative;
-    margin-left: -11%;
+  //  margin-left: -11%;
   //  width: 1500px;
   //  background: #eee;
   //  z-index: 100;
@@ -87,7 +87,7 @@ body {
     }
 
         .pin img {
-            width: 212px;
+            width: 240px;
             padding: 0;
             margin: 0;
         }
@@ -176,9 +176,9 @@ body {
 }
 
 .write a.img {
-    height: 0;
-    visibility: hidden;
-    width: 0;
+    height: 30px;
+   // visibility: hidden;
+    width: 30px;
 }
 .convo a.img {
     float: left;
