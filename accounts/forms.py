@@ -30,13 +30,13 @@ class SignupForm(forms.Form):
                                 error_messages={'invalid': _('Username must contain only letters, numbers, dots and underscores.')})
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
-                             label=_("Email"))
+                             label=_("电子邮箱".decode('utf-8')))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict,
                                                            render_value=False),
-                                label=_("Create password"))
+                                label=_("设置密码".decode('utf-8')))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict,
                                                            render_value=False),
-                                label=_("Repeat password"))
+                                label=_("重复密码".decode('utf-8')))
 
     def clean_username(self):
         """
@@ -51,8 +51,8 @@ class SignupForm(forms.Form):
             pass
         else:
             if UserenaSignup.objects.filter(user__username__iexact=self.cleaned_data['username']).exclude(activation_key=userena_settings.USERENA_ACTIVATED):
-                raise forms.ValidationError(_('This username is already taken but not confirmed. Please check you email for verification steps.'))
-            raise forms.ValidationError(_('This username is already taken.'))
+                raise forms.ValidationError(_('不好意思亲！这个用户名已经被注册了，但还没有通过验证，检查一下你的邮箱吧'.decode('utf-8')))
+            raise forms.ValidationError(_('不好意思亲！这个用户名已经被注册了，换一个吧～'.decoce('utf-8')))
         if self.cleaned_data['username'].lower() in userena_settings.USERENA_FORBIDDEN_USERNAMES:
             raise forms.ValidationError(_('This username is not allowed.'))
         return self.cleaned_data['username']
@@ -61,8 +61,8 @@ class SignupForm(forms.Form):
         """ Validate that the e-mail address is unique. """
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
             if UserenaSignup.objects.filter(user__email__iexact=self.cleaned_data['email']).exclude(activation_key=userena_settings.USERENA_ACTIVATED):
-                raise forms.ValidationError(_('This email is already in use but not confirmed. Please check you email for verification steps.'))
-            raise forms.ValidationError(_('This email is already in use. Please supply a different email.'))
+                raise forms.ValidationError(_('不好意思亲！这个邮箱已经被注册了，但还没有通过验证，检查一下你的邮箱吧'.decode('utf-8')))
+            raise forms.ValidationError(_('不好意思亲！这个邮箱已经被注册了，换一个吧～'.decode('utf-8')))
         return self.cleaned_data['email']
 
     def clean(self):
@@ -74,7 +74,7 @@ class SignupForm(forms.Form):
         """
         if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
             if self.cleaned_data['password1'] != self.cleaned_data['password2']:
-                raise forms.ValidationError(_('The two password fields didn\'t match.'))
+                raise forms.ValidationError(_('密码不匹配噢亲!'.decode('utf-8')))
         return self.cleaned_data
 
     def save(self):
@@ -112,9 +112,9 @@ class AuthenticationForm(forms.Form):
     A custom form where the identification can be a e-mail address or username.
 
     """
-    identification = identification_field_factory(_(u"Email or username"),
-                                                  _(u"Either supply us with your email or username."))
-    password = forms.CharField(label=_("Password"),
+    identification = identification_field_factory(_(u"你的注册邮箱或者用户名"),
+                                                  _(u"请提供你的注册邮箱或者用户名"))
+    password = forms.CharField(label=_(u"密码"),
                                widget=forms.PasswordInput(attrs=attrs_dict, render_value=False))
     remember_me = forms.BooleanField(widget=forms.CheckboxInput(),
                                      required=False,

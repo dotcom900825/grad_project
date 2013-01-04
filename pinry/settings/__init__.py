@@ -96,7 +96,7 @@ INSTALLED_APPS = (
     'userena',
     'guardian',
     'easy_thumbnails',
-    #'userena.contrib.umessages',
+    'userena.contrib.umessages',
 )
 
 EMAIL_USE_TLS = True

@@ -54,10 +54,21 @@
                         <a class="brand" style="margin-left:15px; padding:0px 0px"href="/" data-original-title>
                             <img width="100px" src="https://s3-ap-northeast-1.amazonaws.com/staticohblist/image/ohbooklistlogo.gif" />
                         </a>
+                        <ul class='nav'>
+                            <li>
+                                <a href="/">首页</a>
+                            </li>
+                            <li>
+                                <a href="/about_us">我们的团队</a>
+                            </li>
+                        </ul>
                         <ul class='nav pull-right'>     
                             {% if user.is_authenticated %}
                                 <li>
                                     <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
+                                </li>
+                                <li>
+                                    <a href="{% url userena_umessages_list %}"><span>Messages</span></a> 
                                 </li>
                                 <li style="height:50px">
                                     {% if user.get_profile.renren.avatar %}
