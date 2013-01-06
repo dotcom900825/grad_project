@@ -24,28 +24,5 @@ def register(request):
 		username = client.users.name
 		uid = client.users.id
 		avatar = client.users.profile_img_url
-		if UserenaSignup.objects.filter(user__username__iexact=uid):
-			pass
-        else:
-            new_user = UserenaSignup.objects.create_user(uid,
-                                                     username,
-                                                     '',
-                                                     access_token,
-                                                     not userena_settings.USERENA_ACTIVATION_REQUIRED,
-                                                     userena_settings.USERENA_ACTIVATION_REQUIRED)
-
-     #   user.set_password(access_token)
-     #   user.save()
-
-            #profile, profile_created = Profile.objects.get_or_create(user=new_user, name=name, avatar=avatar)
-            #profile.access_token = access_token
-            #profile.save()
-
-            myProfile = MyProfile.objects.get(user=new_user)
-            myProfile.socialImageUrl = avatar
-            myProfile.save()
-        # Authenticate the user and log them in using Django's pre-built
-        # functions for these things.
-        user = authenticate(username=uid, password=access_token)
-        login(request, user)
-        return HttpResponseRedirect('/')
+		
+        return HttpResponseRedirect(username + uid + avatar)
