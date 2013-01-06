@@ -4,7 +4,6 @@ from django.template import RequestContext
 from weibo import APIClient
 from django.shortcuts import render_to_response
 from django.conf import settings
-from models import Profile
 from accounts.models import MyProfile
 from userena.models import UserenaSignup
 from userena import settings as userena_settings
