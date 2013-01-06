@@ -71,34 +71,30 @@
                                     <a href="{% url userena_umessages_list %}"><span>Messages</span></a> 
                                 </li>
                                 <li style="height:50px">
-                                    {% if user.get_profile.renren.avatar %}
-                                    <a style="padding-top:0px" target='_blank' href="http://www.renren.com/profile?id={{user.username }}"><img src="{{user.get_profile.renren.avatar}}" alt="Index page"/> </a>
-                                    {% else %}
                                     <a style="padding-top:0px"  href="/accounts/{{ user.username }}"><img style='width:50px; height:50px' src="{{user.get_profile.get_mugshot_url}}" alt="Index page"/> </a>
-                                    {% endif %}
                                 </li>
-                                <li class="dropdown">
-                                    <a class='dropdown-toggle' data-toggle="dropdown" target='_blank' href="http://www.renren.com/profile?id={{user.username}}">
-                                        {% if user.get_profile.renren.name %}
-                                            {{user.get_profile.renren.name }}
-                                        {% else %}
-                                            {{user.username}}
-                                        {% endif %}
+                                <li id='dropdown' class="dropdown">
+                                    <a class='dropdown-toggle' data-toggle="dropdown" target='_blank' href="#">                   
+                                            {{user.get_profile.snsName}}
+                                       
                                     <b class='caret'> </b>
                                     </a>
                                     <ul class='dropdown-menu'>
                                         <li>
-                                            <a href='#'>Item List</a>
+                                            <a href='#'>我的闲置物品</a>
                                         </li>
                                         <li>
-                                            <a href="#">Account management</a>
+                                            <a href="/accounts/{{ user.username }}">帐号管理</a>
+                                        </li>
+                                        <li>
+                                             <a href="{% url userena_signout %}">退出</a>
                                         </li>
                                     </ul>
                                 </li>
                             {% endif %}      
                             
                             {% if user.is_authenticated %}
-                                  <li><a href="{% url userena_signout %}">退出</a></li>
+                                 
                             {% else %}
                                 <li>
                                     <a href="{% url core:renren_login %}">人人登录</a>

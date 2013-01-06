@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
-from django.contrib.auth.models import User
+from accounts.models import MyProfile
 
 from taggit.managers import TaggableManager
 import urllib2
@@ -10,7 +10,7 @@ from PIL import Image
 
 
 class Pin(models.Model):
-    submitter = models.ForeignKey(User)
+    submitter = models.ForeignKey(MyProfile)
     url = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='pins/pin/originals/')

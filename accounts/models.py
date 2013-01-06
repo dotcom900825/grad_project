@@ -17,3 +17,9 @@ class MyProfile(UserenaBaseProfile):
     							  blank=True,
     							  null=True
     	)
+    snsName = models.CharField(_('sns_name'),
+                               max_length=100,
+                               help_text=_('renren or weibo account name'))
+    socialImageUrl =  models.CharField(_('sns_img_url'),
+                               max_length=300,
+                               help_text=_('renren or weibo image url'))

@@ -17,6 +17,8 @@ from django.contrib.auth.decorators import login_required
 
 from models import Profile
 from accounts.models import MyProfile
+from userena.models import UserenaSignup
+from userena import settings as userena_settings
 # Copyright 2010 RenRen
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -81,20 +83,30 @@ def renren_login(request):
         name = response["name"]
         avatar = response["tinyurl"]
 
-        user, user_created = User.objects.get_or_create(username=uid)
+      #  user, user_created = User.objects.get_or_create(username=uid,last_name=name)
 
-        if user_created:
-            user.email = '%s@renren.com' % uid
+      #  if user_created:
+      #      user.email = '%s@renren.com' % uid
+        if UserenaSignup.objects.filter(user__username__iexact=uid):
+            pass
+        else:
+            new_user = UserenaSignup.objects.create_user(uid,
+                                                     name,
+                                                      '%s@renren.com' % uid,
+                                                     access_token,
+                                                     not userena_settings.USERENA_ACTIVATION_REQUIRED,
+                                                     userena_settings.USERENA_ACTIVATION_REQUIRED)
 
-        user.set_password(access_token)
-        user.save()
+     #   user.set_password(access_token)
+     #   user.save()
 
-        profile, profile_created = Profile.objects.get_or_create(user=user, name=name, avatar=avatar)
-        profile.access_token = access_token
-        profile.save()
+            #profile, profile_created = Profile.objects.get_or_create(user=new_user, name=name, avatar=avatar)
+            #profile.access_token = access_token
+            #profile.save()
 
-        myProfile, myProfile_created = MyProfile.objects.get_or_create(user=user,renren=profile)
-        myProfile.save()
+            myProfile = MyProfile.objects.get(user=new_user)
+            myProfile.socialImageUrl = avatar
+            myProfile.save()
         # Authenticate the user and log them in using Django's pre-built
         # functions for these things.
         user = authenticate(username=uid, password=access_token)

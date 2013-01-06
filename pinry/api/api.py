@@ -4,13 +4,32 @@ from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import DjangoAuthorization
 
 from django.contrib.auth.models import User
-
+from accounts.models import MyProfile
 from pinry.pins.models import Pin
 
 
+
+class UserResource(ModelResource):
+    class Meta:
+        queryset = User.objects.all()
+        resource_name = 'user'
+        excludes = ['email', 'password', 'is_superuser']
+        # Add it here.
+        authentication = BasicAuthentication()
+        authorization = DjangoAuthorization()
+
+class MyProfileResource(ModelResource):
+    user = fields.ForeignKey(UserResource,'user')
+    class Meta:
+        queryset = MyProfile.objects.all()
+        resource_name = 'myprofile'
+        # Add it here.
+      #  authentication = BasicAuthentication()
+      #  authorization = DjangoAuthorization()
+
 class PinResource(ModelResource):  # pylint: disable-msg=R0904
     tags = fields.ListField()
-
+    user = fields.ForeignKey(MyProfileResource,'submitter')
     class Meta:
         queryset = Pin.objects.all()
         resource_name = 'pin'
@@ -39,11 +58,3 @@ class PinResource(ModelResource):  # pylint: disable-msg=R0904
         return super(PinResource, self).save_m2m(bundle)
 
 
-class UserResource(ModelResource):
-    class Meta:
-        queryset = User.objects.all()
-        resource_name = 'auth/user'
-        excludes = ['email', 'password', 'is_superuser']
-        # Add it here.
-        authentication = BasicAuthentication()
-        authorization = DjangoAuthorization()

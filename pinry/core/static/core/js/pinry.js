@@ -76,6 +76,9 @@ function onLoadData(data) {
     var user_auth = Boolean(user_auth_flag.toLowerCase());
     var user_pic = user_pic_url;
     var user_name = username;
+    var submitter_name;
+    var submitter_pic;
+
     data = data.objects;
     isLoading = false;
     $('#loader').hide();
@@ -86,7 +89,26 @@ function onLoadData(data) {
     var i=0, length=data.length, image;
     for(; i<length; i++) {
       image = data[i];
-      //if(image.valid)
+      $.ajax({
+            url: 'http://localhost:8000' + image.user + '?format=json',
+            type: 'get',
+            accepts: 'application/json',
+            dataType: 'json',
+            async: false,
+            beforeSend: function(XMLHttpRequest){
+              //ShowLoading();
+            },
+            success: function(data, textStatus){
+               submitter_name = data.snsName;
+               submitter_pic = data.socialImageUrl;
+            },
+            complete: function(XMLHttpRequest, textStatus){
+              //HideLoading();
+            },
+            error: function(){
+              //请求出错处理
+            }
+          });
       {
       html += '<div class="pin">';
           html += '<div class="pin-options">';
@@ -99,19 +121,23 @@ function onLoadData(data) {
           html += '</a>';
           if (image.description) html += '<p>'+image.description+'</p>';
           if (image.tags) {
+              html += "<div class='clearfix' style='margin-bottom:5px'>";
               html += '<p>';
+              html += "<a style='width:30px;height:30px' href='/accounts/" + submitter_name + "'> <img style='width:30px; height:30px' src='" + submitter_pic + "' /></a>";
+              html += "<span> " + submitter_name + " 发布在</span>"
               for (tag in image.tags) {
                   html += '<span class="label tag" onclick="loadData(\'' + image.tags[tag] + '\')">' + image.tags[tag] + '</span> ';
               }
               html += '</p>';
+              html += '</div>';
           }
           if(user_auth)
           {
-            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + submitter_name + "/' method='POST'> <input type='hidden' name='to' value='" + submitter_name + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {
-            html += "<div class='write convo clearfix' style='display:block'><img src='/static/vendor/utility/smile.jpg' style='width:30px; height:30px'><form action='/pins/39085496/comments/' method='POST'> <textarea style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><a href='#' onclick='return false;' class='grid_comment_button'></a></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><img src='/static/vendor/utility/smile.jpg' style='width:30px; height:30px'><textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><button  class='grid_comment_button' onclick='window.location='/accounts/signup;'/>留言</button></div>";
           }
       html += '</div>';
       }

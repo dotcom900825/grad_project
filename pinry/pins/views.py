@@ -18,7 +18,7 @@ def new_pin(request):
         form = PinForm(request.POST, request.FILES)
         if form.is_valid():
             pin = form.save(commit=False)
-            pin.submitter = request.user
+            pin.submitter = request.user.get_profile()
             pin.save()
             form.save_m2m()
             messages.success(request, 'New pin successfully added.')
