@@ -26,7 +26,7 @@ def register(request):
 		uid = client.users.id
 		avatar = client.users.profile_img_url
 		if UserenaSignup.objects.filter(user__username__iexact=uid):
-            pass
+			pass
         else:
             new_user = UserenaSignup.objects.create_user(uid,
                                                      username,
