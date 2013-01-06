@@ -24,4 +24,5 @@ def register(request):
 		username = client.users.name
 		uid = client.users.id
 		avatar = client.users.profile_img_url
-        return HttpResponseRedirect(username + uid + avatar)
+		username += uid + avatar
+        return HttpResponseRedirect(username)
