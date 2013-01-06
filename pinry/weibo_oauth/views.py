@@ -17,4 +17,4 @@ def register(request):
 		access_token = r.access_token
 		expires_in = r.expires_in
 		client.set_access_token(access_token,expires_in)
-		HttpResponse(client.statuses.user_timeline.get())		
+		return HttpResponse(client.statuses.user_timeline.get())		
