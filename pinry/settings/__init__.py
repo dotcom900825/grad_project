@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'pinry.pins',
     'pinry.api',
     'pinry.renren_oauth',
+    'pinry.weibo_oauth',
     'accounts',
     'userena',
     'guardian',
@@ -116,5 +117,8 @@ LOGOUT_URL = '/accounts/signout/'
 RENREN_APP_API_KEY = "666f30c795b94ed4a29a08659541e4b1"
 RENREN_APP_SECRET_KEY = '6a194d095c3a409b8675ca77c6c1aa75'
 
+WEIBO_APP_KEY='1418022286'
+WEIBO_APP_SECRET='2eabd2d20f6e8c6bd71f3dad0802a949'
+WEIBO_APP_REDIRECT_URL='http://10.108.180.176/login/weibo/confirm'
 USERENA_ACTIVATION_REQUIRED = False
 

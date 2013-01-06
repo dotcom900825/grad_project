@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from weibo import APIClient
 from django.shortcuts import render_to_response
-form django.conf import settings
+from django.conf import settings
 def weibo_login(request):
 	client = APIClient(app_key=settings.WEIBO_APP_KEY, app_secret=settings.WEIBO_APP_SECRET, redirect_uri=settings.WEIBO_REDIRECT)
 	url = client.get_authorize_url()
