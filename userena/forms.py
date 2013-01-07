@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.utils.hashcompat import sha_constructor
 
+from django.conf import settings
 from userena import settings as userena_settings
 from userena.models import UserenaSignup
 from userena.utils import get_profile_model
@@ -31,6 +32,15 @@ class SignupForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
                              label=_("电子邮箱".decode('utf-8')))
+    university = forms.ChoiceField(choices=settings.UNIVERSITY_LIST,
+                                    label=_(u"学校"))
+    
+    school = forms.ChoiceField(choices=settings.SCHOOL_LIST,
+                                label=_(u"院系"))
+
+    year_of_study = forms.ChoiceField(choices=settings.YEAR_IN_SCHOOL_CHOICES,
+                                  label=_(u"年级"))
+
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict,
                                                            render_value=False),
                                 label=_("设置密码".decode('utf-8')))
@@ -79,16 +89,24 @@ class SignupForm(forms.Form):
 
     def save(self):
         """ Creates a new user and account. Returns the newly created user. """
-        username, email, password = (self.cleaned_data['username'],
+        username, email, password,university,school,year_of_study = (self.cleaned_data['username'],
                                      self.cleaned_data['email'],
-                                     self.cleaned_data['password1'])
-
+                                     self.cleaned_data['password1'],
+                                     self.cleaned_data['university'],
+                                     self.cleaned_data['school'],
+                                     self.cleaned_data['year_of_study'])
+        #create_user's parameters
+        #(username, sns_name, email, password, active=False,send_email=True)
         new_user = UserenaSignup.objects.create_user(username,
                                                      username,
                                                      email,
                                                      password,
                                                      not userena_settings.USERENA_ACTIVATION_REQUIRED,
-                                                     userena_settings.USERENA_ACTIVATION_REQUIRED)
+                                                     userena_settings.USERENA_ACTIVATION_REQUIRED,
+                                                     university=university,
+                                                     school=school,
+                                                     year_of_study=year_of_study
+                                                     )
         return new_user
 
 class SignupFormOnlyEmail(SignupForm):

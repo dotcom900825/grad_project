@@ -3,10 +3,16 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
+from accounts.views import user_pins
 from userena import views as userena_views
 from userena import settings as userena_settings
 
 urlpatterns = patterns('',
+    # User Pins
+    url(r'^(?P<username>[\.\w]+)/pins/$',
+       user_pins,
+       name='user_pins'),
+
     # Signup, signin and signout
     url(r'^signup/$',
        userena_views.signup,

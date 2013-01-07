@@ -8,24 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Pin'
-        db.create_table('pins_pin', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('submitter', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['accounts.MyProfile'])),
-            ('url', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('price', self.gf('django.db.models.fields.IntegerField')()),
-            ('user', self.gf('django.db.models.fields.CharField')(max_length='100')),
-            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
-            ('thumbnail', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
-            ('published', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-        ))
-        db.send_create_signal('pins', ['Pin'])
+        # Adding field 'Pin.user_img_url'
+        db.add_column('pins_pin', 'user_img_url',
+                      self.gf('django.db.models.fields.CharField')(max_length='200', null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Pin'
-        db.delete_table('pins_pin')
+        # Deleting field 'Pin.user_img_url'
+        db.delete_column('pins_pin', 'user_img_url')
 
 
     models = {
@@ -88,7 +79,8 @@ class Migration(SchemaMigration):
             'submitter': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['accounts.MyProfile']"}),
             'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'url': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'user': ('django.db.models.fields.CharField', [], {'max_length': "'100'"})
+            'user': ('django.db.models.fields.CharField', [], {'max_length': "'100'", 'null': 'True', 'blank': 'True'}),
+            'user_img_url': ('django.db.models.fields.CharField', [], {'max_length': "'200'", 'null': 'True', 'blank': 'True'})
         },
         'renren_oauth.profile': {
             'Meta': {'object_name': 'Profile'},

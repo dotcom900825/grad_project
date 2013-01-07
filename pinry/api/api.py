@@ -29,7 +29,7 @@ class MyProfileResource(ModelResource):
 
 class PinResource(ModelResource):  # pylint: disable-msg=R0904
     tags = fields.ListField()
-    user = fields.ForeignKey(MyProfileResource,'submitter')
+    userProfile = fields.ForeignKey(MyProfileResource,'submitter')
     class Meta:
         queryset = Pin.objects.all()
         resource_name = 'pin'

@@ -1,3 +1,5 @@
+# -*- Encoding: utf-8 -*-
+
 from django.template.response import TemplateResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -19,6 +21,8 @@ def new_pin(request):
         if form.is_valid():
             pin = form.save(commit=False)
             pin.submitter = request.user.get_profile()
+            pin.user = request.user.get_profile().snsName
+            pin.user_img_url = request.user.get_profile().socialImageUrl
             pin.save()
             form.save_m2m()
             messages.success(request, 'New pin successfully added.')

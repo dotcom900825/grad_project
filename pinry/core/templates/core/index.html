@@ -1,5 +1,6 @@
 ﻿{% load new_pin %}
 {% load compress %}
+{% load umessages_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +38,8 @@
     {% endif %}
 
     </script>
-    <script src="/static/core/js/pinry.js"></script>
+    {% block mainpage_waterfall %}
+    {% endblock %}
     <script src="/static/core/js/messages.js"></script>
 
     {% endcompress %}
@@ -68,8 +70,9 @@
                                     <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
                                 </li>
                                 <li>
-                                
-                                    <a href="{% url userena_umessages_list %}"><span>Messages</span></a> 
+                                    {% get_unread_message_count_for user as unread_message_count %}
+                                    
+                                    <a href="{% url userena_umessages_list %}"><span>{{unread_message_count}} 条新信息</span></a> 
                                 </li>
                                 <li style="height:50px">
                                     <a style="padding-top:0px"  href="/accounts/{{ user.username }}"><img style='width:50px; height:50px' src="{{user.get_profile.get_mugshot_url}}" alt="Index page"/> </a>
@@ -82,7 +85,7 @@
                                     </a>
                                     <ul class='dropdown-menu'>
                                         <li>
-                                            <a href='#'>我的闲置物品</a>
+                                            <a href="/accounts/{{ user.username }}/pins">我的闲置物品</a>
                                         </li>
                                         <li>
                                             <a href="/accounts/{{ user.username }}">帐号管理</a>

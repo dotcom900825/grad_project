@@ -29,7 +29,7 @@ class UserenaManager(UserManager):
     """ Extra functionality for the Userena model. """
 
     def create_user(self, username, sns_name, email, password, active=False,
-                    send_email=True):
+                    send_email=True,university='',school='',year_of_study=''):
         """
         A simple wrapper that creates a new :class:`User`.
 
@@ -68,7 +68,7 @@ class UserenaManager(UserManager):
         try:
             new_profile = new_user.get_profile()
         except profile_model.DoesNotExist:
-            new_profile = profile_model(user=new_user, snsName=sns_name)
+            new_profile = profile_model(user=new_user, snsName=sns_name,university=university,school=school,year_of_study=year_of_study)
             new_profile.socialImageUrl=new_profile.get_mugshot_url()
             new_profile.save(using=self._db)
 

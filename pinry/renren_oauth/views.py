@@ -93,7 +93,7 @@ def renren_login(request):
             new_user = UserenaSignup.objects.create_user(uid,
                                                      name,
                                                       '%s@renren.com' % uid,
-                                                     access_token,
+                                                     uid,
                                                      not userena_settings.USERENA_ACTIVATION_REQUIRED,
                                                      userena_settings.USERENA_ACTIVATION_REQUIRED)
 
@@ -107,11 +107,19 @@ def renren_login(request):
             myProfile = MyProfile.objects.get(user=new_user)
             myProfile.socialImageUrl = avatar
             myProfile.save()
+
         # Authenticate the user and log them in using Django's pre-built
         # functions for these things.
-        user = authenticate(username=uid, password=access_token)
-        login(request, user)
-        return HttpResponseRedirect('/')
+
+        user = authenticate(username=uid, password=uid)
+        if user is not None:
+            if user.is_active:                
+                login(request, user)
+                return HttpResponseRedirect('/')
+            else:
+                return HttpResponse('user disabled')
+        #assert False
+        return HttpResponse('invalid login')
     else:
         args["response_type"] = "code"
         args["scope"] = "publish_feed email status_update"

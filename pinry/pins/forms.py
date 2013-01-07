@@ -1,3 +1,5 @@
+# -*- Encoding: utf-8 -*-
+
 from django import forms
 
 from taggit.forms import TagField
@@ -7,16 +9,17 @@ from .models import Pin
 
 class PinForm(forms.ModelForm):
     url = forms.CharField(label='URL', required=False)
-    image = forms.ImageField(label='or Upload', required=False)
+    image = forms.ImageField(label='上传照片'.decode('utf-8'), required=False)
     tags = TagField()
-
+    #description = forms.TextField(label='miaoshu',required=True)
 
     def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = (
-            'url',
+         #   'url',
             'image',
             'description',
+            'price',
             'tags',
         )
 
@@ -60,7 +63,6 @@ class PinForm(forms.ModelForm):
             pass
         else:
             raise forms.ValidationError("Need either a URL or Upload.")
-
         return cleaned_data
 
     class Meta:

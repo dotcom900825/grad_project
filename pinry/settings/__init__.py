@@ -1,3 +1,4 @@
+# -*- Encoding: utf-8 -*-
 import os
 from django.contrib.messages import constants as messages
 
@@ -120,5 +121,24 @@ RENREN_APP_SECRET_KEY = '6a194d095c3a409b8675ca77c6c1aa75'
 WEIBO_APP_KEY='1418022286'
 WEIBO_APP_SECRET='2eabd2d20f6e8c6bd71f3dad0802a949'
 WEIBO_REDIRECT='http://10.108.180.176/login/weibo/confirm'
-USERENA_ACTIVATION_REQUIRED = False
 
+USERENA_ACTIVATION_REQUIRED = False
+USERENA_MUGSHOT_GRAVATAR = False
+USERENA_MUGSHOT_DEFAULT = '/static/vendor/utility/smile.jpg'
+USERENA_REDIRECT_ON_SIGNOUT = '/'
+
+SCHOOL_LIST = (
+    (u'信息与通信工程学院',u'信息与通信工程学院'),
+    )
+UNIVERSITY_LIST = (
+    (u'bupt', u'北京邮电大学'),
+)
+
+YEAR_IN_SCHOOL_CHOICES = (
+    (u'Freshman', u'大一'),
+    (u'Sophomore', u'大二'),
+    (u'Junior', u'大三'),
+    (u'Senior', u'大四'),
+    (u'Graduate', u'研究生'),
+    (u'Phd',u'博士生'),
+)

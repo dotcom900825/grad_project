@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
@@ -374,7 +375,7 @@ def signout(request, next_page=userena_settings.USERENA_REDIRECT_ON_SIGNOUT,
 
     """
     if request.user.is_authenticated() and userena_settings.USERENA_USE_MESSAGES: # pragma: no cover
-        messages.success(request, _('You have been signed out.'), fail_silently=True)
+        messages.success(request, _('让我们下次再见'.decode('utf-8')), fail_silently=True)
     return Signout(request, next_page, template_name, *args, **kwargs)
 
 @secure_required
