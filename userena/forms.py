@@ -27,11 +27,16 @@ class SignupForm(forms.Form):
     username = forms.RegexField(regex=USERNAME_RE,
                                 max_length=30,
                                 widget=forms.TextInput(attrs=attrs_dict),
-                                label=_("用户名".decode('utf-8')),
+                                label=_("账户名".decode('utf-8')),
                                 error_messages={'invalid': _('Username must contain only letters, numbers, dots and underscores.')})
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
                              label=_("电子邮箱".decode('utf-8')))
+    
+    realname = forms.CharField(max_length=30,
+                                label=_("真实姓名".decode('utf-8')))
+   
+
     university = forms.ChoiceField(choices=settings.UNIVERSITY_LIST,
                                     label=_(u"学校"))
     
@@ -89,7 +94,8 @@ class SignupForm(forms.Form):
 
     def save(self):
         """ Creates a new user and account. Returns the newly created user. """
-        username, email, password,university,school,year_of_study = (self.cleaned_data['username'],
+        username, realname,email, password,university,school,year_of_study = (self.cleaned_data['username'],
+                                     self.cleaned_data['realname'],
                                      self.cleaned_data['email'],
                                      self.cleaned_data['password1'],
                                      self.cleaned_data['university'],
@@ -98,7 +104,7 @@ class SignupForm(forms.Form):
         #create_user's parameters
         #(username, sns_name, email, password, active=False,send_email=True)
         new_user = UserenaSignup.objects.create_user(username,
-                                                     username,
+                                                     realname,
                                                      email,
                                                      password,
                                                      not userena_settings.USERENA_ACTIVATION_REQUIRED,
@@ -161,8 +167,8 @@ class AuthenticationForm(forms.Form):
     A custom form where the identification can be a e-mail address or username.
 
     """
-    identification = identification_field_factory(_(u"你的注册邮箱或者用户名"),
-                                                  _(u"请提供你的注册邮箱或者用户名"))
+    identification = identification_field_factory(_(u"你的注册邮箱或者账户名"),
+                                                  _(u"请提供你的注册邮箱或者账户名"))
     password = forms.CharField(label=_(u"密码"),
                                widget=forms.PasswordInput(attrs=attrs_dict, render_value=False))
     remember_me = forms.BooleanField(widget=forms.CheckboxInput(),
