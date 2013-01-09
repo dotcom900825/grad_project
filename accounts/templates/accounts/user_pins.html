@@ -1,11 +1,12 @@
 {% extends 'core/index.html' %}
 
+{% block waterfall_js %}  <script src="/static/accounts/js/account_waterfall.js"></script> {% endblock %}
 {% block title %}Recent Pins{% endblock %}
 
 {% block yield %}
 	<div class='row'>
-            <div class='span4'>
-                <img src="{{user.get_profile.socialImageUrl}}">
+            <div style='margin-left:' class='span4'>
+                <img  src="{{user.get_profile.socialBigImageUrl}}">
             </div>
     </div>
     

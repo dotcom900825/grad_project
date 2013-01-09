@@ -119,13 +119,13 @@ function onLoadData(data) {
           html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
               html += '<img src="'+image.thumbnail+'" width="200" >';
           html += '</a>';
-          if (image.description) html += "<p style='padding-bottom:5px'>"+image.description+'</p>';
-          if (image.price) html +="<p style='padding-top:5px; border-top:2px solid black'>价格: " + image.price + '元</p>';
+          if (image.description) html += "<p style='padding-bottom:5px'>"+ image.description+'</p>';
+          if (image.price) html +="<p style='padding-top:5px;'>价格: " + image.price + '元</p>';
           if (image.tags) {
               html += "<div class='clearfix' style='margin-bottom:5px'>";
               html += '<p>';
-              html += "<a style='width:30px;height:30px' href='/accounts/" + image.user + "'> <img style='width:30px; height:30px' src='" + image.user_img_url + "' /></a>";
-              html += "<span> " + image.user + " 发布在</span>"
+              html += "<a style='width:30px;height:30px' href='/accounts/" + image.userProfile.snsName + "'> <img style='width:30px; height:30px' src='" + image.userProfile.socialImageUrl + "' /></a>";
+              html += "<span> " + image.userProfile.snsName + " 发布在</span>"
               for (tag in image.tags) {
                   html += '<span class="label tag" onclick="loadData(\'' + image.tags[tag] + '\')">' + image.tags[tag] + '</span> ';
               }
@@ -134,7 +134,7 @@ function onLoadData(data) {
           }
           if(user_auth)
           {
-            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.user + "/' method='POST'> <input type='hidden' name='to' value='" + image.user + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.snsName + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.snsName + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {
@@ -152,6 +152,7 @@ function onLoadData(data) {
 $(document).ready(new function() {
     $(document).bind('scroll', onScroll);
     loadData();
+    $("#example").popover(); 
 });
 
 /**

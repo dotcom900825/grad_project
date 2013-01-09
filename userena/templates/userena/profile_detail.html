@@ -44,10 +44,10 @@
       {% block profile_details %}
            <table class='table' style='width:30%'>
           {% block profile_definition_list %}
-            {% if profile.user.get_full_name %}
+            {% if profile.snsName %}
               <tr>
                 <td>{% trans "名字" %}</td>
-                <td>{{ profile.user.get_full_name }}</td>
+                <td>{{ profile.snsName }}</td>
               </tr>
             {% endif %}
             {% if profile.user.email and not hide_email %}
@@ -56,17 +56,23 @@
                 <td>{{ profile.user.email }}</td>
               </tr>
             {% endif %}
-            {% if profile.age %}
-              <dt>{% trans "Age" %}</dt>
-              <dd>{{ profile.age }}</dd>
+            {% if profile.university %}
+              <tr>
+                <td>{% trans '学校' %}</td>
+                <td>{{ profile.university }}</td>
+              </tr>
             {% endif %}
-            {% if profile.website %}
-              <dt>{% trans "Website" %}</dt>
-              <dd>{{ profile.website|urlize }}</dd>
+            {% if profile.school %}
+              <tr>
+                <td>{% trans "院系" %}</td>
+                <td>{{ profile.school }}</td>
+              </tr>
             {% endif %}
-            {% if profile.location %}
-              <dt>{% trans "Location" %}</dt>
-              <dd>{{ profile.location }}</dd>
+            {% if profile.year_of_study %}
+              <tr>
+                <td>{% trans "年级" %}</td>
+                <td>{{ profile.year_of_study }}</td>
+              </tr>
             {% endif %}
             {% if profile.about_me %}
               <dt>{% trans "About me" %}</dt>

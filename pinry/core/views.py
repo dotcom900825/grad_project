@@ -16,6 +16,9 @@ def home(request):
 def about_us(request):
     return render_to_response('core/about_us.html',locals(),context_instance = RequestContext(request))
 
+def feedback(request):
+    return render_to_response('core/feedback.html',locals(),context_instance=RequestContext(request))
+
 def private(request):
     return TemplateResponse(request, 'core/private.html', None)
 

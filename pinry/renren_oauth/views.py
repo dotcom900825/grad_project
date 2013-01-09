@@ -72,7 +72,7 @@ def renren_login(request):
         access_token = json.loads(response)["access_token"]
 
         # Obtain the user's base info
-        params = {"method": "users.getInfo", "fields": "name, tinyurl"}
+        params = {"method": "users.getInfo", "fields": "name, tinyurl, mainurl"}
         api_client = RenRenAPIClient(access_token, settings.RENREN_APP_SECRET_KEY)
         response = api_client.request(params)
 
@@ -82,15 +82,17 @@ def renren_login(request):
         uid = response["uid"]
         name = response["name"]
         avatar = response["tinyurl"]
-
+        avatar_big = response["mainurl"]
+        
       #  user, user_created = User.objects.get_or_create(username=uid,last_name=name)
 
       #  if user_created:
       #      user.email = '%s@renren.com' % uid
-        if UserenaSignup.objects.filter(user__username__iexact=uid):
+        if UserenaSignup.objects.filter(user__username__iexact=name):
             pass
         else:
-            new_user = UserenaSignup.objects.create_user(uid,
+            #username, sns_name, email, password, active=False,send_email=True,university='',school='',year_of_study=''
+            new_user = UserenaSignup.objects.create_user(name,
                                                      name,
                                                       '%s@renren.com' % uid,
                                                      uid,
@@ -106,12 +108,13 @@ def renren_login(request):
 
             myProfile = MyProfile.objects.get(user=new_user)
             myProfile.socialImageUrl = avatar
+            myProfile.socialBigImageUrl = avatar_big
             myProfile.save()
 
         # Authenticate the user and log them in using Django's pre-built
         # functions for these things.
 
-        user = authenticate(username=uid, password=uid)
+        user = authenticate(username=name, password=uid)
         if user is not None:
             if user.is_active:                
                 login(request, user)

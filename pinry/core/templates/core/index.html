@@ -38,7 +38,7 @@
     {% endif %}
 
     </script>
-    {% block mainpage_waterfall %}
+    {% block waterfall_js %}
     {% endblock %}
     <script src="/static/core/js/messages.js"></script>
 
@@ -54,7 +54,7 @@
                 <div style="background-color:#333;"  class="navbar-inner">
                     <div class="container" style="width:1170px">
                         <a class="brand" style="margin-left:15px; padding:0px 0px"href="/" data-original-title>
-                            <img width="100px" src="https://s3-ap-northeast-1.amazonaws.com/staticohblist/image/ohbooklistlogo.gif" />
+                            <img width="100px" src="/static/vendor/utility/xishi.jpg" />
                         </a>
                         <ul class='nav'>
                             <li>
@@ -63,7 +63,54 @@
                             <li>
                                 <a href="/about_us">我们的团队</a>
                             </li>
+                            <li>
+                                <a  href="#feedback" data-toggle="modal">给我们提建议</a>
+                                <div class="modal fade" style='display:none;' id="feedback">
+                                  <div class="modal-header">
+                                    <a class="close" data-dismiss="modal">&times;</a>
+                                    <h3>请给我们留下你的宝贵意见</h3>
+                                    <p>（留言同时请留下您的联系方式，我们不会泄露您的隐私）</p>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form class="form contact" action="mailto:dotcom900825@gmail.com" method="post" enctype="text/plain">
+                                        <div class="control-group">
+                                    <label class="control-label" for="contact-name">名字</label>
+                                    <div class="controls">
+                                        <input class="span4" type="text" name="contact-name" id="contact-name" placeholder="你的名字" />
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="contact-email">电子邮箱</label>
+                                    <div class="controls">
+                                        <input class="span4" type="text" name="contact-email" id="contact-email" placeholder="邮箱地址" />
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="contact-phone">手机</label>
+                                    <div class="controls">
+                                        <input class="span4" type="text" name="contact-phone" id="contact-phone" placeholder="手机号码" />
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="control-label" for="contact-message">反馈意见</label>
+                                    <div class="controls">
+                                        <textarea class="span4" rows="8" name="contact-message" id="contact-message" placeholder="你希望增加的功能，指出网站存在的bug，或者页面布局建议，我们都希望听到你的声音"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <input class="btn btn-info" type="submit" value="提交" name="submit" />
+                                    </form>
+                                  </div>
+                                  
+                                </div>
+                            </li>
                         </ul>
+
+
+
                         <ul class='nav pull-right'>     
                             {% if user.is_authenticated %}
                                 <li>
@@ -139,6 +186,9 @@
             </div>
         
         </div>
+
+        {% block contact_us %}
+        {% endblock %}
         
     </div>
 </body>

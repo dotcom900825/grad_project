@@ -70,6 +70,7 @@ class UserenaManager(UserManager):
         except profile_model.DoesNotExist:
             new_profile = profile_model(user=new_user, snsName=sns_name,university=university,school=school,year_of_study=year_of_study)
             new_profile.socialImageUrl=new_profile.get_mugshot_url()
+            new_profile.socialBigImageUrl = new_profile.get_mugshot_url()
             new_profile.save(using=self._db)
 
         # Give permissions to view and change profile

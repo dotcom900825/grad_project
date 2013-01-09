@@ -39,7 +39,6 @@ function applyLayout() {
 function loadData(tag) {
     isLoading = true;
     $('#loader').show();
-
     if (tag !== undefined) {
         globalTag = tag;
         window.history.pushState(tag, 'Pinry - Tag - '+tag, '/pins/tag/'+tag+'/');
@@ -109,6 +108,7 @@ function onLoadData(data) {
               //请求出错处理
             }
           });*/
+      if(image.userProfile.snsName == user_name)
       {
       html += '<div class="pin">';
           html += '<div class="pin-options">';

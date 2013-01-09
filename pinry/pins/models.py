@@ -15,10 +15,6 @@ class Pin(models.Model):
     url = models.TextField(blank=True, null=True)
     description = models.TextField(_('物品描述'.decode('utf-8')),blank=True, null=True)
     price = models.IntegerField(_('期望价格'.decode('utf-8')))
-    user = models.CharField(help_text=_('pic_submitter_name'),
-                            max_length='100',blank=True,null=True)
-    user_img_url = models.CharField(help_text=_('submitter_pic'),
-                            max_length='200',blank=True,null=True)
     image = models.ImageField(upload_to='pins/pin/originals/')
     thumbnail = models.ImageField(upload_to='pins/pin/thumbnails/')
     published = models.DateTimeField(auto_now_add=True)

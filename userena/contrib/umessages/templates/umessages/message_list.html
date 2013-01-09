@@ -1,26 +1,24 @@
-
-
 {% extends 'umessages/base_message.html' %}
 {% load umessages_tags %}
 
 {% block content_title %}{% get_unread_message_count_for user as unread_message_count %}
-<h2 class="content-title">Messages ({{ unread_message_count }} )</h2>{% endblock %}
+<h3 class="content-title">新信息 ({{ unread_message_count }} )</h3>{% endblock %}
 
 {% block content %}
 
-<a href="{% url userena_umessages_compose %}" class="button"><span>+ Compose message</span></a>
+<a href="{% url userena_umessages_compose %}" class="btn btn-info"><span style='color:white'>发信息</span></a>
 <ul id="messages" class="list-view">
   {% for message in message_list %}
   <li>
   {% if message.from_user == user %}
   <a href="{% url userena_umessages_detail message.to_user.username %}">
-  <img src="{{ message.to_user.profile.get_mugshot_url }}" class="avatar" />
+  <img src="{{ message.to_user.get_profile.get_mugshot_url }}" class="avatar" />
   {{ message.to_user }}
 
   {% get_unread_message_count_between user and message.to_user as unread_between_count %}
   {% else %}
   <a href="{% url userena_umessages_detail message.from_user.username %}">
-  <img src="{{ message.from_user.profile.get_mugshot_url }}" class="avatar" />
+  <img src="{{ message.from_user.get_profile.get_mugshot_url }}" class="avatar" />
   {{ message.from_user }}
 
   {% get_unread_message_count_between user and message.from_user as unread_between_count %}

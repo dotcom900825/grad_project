@@ -16,5 +16,6 @@ urlpatterns = patterns('',
     url(r'', include('pinry.core.urls', namespace='core')),
     url(r'^accounts/', include('userena.urls')),
     url(r'^messages/', include('userena.contrib.umessages.urls')),
+    url(r'^feedback/', 'pinry.core.views.feedback'),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

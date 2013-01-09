@@ -230,9 +230,9 @@ a.img {
     cursor: pointer;
     height: 30px;
     position: absolute;
-    right: 5px;
+    right: 1px;
     top: 0;
-    width: 30px;
+    width: 45px;
     margin-right: 0px;
 }
 
@@ -302,7 +302,7 @@ p.date {
 }
 
 .avatar {
-  width: 80px;
+  width: 40px;
   border: 1px solid #ccc;
   float: right;
   margin: 0 10px;
@@ -313,7 +313,7 @@ p.date {
 }
 
 .message-content{
-    
+    border: 1px solid #ccc;
     margin: 0 110px;
     padding: 15px;
     -moz-border-radius: 2px;
