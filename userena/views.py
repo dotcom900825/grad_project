@@ -570,7 +570,9 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
 
         if form.is_valid():
             profile = form.save()
-
+            profile.socialImageUrl = profile.mugshot.url #modified by xiayu, when user upload new mugshot, update snsImage too
+         
+            profile.save()
             if userena_settings.USERENA_USE_MESSAGES:
                 messages.success(request, _('Your profile has been updated.'),
                                  fail_silently=True)
