@@ -264,8 +264,8 @@ class UserenaBaseProfile(models.Model):
             by ``USERENA_MUGSHOT_DEFAULT``.
 
         """
-        # First check for a mugshot and if any return that.
-        if self.socialImageUrl:
+        #Added by Yu Xia, First check for a mugshot and if any return that.
+        if self.socialImageUrl: 
             return self.socialImageUrl
 
         if self.mugshot:
