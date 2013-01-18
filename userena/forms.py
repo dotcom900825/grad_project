@@ -9,12 +9,28 @@ from django.conf import settings
 from userena import settings as userena_settings
 from userena.models import UserenaSignup
 from userena.utils import get_profile_model
-
+from accounts.models import MyProfile
 import random
+
 
 attrs_dict = {'class': 'required'}
 
 USERNAME_RE = r'^[\.\w]+$'
+
+class SignupForm_Personal(forms.Form):
+    """Form for user to fill out their personal information like realname, school name and major etc"""
+    realname = forms.CharField(max_length=30,
+                                label=_("真实姓名".decode('utf-8')))
+   
+
+    university = forms.ChoiceField(choices=settings.UNIVERSITY_LIST,
+                                    label=_(u"学校"))
+    
+    school = forms.ChoiceField(choices=settings.SCHOOL_LIST,
+                                label=_(u"院系"))
+
+    year_of_study = forms.ChoiceField(choices=settings.YEAR_IN_SCHOOL_CHOICES,
+                                  label=_(u"年级"))
 
 class SignupForm(forms.Form):
     """
@@ -33,19 +49,7 @@ class SignupForm(forms.Form):
                                                                maxlength=75)),
                              label=_("电子邮箱".decode('utf-8')))
     
-    realname = forms.CharField(max_length=30,
-                                label=_("真实姓名".decode('utf-8')))
-   
-
-    university = forms.ChoiceField(choices=settings.UNIVERSITY_LIST,
-                                    label=_(u"学校"))
     
-    school = forms.ChoiceField(choices=settings.SCHOOL_LIST,
-                                label=_(u"院系"))
-
-    year_of_study = forms.ChoiceField(choices=settings.YEAR_IN_SCHOOL_CHOICES,
-                                  label=_(u"年级"))
-
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict,
                                                            render_value=False),
                                 label=_("设置密码".decode('utf-8')))
@@ -67,9 +71,9 @@ class SignupForm(forms.Form):
         else:
             if UserenaSignup.objects.filter(user__username__iexact=self.cleaned_data['username']).exclude(activation_key=userena_settings.USERENA_ACTIVATED):
                 raise forms.ValidationError(_('不好意思亲！这个用户名已经被注册了，但还没有通过验证，检查一下你的邮箱吧'.decode('utf-8')))
-            raise forms.ValidationError(_('不好意思亲！这个用户名已经被注册了，换一个吧～'.decoce('utf-8')))
+            raise forms.ValidationError(_('不好意思亲！这个用户名已经被注册了，换一个吧～'.decode('utf-8')))
         if self.cleaned_data['username'].lower() in userena_settings.USERENA_FORBIDDEN_USERNAMES:
-            raise forms.ValidationError(_('This username is not allowed.'))
+            raise forms.ValidationError(_('不允许使用该用户名'.decode('utf-8')))
         return self.cleaned_data['username']
 
     def clean_email(self):
@@ -94,26 +98,24 @@ class SignupForm(forms.Form):
 
     def save(self):
         """ Creates a new user and account. Returns the newly created user. """
-        username, realname,email, password,university,school,year_of_study = (self.cleaned_data['username'],
-                                     self.cleaned_data['realname'],
+        username,email, password = (self.cleaned_data['username'],
                                      self.cleaned_data['email'],
                                      self.cleaned_data['password1'],
-                                     self.cleaned_data['university'],
-                                     self.cleaned_data['school'],
-                                     self.cleaned_data['year_of_study'])
-        #create_user's parameters
+                                     )
+        #create_user's parameters   
         #(username, sns_name, email, password, active=False,send_email=True)
         new_user = UserenaSignup.objects.create_user(username,
-                                                     realname,
+                                                     '',
                                                      email,
                                                      password,
                                                      not userena_settings.USERENA_ACTIVATION_REQUIRED,
                                                      userena_settings.USERENA_ACTIVATION_REQUIRED,
-                                                     university=university,
-                                                     school=school,
-                                                     year_of_study=year_of_study
+                                                     university='',
+                                                     school='',
+                                                     year_of_study=''
                                                      )
         return new_user
+
 
 class SignupFormOnlyEmail(SignupForm):
     """
@@ -198,7 +200,7 @@ class AuthenticationForm(forms.Form):
         if identification and password:
             user = authenticate(identification=identification, password=password)
             if user is None:
-                raise forms.ValidationError(_(u"Please enter a correct username or email and password. Note that both fields are case-sensitive."))
+                raise forms.ValidationError(_(u"请输入正确的用户名或邮箱，及您的密码，注意大小写.".decode('utf-8')))
         return self.cleaned_data
 class ChangeEmailForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
@@ -221,9 +223,9 @@ class ChangeEmailForm(forms.Form):
     def clean_email(self):
         """ Validate that the email is not already registered with another user """
         if self.cleaned_data['email'].lower() == self.user.email:
-            raise forms.ValidationError(_(u'You\'re already known under this email.'))
+            raise forms.ValidationError(_(u'您现在使用的就是这个邮箱.'.decode('utf-8')))
         if User.objects.filter(email__iexact=self.cleaned_data['email']).exclude(email__iexact=self.user.email):
-            raise forms.ValidationError(_(u'This email is already in use. Please supply a different email.'))
+            raise forms.ValidationError(_(u'该邮箱已经被使用了，请提供一个不同的邮箱'.decode('utf-8')))
         return self.cleaned_data['email']
 
     def save(self):
@@ -252,8 +254,10 @@ class EditProfileForm(forms.ModelForm):
         new_order.insert(0, 'last_name')
         self.fields.keyOrder = new_order
 
+    #
     class Meta:
-        model = get_profile_model()
+        model = get_profile_model() #调用userena.util的get_profile函数，得到绑定的user profile
+        #MyProfile有下面的field 
         exclude = ['user','privacy','renren','snsName','sns','socialImageUrl']
 
     def save(self, force_insert=False, force_update=False, commit=True):

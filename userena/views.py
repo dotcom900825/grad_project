@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout, REDIRECT_FIELD_NAME
@@ -26,6 +27,10 @@ from userena import settings as userena_settings
 from guardian.decorators import permission_required_or_403
 
 import warnings
+
+from django.http import HttpResponseRedirect
+from django.contrib.formtools.wizard.views import SessionWizardView
+from django.core.files.storage import FileSystemStorage
 
 class ExtraContextTemplateView(TemplateView):
     """ Add extra context to a simple template view """
@@ -691,3 +696,42 @@ def profile_list(request, page=1, template_name='userena/profile_list.html',
                                    template_object_name='profile',
                                    **kwargs)
 
+
+class MultiSignupView(SessionWizardView):
+    file_storage = FileSystemStorage(location=os.path.join(settings.MEDIA_ROOT, 'photos'))
+    def done(self, form_list, **kwargs):
+        #do_something_with_the_form_data(form_list)
+        attr = [form.cleaned_data for form in form_list]
+        user_info_dic = attr[0]
+        username = user_info_dic["username"]
+        password = user_info_dic["password1"]
+        email = user_info_dic["email"]
+
+        personal_info_dic = attr[1]
+        realname = personal_info_dic['realname']
+        school = personal_info_dic['school']
+        university = personal_info_dic['university']
+        year_of_study = personal_info_dic['year_of_study']
+
+
+        new_user = UserenaSignup.objects.create_user(username,
+                                                     realname,
+                                                     email,
+                                                     password,
+                                                     not userena_settings.USERENA_ACTIVATION_REQUIRED,
+                                                     userena_settings.USERENA_ACTIVATION_REQUIRED,
+                                                     university=university,
+                                                     school=school,
+                                                     year_of_study=year_of_study
+                                                     ) 
+        new_user.save()
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:                
+                login(self.request, user)
+                return HttpResponseRedirect('/')
+            else:
+                return HttpResponse('user disabled')
+        #assert False
+        return HttpResponse('invalid login')
+        return HttpResponseRedirect('/')

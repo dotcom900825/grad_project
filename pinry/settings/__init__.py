@@ -1,6 +1,7 @@
 # -*- Encoding: utf-8 -*-
 import os
 from django.contrib.messages import constants as messages
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 
 SITE_ROOT = os.path.join(os.path.realpath(os.path.dirname(__file__)), '../../')
@@ -101,6 +102,7 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
 )
 
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -134,6 +136,7 @@ SCHOOL_LIST = (
 UNIVERSITY_LIST = (
     (u'bupt', u'北京邮电大学'),
 )
+
 
 YEAR_IN_SCHOOL_CHOICES = (
     (u'Freshman', u'大一'),

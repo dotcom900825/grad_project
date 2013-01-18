@@ -4,6 +4,9 @@ from django.utils.translation import ugettext as _
 from userena.models import UserenaBaseProfile
 from pinry.renren_oauth.models import Profile
 from django.conf import settings
+from django.db import models
+from image_cropping import ImageCropField,ImageRatioField
+
 class MyProfile(UserenaBaseProfile):
     user = models.OneToOneField(User,
                                 unique=True,
