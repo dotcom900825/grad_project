@@ -1,22 +1,18 @@
-# ![Pinry](https://github.com/overshard/pinry/raw/master/logo.png)
+# ![Pinry](https://raw.github.com/dotcom900825/grad_project/master/xishi.jpg)
 
-[![Build Status](https://secure.travis-ci.org/overshard/pinry.png?branch=master)](http://travis-ci.org/overshard/pinry)
+Xi Shi is based on [Pinry](https://github.com/overshard/pinry/) project, which is a private, self-hosted, [Pinterest][0] inspired by [Wookmark][1] and
+built on top of Django. 
 
-Pinry is a private, self-hosted, [Pinterest][0] inspired by [Wookmark][1] and
-built on top of Django. Pinry is currently in Alpha/Development, some upgrades
-may be ugly/not work till I release v1.0.0.
 
-![Pinry Screenshot](https://github.com/overshard/pinry/raw/master/screenshot.png)
+This project is forked from Pinry and then co-developed by several students in BUPT together.
+
+
+![Pinry Screenshot]()
 
 
 ## Why?
 
-Mostly because I don't like sharing, I use pinup boards for personal inspiration
-boards. Also if I use a public platform like Pinterest or Wookmark then my pins
-run the risk of getting a DMCA take down notice. I might not even be able to
-pin something at all with websites now blocking tools like this. I rather
-bypass all these risks and just host it myself.
-
+We develop Xi Shi as a social networking website for college student initially. However, Xi Shi is different from Facebook or twitter where people can update their status or follow other people. We establish social relationship by exchanging things. Student in our campus(Beijing University of Posts and Telecommunication) can trade or exchange their book or digital equipment etc with other student and hopefully meet new friend in the same time.
 
 ## Getting Started
 
@@ -25,29 +21,40 @@ Pinry has two different customizable configurations:
 
 ### Development
 
-Have virtualenv and pip installed. You may also need to have the build
-dependencies for PIL installed.
+* Have virtualenv and pip installed.
 
-Note: On Ubuntu you can get the build deps by running
+* You may also need to have the build
+dependencies for PIL installed. (PIL is the Python Image Library, mainly for process the picture the user uploaded) Note: On Ubuntu you can get the build deps by running
 `sudo apt-get build-dep python-imaging`.
+* Create virtualenv on your development environment first, Suppose we gonna create two folder on our Desktop, one named as `Sites` and another named `virtualenv`  
+* First go to Sites folder and clone the git repo, then create virtualenv in virtualenv folder
+* Next activate virtualenv and start install all the needed Python module
+* Sync Database
+* Use South migrate database 
+* Run the development server
 
-    $ git clone git://github.com/overshard/pinry.git
-    $ cd pinry
-    $ virtualenv .
-    $ bin/pip install -r development.txt
-    $ bin/python manage.py syncdb
-    $ bin/python manage.py migrate
-    $ bin/python manage.py runserver
+####Example
+
+    $ cd ~/Desktop
+    $ mkdir sites
+    $ mkdir virtualenv
+    $ cd sites
+    $ git clone https://github.com/dotcom900825/grad_project
+    $ cd ~/Desktop/virtualenv
+    $ virtualenv grad_project
+    $ source grad_project/bin/activate
+    $ cd ~/Desktop/sites/grad_project
+    $ pip install -r development.txt
+    $ python manage.py syncdb
+    $ python manage.py migrate
+    $ python manage.py runserver
 
 
 ### Production
 
 If you want a production server [Google around][2] for more information on
 running Django in a production environment and edit the
-`pinry/settings/production.py` file. I don't cover this because there are
-hundreds of different ways to deploy a Django project and everyone has their own
-preference.
-
+`pinry/settings/production.py` file. 
 
 ### Quick Settings
 
@@ -62,21 +69,7 @@ of the most requested functionality easily.
           all public access.)
 
 
-## Roadmap
 
- + Non-image URL pinning
- + Bookmarklet
- + Tagging, groups, multiple and/or user boards
- + Statistics/analytics with pretty graphs
-
-
-## As Seen On
-
- + [USA Today](http://www.usatoday.com/tech/products/story/2012-04-27/pinterest-pinry-private-pinning/54584308/1)
- + [Hacker News](http://news.ycombinator.com/item?id=3895618)
- + [The Next Web](http://thenextweb.com/apps/2012/04/27/pinry-is-a-self-hosted-version-of-pinterest-that-gives-you-full-control-of-your-pins/)
- + [Python Weekly](http://us2.campaign-archive2.com/?u=e2e180baf855ac797ef407fc7&id=1f8c766c90&e=292d864a00)
- + [Pycoder's Weekly](http://us4.campaign-archive1.com/?u=9735795484d2e4c204da82a29&id=4f9b37c501)
 
 
 ## License (Simplified BSD)
