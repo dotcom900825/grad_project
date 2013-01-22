@@ -27,7 +27,7 @@ function applyLayout() {
       handler.wookmark({
           autoResize: true,
           offset: 10,
-          itemWidth: 280,
+          itemWidth: 230,
           container: $('#pins')
       });
   });
@@ -116,6 +116,7 @@ function onLoadData(data) {
                   html += '<i class="icon-trash"></i>';
               html += '</a>';
           html += '</div>';
+          html += "<h4 style='color:#F47D31; background-color:#fff; -webkit-box-shadow: 2px 2px 20px #888; -moz-box-shadow:2px 2px 20px #888; -webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg); position:absolute; text-align:center; left:-20px; margin-top:0px'>出售闲置</h4>";
           html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
               html += '<img src="'+image.thumbnail+'" width="200" >';
           html += '</a>';

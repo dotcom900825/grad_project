@@ -1,0 +1,138 @@
+{% extends 'core/index.html' %}
+      {% block uploadPic %}
+        <script src="/static/vendor/ajaxuploader/js/jquery.min.js" ></script>
+        <script src="/static/vendor/ajaxuploader/js/fileuploader.js" ></script>
+        <link href="/static/vendor/ajaxuploader/css/fileuploader.css" media="screen" rel="stylesheet" type="text/css" />
+        <script src="/static/vendor/jcrop/js/jquery.Jcrop.js"></script>
+        <link rel="stylesheet" href="/static/vendor/jcrop/css/jquery.Jcrop.css" type="text/css" />
+
+        <script>
+            $(function(){
+             var jcrop_api, boundx, boundy;
+             
+             $('#target').Jcrop({
+                      onSelect: updatePreview,
+                      aspectRatio: 1
+                    },function(){
+                      // Use the API to get the real image size
+                      var bounds = this.getBounds();
+                      boundx = bounds[0];
+                      boundy = bounds[1];
+                      // Store the API in the jcrop_api variable
+                      jcrop_api = this;
+                    });
+
+             var uploader = new qq.FileUploader({
+                action: "{% url my_ajax_upload %}",
+                element: $('#file-uploader')[0],
+                multiple: false,
+                onComplete: function(id, fileName, responseJSON) {
+                    if(responseJSON.success) {
+                        $('#uploaded').attr('src',"/media/user_pic_big/" + fileName);
+                        $('#origin_pic_div').css('display','none');
+             //           $('.jcrop-holder img').attr('src',"/media/user_pic_big/" + fileName)
+                         $('#preview').attr('src',"/media/user_pic_big/" + fileName);
+                      
+                    $('#uploaded').Jcrop({
+                      onSelect: updatePreview,
+                      aspectRatio: 1
+                    },function(){
+                      // Use the API to get the real image size
+                      var bounds = this.getBounds();
+                      boundx = bounds[0];
+                      boundy = bounds[1];
+                      // Store the API in the jcrop_api variable
+                      jcrop_api = this;
+                    });
+                        $('#img_name').val(fileName);
+
+                                            } else {
+                        alert("upload failed!");
+                    }
+                },
+                onAllComplete: function(uploads) {
+                    // uploads is an array of maps
+                    // the maps look like this: {file: FileObject, response: JSONServerResponse}
+                  //  alert("All complete!");
+                },
+                params: {
+                    'csrf_token': '{{ csrf_token }}',
+                    'csrf_name': 'csrfmiddlewaretoken',
+                    'csrf_xname': 'X-CSRFToken',
+                },
+            });
+            function updatePreview(c)
+            {
+              $('#x1').val(c.x);
+              $('#y1').val(c.y);
+              $('#x2').val(c.x2);
+              $('#y2').val(c.y2);
+              $('#w').val(c.w);
+              $('#h').val(c.h);
+
+              if (parseInt(c.w) > 0)
+                {
+                  var rx = 100 / c.w;
+                  var ry = 100 / c.h;
+
+                  $('#preview').css({
+                    width: Math.round(rx * boundx) + 'px',
+                    height: Math.round(ry * boundy) + 'px',
+                    marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                    marginTop: '-' + Math.round(ry * c.y) + 'px'
+                  });
+                }
+            };
+            });
+
+    // Simple event handler, called from onChange and onSelect
+    // event handlers, as per the Jcrop invocation above
+    
+
+    function clearCoords()
+    {
+      $('#coords input').val('');
+    };
+
+        </script>   
+      {% endblock %}   
+
+{% block content %}
+<div class='span8' style='background-color:white;'>
+<h3 style="margin-left:30px; border-bottom: 1px solid #EEEEEE;">设置头像</h3>
+<div class='span3' style='border-right: 1px solid #EEEEEE;'>
+  <div id='origin_pic_div'>
+  <img style='width:200px' src="{{ user.get_profile.socialBigImageUrl }}" id="target" />
+  </div>
+  <img style='width:200px' src="" id="uploaded" />
+  <h3>上传你的真实头像</h3>
+  <div id="file-uploader">       
+        <noscript>          
+            <p>Please enable JavaScript to use file uploader.</p>
+        </noscript>         
+  </div>
+</div>
+
+<div class='span4'>
+  <h3>浏览小头像</h3>
+  <div style="width:100px;height:100px; overflow:hidden">
+   <img src="{{user.get_profile.socialBigImageUrl}}"  id="preview" alt="Preview" class="jcrop-preview" />
+  </div>
+
+  <form id="coords" class="coords" action="/accounts/{{username}}/upload_pic/" method="POST">
+{% csrf_token %}
+      <div>
+      <input type="hidden" size="4" id="x1" name="x1" value='50.5'/></label>
+      <input type="hidden" size="4" id="y1" name="y1" value='32'/></label>
+      <input type="hidden" size="4" id="x2" name="x2" value='156.5'/></label>
+      <input type="hidden" size="4" id="y2" name="y2" value='138'/></label>
+      <input type="hidden" size="4" id="w" name="w" value='106'/></label>
+      <input type="hidden" size="4" id="h" name="h" value='106' /></label>
+      </div>
+      <input type='hidden' id='img_name' name='img_name' value='default_user_pic.jpg'/>
+      <input id='submit' class='btn btn-primary' type='submit' value='保存小头像'/>
+</form>
+</div>
+  
+</div>
+{% endblock %}

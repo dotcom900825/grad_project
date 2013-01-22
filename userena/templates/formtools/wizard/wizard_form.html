@@ -6,23 +6,28 @@
 {% endblock %}
 
 {% block content %}
-<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-<form action="" method="post">{% csrf_token %}
-<table>
-{{ wizard.management_form }}
-{% if wizard.form.forms %}
-    {{ wizard.form.management_form }}
-    {% for form in wizard.form.forms %}
-        {{ form }}
-    {% endfor %}
-{% else %}
-    {{ wizard.form }}
-{% endif %}
-</table>
-{% if wizard.steps.prev %}
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
-<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
-{% endif %}
-<input type="submit" value="{% trans "submit" %}"/>
-</form>
+<div class='span8' style="background-color:white">
+<!-- <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p> -->
+	<div style="border-bottom: 1px solid #EEEEEE;margin: 18px 0; padding-left:10px; padding-bottom: 10px;">
+		<h3>注册一个帐号</h3>
+	</div>
+	<form style="padding-left:10px"action="" method="post">{% csrf_token %}
+	<table>
+	{{ wizard.management_form }}
+	{% if wizard.form.forms %}
+	    {{ wizard.form.management_form }}
+	    {% for form in wizard.form.forms %}
+	        {{ form }}
+	    {% endfor %}
+	{% else %}
+	    {{ wizard.form }}
+	{% endif %}
+	</table>
+	{% if wizard.steps.prev %}
+<!--	<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button> -->
+	<button class='btn btn-primary' name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "返回上一步" %}</button>
+	{% endif %}
+	<input type="submit" class='btn btn-primary' value="{% trans "下一步" %}"/>
+	</form>
+</div>
 {% endblock %}

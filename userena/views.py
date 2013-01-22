@@ -729,7 +729,7 @@ class MultiSignupView(SessionWizardView):
         if user is not None:
             if user.is_active:                
                 login(self.request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/accounts/' + username + '/upload_pic')
             else:
                 return HttpResponse('user disabled')
         #assert False

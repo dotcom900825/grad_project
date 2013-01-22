@@ -25,8 +25,13 @@ USE_TZ = True
 
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media/')
 MEDIA_URL = '/media/'
+USER_BIG_PIC_URL = 'user_pic_big'
+USER_CROP_PIC_URL = 'user_pic_small'
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/')
 STATIC_URL = '/static/'
+UPLOAD_DIR = USER_BIG_PIC_URL
+
+DEFAULT_USER_PIC_URL = '/static/vendor/utility/default_user_pic.jpg'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -100,6 +105,7 @@ INSTALLED_APPS = (
     'guardian',
     'easy_thumbnails',
     'userena.contrib.umessages',
+    'ajaxuploader',
 )
 
 
@@ -125,8 +131,8 @@ WEIBO_APP_SECRET='2eabd2d20f6e8c6bd71f3dad0802a949'
 WEIBO_REDIRECT='http://10.108.180.176/login/weibo/confirm'
 
 USERENA_ACTIVATION_REQUIRED = False
-USERENA_MUGSHOT_GRAVATAR = True
-USERENA_MUGSHOT_DEFAULT = '/static/vendor/utility/smile.jpg'
+USERENA_MUGSHOT_GRAVATAR = False
+USERENA_MUGSHOT_DEFAULT = '/static/vendor/utility/default_user_pic.jpg'
 USERENA_REDIRECT_ON_SIGNOUT = '/'
 USERENA_MUGSHOT_SIZE = 200
 

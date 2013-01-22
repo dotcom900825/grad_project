@@ -3,19 +3,20 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
-from accounts.views import user_pins
+from accounts.views import user_pins, upload_pic
 from userena import views as userena_views
 from userena import settings as userena_settings
 
 from userena.forms import (SignupForm, SignupForm_Personal)
 from userena.views import MultiSignupView
+
 urlpatterns = patterns('',
     # User Pins
     url(r'^(?P<username>[\.\w]+)/pins/$',
        user_pins,
        name='user_pins'),
 
-    #url(r'^multisignup/$', MultiSignupView.as_view([SignupForm, SignupForm_Personal])),
+    url(r'^(?P<username>[\.\w]+)/upload_pic/$', upload_pic),
     
     # Signup, signin and signout
     url(r'^signup/$',
