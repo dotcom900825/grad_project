@@ -8,4 +8,4 @@ django-guardian==1.0.4
 django-tastypie==0.9.11
 easy-thumbnails==1.1
 jsmin==2.0.2
-
+ajaxuploader==0.2.4
