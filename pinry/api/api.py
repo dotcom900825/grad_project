@@ -19,7 +19,7 @@ class UserResource(ModelResource):
         authorization = DjangoAuthorization()
 
 class MyProfileResource(ModelResource):
-    user = fields.ForeignKey(UserResource,'user')
+    user = fields.ForeignKey(UserResource,'user',full=True)
     class Meta:
         queryset = MyProfile.objects.all()
         resource_name = 'myprofile'

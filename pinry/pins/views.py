@@ -7,8 +7,9 @@ from django.contrib import messages
 
 from .forms import PinForm
 from .models import Pin
-
-
+from django.conf import settings
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 
 def recent_pins(request):
@@ -48,4 +49,14 @@ def delete_pin(request, pin_id):
         messages.error(request, 'Pin with the given id does not exist.')
         
 
+    return HttpResponseRedirect(reverse('pins:recent-pins'))
+
+def pin_detail(request, pin_id):
+    try:
+        pin = Pin.objects.get(id=pin_id)
+        submitter = pin.submitter
+        media_root = settings.MEDIA_ROOT
+        return render_to_response('pins/detail.html',locals(),context_instance=RequestContext(request))
+    except Pin.DoesNotExist:
+         messages.error(request, 'Pin with the given id does not exist.')
     return HttpResponseRedirect(reverse('pins:recent-pins'))

@@ -117,7 +117,8 @@ function onLoadData(data) {
               html += '</a>';
           html += '</div>';
           html += "<h4 style='color:#F47D31; background-color:#fff; -webkit-box-shadow: 2px 2px 20px #888; -moz-box-shadow:2px 2px 20px #888; -webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg); position:absolute; text-align:center; left:-20px; margin-top:0px'>出售闲置</h4>";
-          html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
+       //   html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
+              html += "<a  rel='pins' href='/item/" + image.id + "/detail/'>";
               html += '<img src="'+image.thumbnail+'" width="200" >';
           html += '</a>';
           if (image.description) html += "<p style='padding-bottom:5px'>"+ image.description+'</p>';
@@ -135,7 +136,7 @@ function onLoadData(data) {
           }
           if(user_auth)
           {
-            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.snsName + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.snsName + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {
@@ -159,7 +160,7 @@ $(document).ready(new function() {
 /**
  * On clicking an image show fancybox original.
  */
-$('.fancybox').fancybox({
+/*$('.fancybox').fancybox({
     openEffect: 'none',
     closeEffect: 'none'
-});
+});*/

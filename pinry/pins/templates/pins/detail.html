@@ -1,0 +1,19 @@
+{% extends 'core/index.html' %}
+
+
+{% block title %}Pins Detail{% endblock %}
+
+{% block yield %}
+	
+    <div>
+        <img style='width:600px' src='/media/{{pin.image}}' />
+    </div>
+    <div>
+        <div>{{submitter.snsName}}</div>
+        <div>{{submitter.university}}</div>
+        <div>{{submitter.school}}</div>
+        <div>{{submitter.year_of_study}}</div>
+        <img src='{{submitter.socialImageUrl}}' />
+    </div>
+    
+{% endblock %}

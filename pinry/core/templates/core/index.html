@@ -37,6 +37,29 @@
     var user_pic_url = '{{ user.get_profile.get_mugshot_url }}';
     {% endif %}
 
+    $(document).scroll(function(){
+    // If has not activated (has no attribute "data-top"
+    if (!$('.subnav').attr('data-top')) {
+        // If already fixed, then do nothing
+        if ($('.subnav').hasClass(' navbar-fixed-top')) return;
+        // Remember top position
+        var offset = $('.subnav').offset()
+        $('.subnav').attr('data-top', offset.top);
+    }
+    $('#offset_top').text($('.subnav').offset().top);
+    $('#outerHeight').text($('.subnav').outerHeight());
+    $('#scrollTop').text($(this).scrollTop());
+     if ($(this).scrollTop() >= parseInt($('.subnav').attr('data-top')))
+     {
+        $('.subnav').addClass('navbar-fixed-top');
+        $('#content_container').css('margin-top','68px');
+     }
+        else
+        {
+            $('.subnav').removeClass('navbar-fixed-top');
+             $('#content_container').css('margin-top','0px');
+        }
+    });
     </script>
     {% block waterfall_js %}
     {% endblock %}
@@ -48,13 +71,16 @@
 
     {% block uploadPic %}
     {% endblock %}
+
+    {% block profile_css %}
+    {% endblock %}
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body>
-    <div class="navbar" data-scrollspy="scrollspy">
+    <div class="navbar" data-scrollspy="scrollspy" style='margin-bottom:0px'>
                 <div style="background-color:#333;"  class="navbar-inner">
                     <div class="container" style="width:1170px">
                         <a class="brand" style="margin-left:15px; padding:0px 0px"href="/" data-original-title>
@@ -64,11 +90,12 @@
                             <li>
                                 <a href="/">首页</a>
                             </li>
-                            <li>
+                         <!--   <li>
                                 <a href="/about_us">我们的团队</a>
                             </li>
                             <li>
                                 <a  href="#feedback" data-toggle="modal">给我们提建议</a>
+                                
                                 <div class="modal fade" style='display:none;' id="feedback">
                                   <div class="modal-header">
                                     <a class="close" data-dismiss="modal">&times;</a>
@@ -110,19 +137,25 @@
                                   </div>
                                   
                                 </div>
+                            </li> -->
+                        </ul>
+                        <ul style='margin-left:28%'class='nav'>
+                            <li>
+                                <a src='#' style='color:white'> 易物,换米,得知音.</a> 
                             </li>
                         </ul>
-
+                       
 
 
                         <ul class='nav pull-right'>     
                             {% if user.is_authenticated %}
-                                <li>
+                              <!--  <li>
                                     <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
                                 </li>
                                 <li>
                                     <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-danger' onclick="location.href='/pins/new-pin'" value='我想要'/>
                                 </li>
+                            -->
                                 <li>
                                     {% get_unread_message_count_for user as unread_message_count %}
                                     
@@ -154,13 +187,13 @@
                             {% if user.is_authenticated %}
                                  
                             {% else %}
-                                <li>
-                                 <!--   <a href="{% url core:renren_login %}">人人登录</a> -->
+                              <!--  <li>
+                                 <a href="{% url core:renren_login %}">人人登录</a> 
                                  <a href="#">人人登录(尚未开启)</a>
                                 </li>
                                 <li>
                                     <a href="#">新浪微博登录(尚未开启)</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="{% url userena_signup %}">注册</a>
                                 </li>
@@ -172,7 +205,25 @@
                     </div>
                 </div>
     </div>
-    <div class="container">
+    
+    <div class="navbar subnav" data-scrollspy="scrollspy">
+                <div style="background-color:#333;"  class="navbar-inner">
+                    <div class="container" style="width:1170px">
+                        <ul class='nav' style='margin-left:45%'> 
+                                                      {% if user.is_authenticated %}
+                                <li>
+                                    <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
+                                </li>
+                                <li>
+                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-danger' onclick="location.href='/pins/new-pin'" value='我想要'/>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+    </div>
+
+    <div class="container" id='content_container'>
          {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -181,7 +232,7 @@
             </ul>
         {% endif %}
         
-        <div class="row">
+        <div class="row" style='margin-top:5%' >
             <div class="span12" id="content" style='margin-left:50px'>
                 {% block yield %}
                     <div class="content_title">

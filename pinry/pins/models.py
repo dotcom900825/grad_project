@@ -22,7 +22,7 @@ class Pin(models.Model):
 
 
     def __unicode__(self):
-        return self.url
+        return str(self.url)
 
 
     def save(self, *args, **kwargs):

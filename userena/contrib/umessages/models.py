@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.utils.text import truncate_words
-
+from pinry.pins.models import Pin
 from userena.contrib.umessages.managers import (MessageManager, MessageContactManager,
                                                 MessageRecipientManager)
 
@@ -104,7 +104,11 @@ class Message(models.Model):
     sender_deleted_at = models.DateTimeField(_("sender deleted at"),
                                              null=True,
                                              blank=True)
-
+ #   relate_pin = models.ForeignKey(Pin,
+ #                                  related_name='associate_item',
+ #                                  verbose_name='associate_item',
+ #                                  null=True,
+ #                                  blank=True)
     objects = MessageManager()
 
     class Meta:
