@@ -335,3 +335,6 @@ min-height: 52px;
     background-color: #dadada;
     
 }
+
+#box_float {  float:right; right:0px; position:fixed; top:40%; z-index:999; width:32px; height:85px;}
+.div1 {width:32px; height: 85px; top: 200px; right:0px; background:none repeat scroll 0 0 #0088cc; }

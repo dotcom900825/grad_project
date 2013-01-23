@@ -156,6 +156,7 @@ $(document).ready(new function() {
     $("#example").popover(); 
 });
 
+
 /**
  * On clicking an image show fancybox original.
  */

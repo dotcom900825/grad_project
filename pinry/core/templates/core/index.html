@@ -223,6 +223,13 @@
                 </div>
     </div>
 
+     <div id="box_float">
+          <div id="about_us_div" class="div1">
+            <a href="">feedback</a>
+            <a href="">about us</a>
+          </div>
+        </div>
+
     <div class="container" id='content_container'>
          {% if messages %}
             <ul class="messages">
@@ -249,7 +256,34 @@
         {% block contact_us %}
         {% endblock %}
         
+
     </div>
+<script type="text/javascript">
+(function() {
+    var oDiv = document.getElementById("about_us_div");
+    var H = 0,
+    iE6;
+    var Y = oDiv;
+    while (Y) {
+        H += Y.offsetTop;
+        Y = Y.offsetParent
+    };
+    iE6 = window.ActiveXObject && !window.XMLHttpRequest;
+    if (!iE6) {
+        window.onscroll = function() {
+            var s = document.body.scrollTop || document.documentElement.scrollTop;
+            if (s > H) {
+              //  oDiv.className = "div1 div2";
+                if (iE6) {
+                    oDiv.style.top = (s - H) + "px";
+                }
+            } else {
+                oDiv.className = "div1";
+            }
+        };
+    }
+})();
+</script>
 </body>
 
 </html>
