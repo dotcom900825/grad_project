@@ -73,7 +73,6 @@ function loadData(tag) {
  * Receives data from the API, creates HTML for images and updates the layout
  */
 function onLoadData(data) {
-    var user_auth = Boolean(user_auth_flag.toLowerCase());
     var user_pic = user_pic_url;
     var user_name = username;
     var submitter_name;
@@ -134,13 +133,13 @@ function onLoadData(data) {
               html += '</p>';
               html += '</div>';
           }
-          if(user_auth)
+          if(user_auth_flag == "True")
           {
             html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {
-            html += "<div class='write convo clearfix' style='display:block'><img src='/static/vendor/utility/smile.jpg' style='width:30px; height:30px'><textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><button  class='grid_comment_button' onclick='window.location='/accounts/signup;'/>留言</button></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a class='img x'><img src='/static/vendor/utility/user2.jpg' style='width:30px; height:30px'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='width:160px; padding-right:0px; background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='还没有登录，没法留言哦亲!' class='GridComment ani-affected '></textarea></form></div>";
           }
       html += '</div>';
       }
