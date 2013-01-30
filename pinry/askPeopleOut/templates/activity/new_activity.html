@@ -1,0 +1,83 @@
+{% extends 'core/index.html' %}
+
+{% load bootstrap_field %}
+
+
+{% block title %}添加新闲置{% endblock %}
+
+{% block yield %}
+    <div class="container">
+        <div class="row">
+            <div class="span8" id="picture" style='margin-left:20%'>
+              <div class='span2'>
+                <div style="margin-left:-40px; margin-top:-60px; width:650px; height:340px; background:url('/static/vendor/utility/speakers_frame.png')">
+                    <img style='padding:70px 0 0 60px' src="/media/user_pic_big/default_user_pic.jpg"/>
+                
+                 <ul style='list-style:none; margin-left:60px'>
+                        <li>
+                            {{ user.get_profile.snsName}}
+                        </li>
+                        <li>
+                            {{ user.get_profile.school}}
+                        </li>
+                        <li>
+                            {{ user.get_profile.university}}
+                        </li>
+                        <li>
+                            {{ user.get_profile.year_of_study}}
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <div class='span4' style='margin-left:-60px'>
+                <form class="form-horizontal" method="post" action="/activities/new-activity/" enctype="multipart/form-data">
+                    
+                        <div class="control-group">
+    <label for="id_description" class="control-label">活动内容</label>
+    <div class="controls">
+        <textarea name="description" cols="40" rows="10" id="id_description"></textarea>
+        
+    </div>
+</div>
+
+                    
+                        <div class="control-group">
+    <label for="id_image" class="control-label">上传照片</label>
+    <div class="controls">
+        <input type="file" id="id_image" name="image">
+        
+    </div>
+</div>
+
+                    
+                        <div class="control-group">
+    <label for="id_location" class="control-label">活动地址</label>
+    <div class="controls">
+        <textarea name="location" cols="40" rows="10" id="id_location" style='height:30px'></textarea>
+        
+    </div>
+</div>
+
+                    
+                        <div class="control-group">
+    <label for="id_tags" class="control-label">活动类别</label>
+    <div class="controls">
+        <input type="text" id="id_tags" name="tags">
+        
+    </div>
+</div>
+
+                    
+                    <div class="form-actions" style='margin-top:30px'>
+                        <button class="btn btn-primary" type="submit">添加</button>
+                        <a class="btn" href="/">取消</a>
+                    </div>
+                </form>
+             
+            </div>
+            </div>
+                    
+            
+        </div>
+    </div>
+{% endblock %}

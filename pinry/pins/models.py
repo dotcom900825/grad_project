@@ -19,7 +19,7 @@ class Pin(models.Model):
     thumbnail = models.ImageField(upload_to='pins/pin/thumbnails/')
     published = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
-
+    category = models.IntegerField()
 
     def __unicode__(self):
         return str(self.url)

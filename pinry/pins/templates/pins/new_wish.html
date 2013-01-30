@@ -1,0 +1,26 @@
+{% extends 'core/index.html' %}
+
+{% load bootstrap_field %}
+
+
+{% block title %}添加心愿墙{% endblock %}
+
+{% block yield %}
+    <div class="container">
+        <div class="row">
+            <div class="span6 offset3" id="form">
+                <h1>添加心愿墙</h1>
+                {{ form.non_field_errors }}
+                <form enctype="multipart/form-data" action={% url pins:new-wish-pin %} method="post" class="form-horizontal">
+                    {% for field in form %}
+                        {% bootstrap_field field %}
+                    {% endfor %}
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                        <a href="{% url core:home %}" class="btn">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

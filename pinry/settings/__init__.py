@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'pinry.api',
     'pinry.renren_oauth',
     'pinry.weibo_oauth',
+    'pinry.askPeopleOut',
     'accounts',
     'userena',
     'guardian',
@@ -140,15 +141,17 @@ SCHOOL_LIST = (
     (u'信息与通信工程学院',u'信息与通信工程学院'),
     )
 UNIVERSITY_LIST = (
-    (u'bupt', u'北京邮电大学'),
+    (u'北京邮电大学', u'北京邮电大学'),
 )
 
 
 YEAR_IN_SCHOOL_CHOICES = (
-    (u'Freshman', u'大一'),
-    (u'Sophomore', u'大二'),
-    (u'Junior', u'大三'),
-    (u'Senior', u'大四'),
-    (u'Graduate', u'研究生'),
-    (u'Phd',u'博士生'),
+    (u'大一', u'大一'),
+    (u'大二', u'大二'),
+    (u'大三', u'大三'),
+    (u'大四', u'大四'),
+    (u'研一', u'研一'),
+    (u'研二',u'研二'),
+    (u'研三',u'研三'),
+    (u'博士生',u'博士生'),
 )

@@ -208,14 +208,24 @@
     
     <div class="navbar subnav" data-scrollspy="scrollspy">
                 <div style="background-color:#333;"  class="navbar-inner">
-                    <div class="container" style="width:1170px">
-                        <ul class='nav' style='margin-left:45%'> 
-                                                      {% if user.is_authenticated %}
+                    <div class="container">
+                        {% if user.is_authenticated %}
+                        <ul class='nav' style='margin-left:30%'>
+                            <li>
+                                    <input style='margin-top:10px' type='button' class='btn btn-warning' onclick="location.href='/activities/new-activity/'" value='新活动'/>
+                            </li>
+                            
+                            <li>
+                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-success' onclick="location.href='#'" value='求监督'/>
+                            </li>
+                        </ul>
+                        <ul class='nav' style='margin-left:3%'> 
+                                                      
                                 <li>
-                                    <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin'" value='新闲置'/>
+                                    <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin/'" value='新闲置'/>
                                 </li>
                                 <li>
-                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-danger' onclick="location.href='/pins/new-pin'" value='我想要'/>
+                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-danger' onclick="location.href='/pins/new-wish-pin/'" value='我想要'/>
                                 </li>
                             {% endif %}
                         </ul>
@@ -259,6 +269,7 @@
 
     </div>
 <script type="text/javascript">
+//fix sidebar feedback and about us region
 (function() {
     var oDiv = document.getElementById("about_us_div");
     var H = 0,

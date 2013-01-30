@@ -2,6 +2,10 @@
 {% load i18n %}
 {% load url from future %}
 
+{% block profile_detail%}
+
+{% endblock %}
+
 {% block title %}
 {% if profile.user.last_name %}
 {{ profile.user.last_name }}'s profile
@@ -9,6 +13,7 @@
 {% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}
 {% endif %}
 {% endblock %}
+
 {% block content_title %}
 <div class='profile-header'>
 <h2>

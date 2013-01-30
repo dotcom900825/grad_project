@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 
-from .forms import PinForm
+from .forms import PinForm,WishItemForm
 from .models import Pin
 from django.conf import settings
 from django.shortcuts import render_to_response
@@ -22,6 +22,7 @@ def new_pin(request):
         if form.is_valid():
             pin = form.save(commit=False)
             pin.submitter = request.user.get_profile()
+            pin.category = 1
             pin.save()
             form.save_m2m()
             messages.success(request, 'New pin successfully added.')
@@ -34,6 +35,27 @@ def new_pin(request):
         'form': form,
     }
     return TemplateResponse(request, 'pins/new_pin.html', context)
+
+def new_wish(request):
+    if request.method == 'POST':
+        form = WishItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            pin = form.save(commit=False)
+            pin.submitter = request.user.get_profile()
+            pin.category = 2
+            pin.price = 0
+            pin.save()
+            form.save_m2m()
+            messages.success(request, 'New Wish successfully added.')
+            return HttpResponseRedirect(reverse('pins:recent-pins'))
+        else:
+            messages.error(request, 'Pin did not pass validation!')
+    else:
+        form = WishItemForm()
+    context = {
+        'form': form,
+    }
+    return TemplateResponse(request, 'pins/new_wish.html', context)
 
 
 def delete_pin(request, pin_id):
