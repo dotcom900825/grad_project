@@ -1,9 +1,19 @@
 {% extends 'core/index.html' %}
 
+{% block waterfall_js %}
+    <script src="/static/core/js/activity.js"></script>
+{% endblock %}
 
 {% block title %}Recent Activities{% endblock %}
 
 {% block yield %}
     
-    Activity
+    <div id="pins" style=' margin-left:-20px'></div>
+    <div id="loader" class="container">
+        <div class="row">
+            <div class="span2 offset5">
+                <img src="/static/core/img/loader.gif" alt="Loader">
+            </div>
+        </div>
+    </div>
 {% endblock %}

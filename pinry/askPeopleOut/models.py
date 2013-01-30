@@ -12,12 +12,13 @@ from PIL import Image
 
 class OutActivity(models.Model):
     submitter = models.ForeignKey(MyProfile)
-    description = models.TextField(_('活动内容'.decode('utf-8')),blank=True,null=True)
+    title = models.TextField(_('活动主题'.decode('utf-8')))  
+    description = models.TextField(_('活动内容'.decode('utf-8')))
     image = models.ImageField(upload_to='pins/pin/originals/',blank=True,null=True)
     thumbnail = models.ImageField(upload_to='pins/pin/thumbnails/',blank=True,null=True)
     published = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
-    location = models.TextField(_('活动地址'.decode('utf-8')),blank=True,null=True)  
+    location = models.TextField(_('活动地址'.decode('utf-8')))  
   
 
     def __unicode__(self):

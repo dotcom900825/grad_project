@@ -15,6 +15,7 @@ class ActivityForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(forms.ModelForm, self).__init__(*args, **kwargs)
         self.fields.keyOrder = (
+            'title',
             'description',
             'image',
             'location',

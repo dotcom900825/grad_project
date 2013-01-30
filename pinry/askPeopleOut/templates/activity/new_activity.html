@@ -31,11 +31,18 @@
               </div>
               <div class='span4' style='margin-left:-60px'>
                 <form class="form-horizontal" method="post" action="/activities/new-activity/" enctype="multipart/form-data">
-                    
+                    <div class="control-group">
+    <label for="id_title" class="control-label">活动主题</label>
+    <div class="controls">
+        <textarea name="title" cols="40" rows="10" style='height:20px; margin-top:-20px' id="id_title"></textarea>
+        
+    </div>
+</div>
+
                         <div class="control-group">
     <label for="id_description" class="control-label">活动内容</label>
     <div class="controls">
-        <textarea name="description" cols="40" rows="10" id="id_description"></textarea>
+        <textarea name="description" cols="40" rows="10" id="id_description" style='height:40px'></textarea>
         
     </div>
 </div>
@@ -80,4 +87,5 @@
             
         </div>
     </div>
+
 {% endblock %}
