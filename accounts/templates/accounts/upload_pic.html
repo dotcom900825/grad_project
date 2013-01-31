@@ -1,7 +1,21 @@
-{% extends 'core/index.html' %}
-      {% block uploadPic %}
-        <script src="/static/vendor/ajaxuploader/js/jquery.min.js" ></script>
-        <script src="/static/vendor/ajaxuploader/js/fileuploader.js" ></script>
+{% load i18n %}
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://www.meile.com/register -->
+<html lang="zh-CN">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>注册 喜拾网 - 易物,换米,得知音</title>
+  <meta name="description" content="美乐网(meile.com)，更海量的音乐曲库、更流畅的视听体验、更懂您的音乐喜好、更多您喜爱的音乐人、让您在分享音乐的同时发现志同道合的朋友，美乐网是一个基于兴趣社交的音乐试听、分享主题社区">
+  <meta name="keywords" content="美乐网,美乐网,在线听歌,音乐网站,在线音乐试听,主题音乐社区,音乐搜索,音乐下载,排行榜,APE,AAC,数字音乐,高品质音乐,热门音乐人,高品质mp3,音乐分享,乐评,网络电台,无损音乐,兴趣社交,SNS,320K,320Kbps">
+  <link type="image/x-icon" rel="shortcut icon" href="http://static.meile.com/images/favicon.ico">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/base_new.css">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/common.css">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/register.css">
+   <link href="/static/vendor/bootstrap/2.0.3/css/bootstrap.css" rel="stylesheet" />
+   <link href="/static/vendor/google_select/select2.css" rel="stylesheet" />
+  <script type="text/javascript" src="/static/vendor/jquery/1.7.2/jquery.min.js"></script>
+  <script src="/static/vendor/ajaxuploader/js/fileuploader.js" ></script>
         <link href="/static/vendor/ajaxuploader/css/fileuploader.css" media="screen" rel="stylesheet" type="text/css" />
         <script src="/static/vendor/jcrop/js/jquery.Jcrop.js"></script>
         <link rel="stylesheet" href="/static/vendor/jcrop/css/jquery.Jcrop.css" type="text/css" />
@@ -95,44 +109,112 @@
     };
 
         </script>   
-      {% endblock %}   
+  {{ wizard.form.media }}
+  <!--[if lt IE 9]><script src="http://static.meile.com/scripts/html5.js"></script><![endif]-->
+</head>
 
-{% block content %}
-<div class='span8' style='background-color:white;'>
-<h3 style="margin-left:30px; border-bottom: 1px solid #EEEEEE;">设置头像</h3>
-<div class='span3' style='border-right: 1px solid #EEEEEE;'>
-  <div id='origin_pic_div'>
-  <img style='width:200px' src="{{ user.get_profile.socialBigImageUrl }}" id="target" />
+<body class="reg">
+<div id="jsContainer">
+  <div id="backTop" style="left: 1181px; display: none;">
+    
   </div>
-  <img style='width:200px' src="" id="uploaded" />
-  <h3>上传你的真实头像</h3>
-  <div id="file-uploader">       
-        <noscript>          
-            <p>Please enable JavaScript to use file uploader.</p>
-        </noscript>         
-  </div>
+  <a id="feedback" href="http://www.meile.com/feedback" target="feedback" style="left: 1181px;"></a>
 </div>
 
-<div class='span4'>
-  <h3>浏览小头像</h3>
-  <div style="width:100px;height:100px; overflow:hidden">
-   <img src="{{user.get_profile.socialBigImageUrl}}"  id="preview" alt="Preview" class="jcrop-preview" />
-  </div>
+<header id="header">
+  <h1 id="logo">
+    <a href="http://www.meile.com/"><img src="/static/vendor/utility/xishi.jpg" alt="喜拾"></a>
+  </h1>
+</header>
 
-  <form id="coords" class="coords" action="/accounts/{{username}}/upload_pic/" method="POST">
-{% csrf_token %}
-      <div>
-      <input type="hidden" size="4" id="x1" name="x1" value='50.5'/></label>
-      <input type="hidden" size="4" id="y1" name="y1" value='32'/></label>
-      <input type="hidden" size="4" id="x2" name="x2" value='156.5'/></label>
-      <input type="hidden" size="4" id="y2" name="y2" value='138'/></label>
-      <input type="hidden" size="4" id="w" name="w" value='106'/></label>
-      <input type="hidden" size="4" id="h" name="h" value='106' /></label>
+<div id="content" class="clearfix">
+  <div id="mainside">
+    <div class="panel">
+
+<div class="myaccount">
+    <section class="reg-form-sec" style='height:400px'>
+      
+    <div class='span3' style='border-right: 1px solid #EEEEEE;'>
+      <h3>浏览大头像</h3>
+      <div id='origin_pic_div'>
+      <img style='width:200px' src="{{ user.get_profile.socialBigImageUrl }}" id="target" />
       </div>
-      <input type='hidden' id='img_name' name='img_name' value='default_user_pic.jpg'/>
-      <input id='submit' class='btn btn-primary' type='submit' value='保存小头像'/>
-</form>
+      <img style='width:200px' src="" id="uploaded" />
+      <h3>上传你的真实头像</h3>
+      <div id="file-uploader">       
+            <noscript>          
+                <p>Please enable JavaScript to use file uploader.</p>
+            </noscript>         
+      </div>
+    </div>
+
+    <div class='span2'>
+      <h3>浏览小头像</h3>
+      <div style="width:100px;height:100px; overflow:hidden">
+       <img src="{{user.get_profile.socialBigImageUrl}}"  id="preview" alt="Preview" class="jcrop-preview" />
+      </div>
+
+      <form id="coords" class="coords" action="/accounts/{{username}}/upload_pic/" method="POST">
+    {% csrf_token %}
+          <div>
+          <input type="hidden" size="4" id="x1" name="x1" value='50.5'/></label>
+          <input type="hidden" size="4" id="y1" name="y1" value='32'/></label>
+          <input type="hidden" size="4" id="x2" name="x2" value='156.5'/></label>
+          <input type="hidden" size="4" id="y2" name="y2" value='138'/></label>
+          <input type="hidden" size="4" id="w" name="w" value='106'/></label>
+          <input type="hidden" size="4" id="h" name="h" value='106' /></label>
+          </div>
+          <input type='hidden' id='img_name' name='img_name' value='default_user_pic.jpg'/>
+          <input id='submit' class='btn btn-primary' type='submit' value='保存小头像'/>
+    </form>
+    </div>
+      
+    
+    </section>
 </div>
-  
 </div>
-{% endblock %}
+</div>
+
+<aside id="sidebar">
+  <header class="fastLogin clearfix">
+        <h2 class="title">快速登录</h2>
+  </header>
+      <div class="otherAccount">
+        <ul >
+          <li class="otherAccountWeibo">
+            <a href="http://www.meile.com/connect/1/weibo?f=http://www.meile.com/home">
+            <span class="weiboIcon png"></span>
+            <span class="otherAccountText">新浪微博</span>
+            </a>
+          </li>
+        <li class="otherAccountRenren">
+          <a href="http://www.meile.com/connect/1/renren?f=http://www.meile.com/home">
+          <span class="renrenIcon png"></span>
+          <span class="otherAccountText">人人网</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+</aside>
+
+</div>
+<footer id="footer">
+  <p class="copyright" title="bass">xishi.com</p>
+</footer>
+
+
+<script type="text/javascript" src="/static/vendor/google_select/select2.min.js"></script>
+<!--[if lt IE 7]><script src="http://static.meile.com/scripts/fixpng.js"></script><![endif]-->
+<script type="text/javascript">
+   $(document).ready(function() {
+    $("select").css('width','300px');
+    $("select[id='id_1-university']").select2();
+    $("select[id='id_1-school']").select2();
+    $("select[id='id_1-year_of_study']").select2();
+
+    });
+</script>
+</body></html>
+
+
+

@@ -24,13 +24,13 @@ class SignupForm_Personal(forms.Form):
    
 
     university = forms.ChoiceField(choices=settings.UNIVERSITY_LIST,
-                                    label=_(u"学校"))
+                                    label=_(u"所在学校"))
     
     school = forms.ChoiceField(choices=settings.SCHOOL_LIST,
-                                label=_(u"院系"))
+                                label=_(u"所在院系"))
 
     year_of_study = forms.ChoiceField(choices=settings.YEAR_IN_SCHOOL_CHOICES,
-                                  label=_(u"年级"))
+                                  label=_(u"当前年级"))
 
 class SignupForm(forms.Form):
     """
@@ -43,7 +43,7 @@ class SignupForm(forms.Form):
     username = forms.RegexField(regex=USERNAME_RE,
                                 max_length=30,
                                 widget=forms.TextInput(attrs=attrs_dict),
-                                label=_("账户名".decode('utf-8')),
+                                label=_("账户名称".decode('utf-8')),
                                 error_messages={'invalid': _('Username must contain only letters, numbers, dots and underscores.')})
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),

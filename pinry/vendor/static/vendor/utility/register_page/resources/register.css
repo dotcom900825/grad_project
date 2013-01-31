@@ -1,0 +1,156 @@
+a,a:link,a:visited
+{color:#037c3d;text-decoration:none}
+
+a:hover{color:#037c3d;text-decoration:underline}
+
+body{background:transparent url(../img/login_bg.png) 0 0 repeat-x}
+
+#header,#content,#footer{width:820px;margin:0 auto}
+
+#header{position:relative;padding:30px 0 30px}
+
+#footer{background:url(http://static.meile.com/images/bg/musicradio.png) no-repeat scroll right center transparent;padding:35px 0}
+
+.icp,.copyright{color:#999}
+
+#logo{width:420px}
+
+#content{position:relative}
+
+#mainside{width:540px}
+
+#mainside .panel{background:#fff;border:1px solid #999}
+
+#mainside .myaccount{padding:20px 20px 20px}
+
+#mainside header .title{font-size:24px;float:left;font-weight:normal}
+
+#mainside header .has-account{line-height:30px;float:right;color:#999;font-size:14px}
+
+#mainside header .has-account a{background-color:#54b34c;border:1px solid #29a81d;color:#fff;padding:5px 20px;*zoom:1}
+
+#mainside header .has-account a:hover{text-decoration:none}
+
+#mainside section{padding-top:10px;padding-left:20px}
+
+.reg_form p{margin-top:15px;position:relative;_font-family:Tahoma}
+
+.reg_form label{color:#999;position:absolute;left:0px;height:28px;line-height:28px;padding:5px 10px;font-size:14px;cursor:text;-moz-user-select:none;-webkit-user-select:none;user-select:none}
+
+.focus .labelholder{color:#a9d8a6}
+
+.error .labelholder{color:#e1c3c3}
+
+.reg_form input[type="text"] {padding:5px 5px 5px 80px;font-size:14px;height:28px;line-height:28px;width:215px;background-color:#f9f9f9}
+
+.reg_form input[type="password"] {padding:5px 5px 5px 80px;font-size:14px;height:28px;line-height:28px;width:215px;background-color:#f9f9f9}
+
+.img-code{position:absolute;top:0;left:125px;width:325px;height:40px;padding:0;display:table}
+
+.tips-wrap{position:absolute;top:0;left:300px;width:155px;height:40px;padding:0 10px;display:table}
+
+.suggest{position:absolute;top:0;left:300px;width:155px;height:40px;padding:0 10px;color:#999;background-color:#fff;z-index:10;display:none}
+
+.name-suggest{font-size:13px;color:#999}
+
+.tips{color:#ec6941;display:table-cell;vertical-align:middle}
+
+.tips-accept{color:#ec6941;vertical-align:middle}
+
+.input-reg{display:block;width:175px;height:50px;padding:0;font-size:0;line-height:0;text-indent:-9999px;overflow:hidden;background:transparent url(http://static.meile.com/images/bg/login_btn.png) 0 0 no-repeat;border:0;cursor:pointer}
+
+.input-reg:hover,.input-reg:focus{background-position:0 -50px}
+
+.input-reg:active{background-position:0 -100px}
+
+.email,.password,.nickname{background:transparent url(http://static.meile.com/images/bg/login.png) 0 0 no-repeat}
+
+.email{background-position:5px -115px}
+
+.password{background-position:5px -155px}
+
+.nickname{background-position:5px -195px}
+
+.success{background:transparent url(http://static.meile.com/images/bg/reg_success.png) 310px 10px no-repeat}
+
+.success .input-text{border-color:#53b24c;background-color:#fff}
+
+.success .email{background-position:5px 5px}
+
+.success .password{background-position:5px -35px}
+
+.success .nickname{background-position:5px -75px}
+
+.focus .input-text{border-color:#53b24c;background-color:#dff1dc}
+
+.focus .email{background-position:5px 5px}
+
+.focus .password{background-position:5px -35px}
+
+.focus .nickname{background-position:5px -75px}
+
+.error .input-text{border-color:#ec6941;background-color:#fff3fc}
+
+.error .email{background-position:5px -235px}
+
+.error .password{background-position:5px -275px}
+
+.error .nickname{background-position:5px -315px}
+
+.reg-form-sec{padding-left:20px}
+
+.reg-form-sec label{vertical-align:middle;color:#999}
+
+.reg-form-sec .input-checkbox{vertical-align:middle;margin-right:2px}
+
+.input-checkbox:focus{outline:1px solid #53b24c}
+
+.reg-form-sec .protocal{vertical-align:middle}
+
+.reg-form-sec .protocal-tip{padding-left:20px}
+
+.other-account{background-color:#f9f9f9;border-top:1px solid #ccc;padding:16px 20px 20px 30px}
+
+.other-account h3{font-size:15px;color:#666;margin-bottom:5px}
+
+.other-account .social-site li{float:left;width:92px;height:36px;overflow:hidden;margin-right:14px;*display:inline}
+
+.other-account .social-site li a{display:block;width:92px;height:36px}
+
+.other-account .social-site .wb a{background:transparent url(http://static.meile.com/images/share.jpg) 0 0 no-repeat}
+
+.other-account .social-site .rr a{background:transparent url(http://static.meile.com/images/share.jpg) -184px no-repeat}
+
+.other-account .social-site .kx a{background:transparent url(http://static.meile.com/images/share.jpg) -276px no-repeat}
+
+.other-account .social-site .qq a{background:transparent url(http://static.meile.com/images/qq-login-icon.png) 0 0 no-repeat}
+
+.other-account .social-site .qq{width:80px;height:30px;overflow:visible;position:relative;margin-top:3px}
+
+.other-account .social-site .qq a{width:80px;height:35px;top:3px;position:absolute}
+
+#sidebar{position:absolute;width:260px;right:0;top:0}
+
+.devices .device-panel{width:230px;height:90px;margin:0 auto;
+						border:1px 
+						solid #ebebeb;background-color:#f3f3f3;text-align:center;color:#666}
+.devices .device-panel ul{padding:20px 0 10px 30px}
+.devices li{float:left;margin-left:20px;width:30px;_display:inline}
+.devices li a{display:block;width:30px;height:30px;margin:0 auto;background:transparent url(http://static.meile.com/images/bg/login_sprite.png) 0 0 no-repeat}
+.devices .iphone a{background-position:0 0}
+.devices .android a{background-position:-30px 0}
+.devices .winphone a{background-position:-60px 0;cursor:default;opacity:.5;filter:alpha(opacity=50)}
+#mainside .code-form-sec{padding-left:0}
+.code-form-sec .title{font-size:15px;font-weight:normal;margin-bottom:20px}
+.code-form-sec .code{width:250px;height:58px;line-height:58px;float:left;padding:0 0 0 50px;background-color:#fff;font-size:40px;letter-spacing:30px;margin-right:15px}
+.code-form-sec .code:focus{border:1px solid #999}
+.code-form-sec .input-reg{border:0;cursor:pointer;width:102px;height:62px;background-position:-339px -0}
+.code-form-sec .input-reg:hover{background-position:-339px -65px}
+.code-form-sec .input-reg:active{background-position:-339px -130px}
+.code-form-sec .disable,.code-form-sec .disable:hover,.code-form-sec .disable:active{cursor:default;background-position:-339px -195px}
+#introduce{position:relative;width:260px;height:245px;overflow:hidden}
+#introduce li{position:absolute;top:0;left:0}
+.otherAccount{width:498px;padding:15px 0 25px 40px;float:none;
+				//border-bottom:1px solid #999
+			}
+.fastLogin{border-bottom:0;padding:10px 0 0 20px}

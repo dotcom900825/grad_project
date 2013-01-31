@@ -1,33 +1,165 @@
-{% extends 'userena/base_userena.html' %}
 {% load i18n %}
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://www.meile.com/register -->
+<html lang="zh-CN">
 
-{% block signupHead %}
-{{ wizard.form.media }}
-{% endblock %}
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>注册 喜拾网 - 易物,换米,得知音</title>
+	<meta name="description" content="美乐网(meile.com)，更海量的音乐曲库、更流畅的视听体验、更懂您的音乐喜好、更多您喜爱的音乐人、让您在分享音乐的同时发现志同道合的朋友，美乐网是一个基于兴趣社交的音乐试听、分享主题社区">
+	<meta name="keywords" content="美乐网,美乐网,在线听歌,音乐网站,在线音乐试听,主题音乐社区,音乐搜索,音乐下载,排行榜,APE,AAC,数字音乐,高品质音乐,热门音乐人,高品质mp3,音乐分享,乐评,网络电台,无损音乐,兴趣社交,SNS,320K,320Kbps">
+	<link type="image/x-icon" rel="shortcut icon" href="http://static.meile.com/images/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/base_new.css">
+	<link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/common.css">
+	<link type="text/css" rel="stylesheet" href="/static/vendor/utility/register_page/resources/register.css">
+	 <link href="/static/vendor/bootstrap/2.0.3/css/bootstrap.css" rel="stylesheet" />
+	 <link href="/static/vendor/google_select/select2.css" rel="stylesheet" />
+	<script type="text/javascript" src="/static/vendor/jquery/1.7.2/jquery.min.js"></script>
+	{{ wizard.form.media }}
+	<!--[if lt IE 9]><script src="http://static.meile.com/scripts/html5.js"></script><![endif]-->
+</head>
 
-{% block content %}
-<div class='span8' style="background-color:white">
-<!-- <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p> -->
-	<div style="border-bottom: 1px solid #EEEEEE;margin: 18px 0; padding-left:10px; padding-bottom: 10px;">
-		<h3>注册一个帐号</h3>
+<body class="reg">
+<div id="jsContainer">
+	<div id="backTop" style="left: 1181px; display: none;">
+		
 	</div>
-	<form style="padding-left:10px"action="" method="post">{% csrf_token %}
-	<table>
+	<a id="feedback" href="http://www.meile.com/feedback" target="feedback" style="left: 1181px;"></a>
+</div>
+
+<header id="header">
+	<h1 id="logo">
+		<a href="http://www.meile.com/"><img src="/static/vendor/utility/xishi.jpg" alt="喜拾"></a>
+	</h1>
+</header>
+
+<div id="content" class="clearfix">
+	<div id="mainside">
+		<div class="panel">
+
+<div class="myaccount">
+	<header class="regHeader clearfix">
+		<h2 class="title">注册喜拾</h2>
+		<div class="has-account">
+			<span>已有喜拾账号？</span>
+				<a href="/accounts/signin">登录</a>
+		</div>
+</header>
+
+<section class="reg-form-sec">
+<!--	
+	<form name="reg-form" action="./resources/注册 美乐网 - 分享音乐 发现朋友.html" method="post">
+		<input type="hidden" name="f" value="http://www.meile.com/home">
+		<p class="item">
+			<label for="email" class="labelholder" style="">我的邮箱</label>
+			<input type="text" class="input-text email" name="email" tabindex="1" id="email">
+			<span class="tips-wrap"><span class="tips"></span></span>
+			<span class="suggest" style="display: none;">输入一个常用的邮箱<br>用于登录</span>
+		</p>
+		<p class="item">
+			<label for="password" class="labelholder" style="">创建密码</label>
+			<input type="password" class="input-text password" name="password" tabindex="2" id="password">
+			<span class="tips-wrap"><span class="tips"></span></span>
+			<span class="suggest">设置您的密码<br>5-20位字符</span>
+		</p>
+		
+		<p class="item">
+			<span class="name-suggest">您在美乐的名字:</span>
+		</p>
+		
+		<p class="item">
+			<label for="nickname" class="labelholder" style="">昵称</label>
+			<input type="text" class="input-text nickname" name="name" tabindex="3" id="nickname">
+			<span class="tips-wrap"><span class="tips"></span></span>
+			<span class="suggest">起个名字吧<br>4-20位字符</span>
+		</p>
+		
+		<p id="pCode" class="item" style="">
+			<label for="code" class="labelholder" style="left: 5px;">验证码</label>
+			<input type="text" class="input-text " style="width:105px;padding-left:5px;" name="code" tabindex="4" id="code">
+			<span class="img-code">
+			<span>
+			<img id="codeImg" src="./resources/code.jpg"><a href="javascript:changeCodeImg();">看不清,换一张</a>
+			</span>
+			<span class="tips"></span>
+			</span>
+			<span class="suggest"></span>
+		</p>
+		<p class="item">
+			<input type="checkbox" name="" class="input-checkbox" id="protocal" tabindex="4">
+			<label for="protocal">阅读并同意</label>
+			<a href="http://www.meile.com/service" target="_blank" class="protocal">服务协议</a>
+			<span class="tips-accept"></span>
+		</p>
+		<p class="item submit-wraper">
+			<input type="hidden" name="invitecode">
+			<input type="submit" class="input-reg" value="注册" tabindex="5">
+		</p>
+	</form>
+-->
+
+	<form class='reg_form' style="padding-left:10px"action="" method="post">
+	{% csrf_token %}
 	{{ wizard.management_form }}
 	{% if wizard.form.forms %}
 	    {{ wizard.form.management_form }}
 	    {% for form in wizard.form.forms %}
-	        {{ form }}
+	        {{ form.as_p }}
 	    {% endfor %}
 	{% else %}
-	    {{ wizard.form }}
+	    {{ wizard.form.as_p }}
 	{% endif %}
-	</table>
 	{% if wizard.steps.prev %}
 <!--	<button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% trans "first step" %}</button> -->
 	<button class='btn btn-primary' name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "返回上一步" %}</button>
 	{% endif %}
 	<input type="submit" class='btn btn-primary' value="{% trans "下一步" %}"/>
 	</form>
+</section>
 </div>
-{% endblock %}
+</div>
+</div>
+
+<aside id="sidebar">
+	<header class="fastLogin clearfix">
+				<h2 class="title">快速登录</h2>
+	</header>
+			<div class="otherAccount">
+				<ul >
+					<li class="otherAccountWeibo">
+						<a href="http://www.meile.com/connect/1/weibo?f=http://www.meile.com/home">
+						<span class="weiboIcon png"></span>
+						<span class="otherAccountText">新浪微博</span>
+						</a>
+					</li>
+				<li class="otherAccountRenren">
+					<a href="http://www.meile.com/connect/1/renren?f=http://www.meile.com/home">
+					<span class="renrenIcon png"></span>
+					<span class="otherAccountText">人人网</span>
+					</a>
+				</li>
+				</ul>
+			</div>
+</aside>
+
+</div>
+<footer id="footer">
+	<p class="copyright" title="bass">xishi.com</p>
+</footer>
+
+
+<script type="text/javascript" src="/static/vendor/google_select/select2.min.js"></script>
+<!--[if lt IE 7]><script src="http://static.meile.com/scripts/fixpng.js"></script><![endif]-->
+<script type="text/javascript">
+	 $(document).ready(function() {
+	  $("select").css('width','300px');
+	  $("select[id='id_1-university']").select2();
+	  $("select[id='id_1-school']").select2();
+	  $("select[id='id_1-year_of_study']").select2();
+
+	  });
+</script>
+</body></html>
+
+
+
