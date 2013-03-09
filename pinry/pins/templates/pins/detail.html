@@ -1,19 +1,168 @@
 {% extends 'core/index.html' %}
 
+{% block pin_detail %}
+<link rel="stylesheet" href="/static/vendor/utility/pin_detail_page/resources/ugc.css"></link>
+<link rel="stylesheet" href="/static/vendor/utility/pin_detail_page/resources/newcomment.css"></link>
+
+{% endblock%}
+
+{% block pin_detail_js %}
+ <script type="text/javascript">
+    function updateReply(pin_id, snsName,username)
+    {
+        document.getElementById('comment-form-textarea').value = "回复" + snsName + ":";
+        $('.input-submit').attr('id',username);
+    }
+    
+    function countChar(textareaName,spanName)
+    { 
+     document.getElementById(spanName).innerHTML = document.getElementById(textareaName).value.length + "/300";
+    }  
+
+    function publish_comment(username)
+    {
+        alert(username);
+        var value = document.getElementById('comment-form-textarea').value;
+        //alert(value);
+        $.post("/messages/compose/" + username + "/",
+            {body: value, to : username, item: {{pin.id}} },
+            function(data,textstatus){
+                snsName = '{{ user.get_profile.snsName}}';
+                $('.postlist').prepend(
+                   "<li class='post clearfix'> \
+                        <div class='head'> \
+                            <a target='_blank'><img src='{{ user.get_profile.socialImageUrl }}''></a> \
+                        </div> \
+                        <div class='info'> \
+                            <div class='name'> \
+                                <a href=''>" + snsName + "</a> \
+                            </div> \
+                            <div class='tailor'> \
+                             " + value + "<a href='#comment-form-textarea' style='color:#006dcc' class='reply' onclick='updateReply({{message.pin.id}},'{{ user.get_profile.snsName }}', '{{  user.username}}');''>回复</a> \
+                            </div> \
+                            <span class='time'>11:00</span> \
+                        </div> \
+                    </li>"
+                );
+           
+            });
+    }
+ </script>
+{% endblock %}
 
 {% block title %}Pins Detail{% endblock %}
 
 {% block yield %}
 	
-    <div>
-        <img style='width:600px' src='/media/{{pin.image}}' />
-    </div>
-    <div>
-        <div>{{submitter.snsName}}</div>
-        <div>{{submitter.university}}</div>
-        <div>{{submitter.school}}</div>
-        <div>{{submitter.year_of_study}}</div>
-        <img src='{{submitter.socialImageUrl}}' />
-    </div>
+        <div class='span4' style='background-color:white; border:3px solid grey' >
+            <img style='padding:10px; width:350px' src='/media/{{pin.image}}' />
+        </div>
+        <div class='span6' style='background-color:white; border:3px solid black'>
+            <div class='span3' style='margin-top:-10px; margin-left:0px'>
+                   <ul style='margin-left:0px; border:3px soid black; list-style:none'>
+                    <li style='padding-bottom:5px;  height:30px; background-color:#006dcc; '>
+                         <span style='color:white; ' ><h3>谁的？</h3></span>
+                    </li>
+                    
+                    <li style='margin-left:5px;'>
+                        <div>
+                            <div class='span1' style='margin-left:0px'>
+                                <img style='border-radius:50em 50em 50em 50em' src="{{submitter.socialImageUrl}}">
+                            </div>
+                            <div class='span1' style='width:150px'>
+                                <h4 style='width:100px'>{{submitter.snsName}}  {{submitter.year_of_study}}</h4>
+                                <span style='width:200px'>{{submitter.school}}</span>
+                   
+                            </div>
+                         </div>
+                    </li>
+                 </ul>
+            </div>
+
+            <div class='span3' style='margin-left:0px; background-color:white;'>
+                <div style='margin-top:-10px'>
+                       <ul style='margin-left:0px; border:3px soid black; list-style:none'>
+                        <li style='padding-bottom:5px; width:270px; height:30px; background-color:#5bb75b; '>
+                             <span style='color:white; ' ><h3>物品信息</h3></span>
+                        </li>
+                        <li style='margin-left:5px;'>
+                           {{ pin.description }}
+                        </li>
+                        <li style='margin-left:5px;'>
+                            {{ pin.price}}
+                        </li>
+                     </ul>
+     
+                </div>          
+            </div>
+
+            <div class='span6' style='margin-left:0px; padding-top:40px;  border-top: 1px solid #DDD'>
+                    <div class='comment-form'>
+                        <form id='the_comment_form'>
+                            <div style='position:relative; width:60px; margin-bottom:-50px'>
+                                <a class="figure pa" href=""><img src="{{ user.get_profile.socialImageUrl}}"></a>
+                                <input type="hidden" name="reply" value=""/>
+                                <input type="hidden" name="pin_id" value="" />
+                            </div>
+                            <div class='submit-wrapper clearfix ml60'>
+                                <div>
+                                       <textarea id="comment-form-textarea" class='w' placeholder="留言:" name="content" onkeyup='countChar("comment-form-textarea","count");'></textarea>
+                                </div>
+                                <p class='tr'>
+                                    <span id='count'>0/300</span>
+                                     <a href='#' class='btn btn-primary' id='{{submitter.user.username}}'  onclick='publish_comment(this.id);' style='color:white' >发表</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id='postView' class='comment-list'>
+                        <div class='comment-num'>
+                            <span class='num'> 共 {{ size_of_comment }} 条留言</span>
+                        </div>
+                        <ul style='margin-left:0px' class='postlist'>
+                            {% for message in comments %}
+                            <li class='post clearfix'>
+                                <div class='head'>
+                                    <a target='_blank'><img src="{{ message.sender.get_profile.socialImageUrl }}"></a>
+                                </div>
+
+                                <div class='info'>
+                                    <div class='name'>
+                                        <a href="">{{ message.sender.get_profile.snsName}}</a>
+                                    </div>
+                                    <div class='tailor'>
+                                        {{ message.body}}
+                                        <a href='#comment-form-textarea' style='color:#006dcc' class='reply' onclick="updateReply({{message.pin.id}},'{{ message.sender.get_profile.snsName }}', '{{ message.sender.username}}');">回复 {{ message.sender.get_profile.}}</a>
+                                    </div>
+                                    <span class='time'>{{ message.sent_at }}</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>  
+                    </div>
+            </div>
+        </div>
+        <!--
+          <div class='span3' style='background-color:white; border:3px solid black'>
+            <div style='margin-top:-10px'>
+                   <ul style='margin-left:0px; border:3px soid black; list-style:none'>
+                    <li style='padding-bottom:5px; width:270px; height:30px; background-color:#5bb75b; '>
+                         <span style='color:white; ' ><h3>物品信息</h3></span>
+                    </li>
+                    <li style='margin-left:5px;'>
+                       {{ pin.description }}
+                    </li>
+                    <li style='margin-left:5px;'>
+                        {{ pin.price}}
+                    </li>
+                 </ul>
+ 
+            </div>
+            
+        </div>
+        -->
+    
     
 {% endblock %}
+

@@ -59,3 +59,6 @@ class Pin(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+
+

@@ -1,0 +1,726 @@
+
+h2.title {
+    border-bottom: 1px solid #E9E9E9;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+.likeartist {
+    margin-top: 15px;
+}
+.likeartist .mod_head h3 {
+    float: left;
+}
+.likeartist .mod_head .total {
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.hotsongs {
+    margin-top: 10px;
+}
+.hotsongs .mod_head h3 {
+    float: left;
+}
+.hotsongs .mod_head .total {
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.hotsongs .songspanel {
+    background-color: #F6F6F6;
+    padding: 15px;
+}
+.hotsongs .songlist {
+    margin-left: -10px;
+    overflow: hidden;
+    width: 680px;
+}
+.hotsongs .songlist .song {
+    background: none repeat scroll 0 0 #FFFFFF;
+    float: left;
+    font-size: 14px;
+    height: 20px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    padding: 6px 15px;
+    width: 300px;
+}
+.hotsongs .songlist .song p {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+}
+.hotsongs .songlist .song .name {
+    color: #037C3D;
+    float: left;
+    overflow: hidden;
+    width: 195px;
+}
+.hotsongs .songlist .song:hover {
+    background-color: #DFF1DD;
+}
+.hotsongs .songlist .song:hover .play-icon {
+    background-position: -114px -20px;
+}
+.hotsongs .songlist .selected {
+    background-color: #DFF1DD;
+}
+.hotsongs .listen {
+    margin-top: 10px;
+}
+.hotsongs input {
+    margin-right: 10px;
+}
+.followtopics {
+    margin-top: 20px;
+}
+.followtopics .mod_head .total {
+    font-size: 12px;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.topicpanel {
+    overflow: hidden;
+    width: 700px;
+}
+.topiclist {
+    margin-left: -10px;
+    width: 720px;
+}
+.topiclist .topic {
+    float: left;
+    margin: 0 10px;
+    overflow: hidden;
+    width: 100px;
+}
+.topiclist .topic .figure {
+    border: 1px solid #B2B2B2;
+    display: block;
+    height: 98px;
+    position: relative;
+    width: 98px;
+}
+.topiclist .topic .figure img {
+    float: left;
+    height: 98px;
+    width: 98px;
+}
+.topiclist .topic .figure .play {
+    background: url("http://static.meile.com/images/bg/sprite_range.png") no-repeat scroll 0 -93px transparent;
+    bottom: 8px;
+    height: 22px;
+    position: absolute;
+    right: 8px;
+    width: 25px;
+}
+.topiclist .topic .figure .play:hover {
+    background-position: 0 -115px;
+}
+.topiclist .topic .name {
+    color: #429D6E;
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 3px;
+    overflow: hidden;
+    text-align: center;
+    width: 100px;
+}
+.topiclist .topic .time {
+    color: #999999;
+    display: block;
+    text-align: center;
+}
+.first_mod .mod_head .title {
+    border-bottom: 1px solid #E9E9E9;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+.figurelist {
+    padding: 10px 0;
+}
+.figurelist li {
+    float: left;
+    position: relative;
+}
+.figurelist li .head {
+    float: left;
+    height: 100px;
+    overflow: hidden;
+    width: 100px;
+}
+.figurelist li .magnify {
+    background-color: #31A62A;
+    cursor: pointer;
+    display: none;
+    height: 100px;
+    left: -10px;
+    padding: 10px;
+    position: absolute;
+    text-decoration: none;
+    top: -10px;
+    width: 200px;
+    z-index: -1;
+}
+.figurelist li .magnify .head {
+    float: left;
+}
+.figurelist li .magnify .info {
+    margin-left: 115px;
+    padding-top: 5px;
+}
+.figurelist li .magnify .info span {
+    color: #FFFFFF;
+    display: block;
+    margin-bottom: 10px;
+}
+.figurelist li .magnify .info .name {
+    font-size: 15px;
+    font-weight: bold;
+}
+.figurelist li .reverse {
+    left: auto;
+    right: -10px;
+}
+.figurelist li .reverse .head {
+    float: right;
+}
+.figurelist li .reverse .info {
+    margin-left: 0;
+    position: absolute;
+    right: 125px;
+    text-align: right;
+    top: 10px;
+    width: 90px;
+}
+.profile_aside .user_info {
+    background-color: #F6F6F6;
+    padding: 10px;
+}
+.profile_aside .user_info .head {
+    width: 200px;
+}
+.profile_aside .user_info .name {
+    margin-top: 10px;
+}
+.profile_aside .user_info .info .desc {
+    color: #999999;
+    margin: 5px 0;
+}
+.profile_aside .user_info .summary {
+    background-color: #FFFFFF;
+    margin-top: 10px;
+}
+.profile_aside .user_info .summary li {
+    float: left;
+}
+.profile_aside .user_info .summary .artist {
+    border-left: 1px solid #F6F6F6;
+    border-right: 1px solid #F6F6F6;
+}
+.profile_aside .user_info .summary li a {
+    display: block;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    width: 66px;
+}
+.profile_aside .user_info .summary li a:hover {
+    background-color: #31A62A;
+    color: #FFFFFF;
+}
+.profile_aside .user_info .summary li h4 {
+    font-size: 14px;
+    padding: 8px 0 3px;
+}
+.profile_aside .user_info .summary li span {
+    color: #999999;
+}
+.profile_aside .user_info .summary li a:hover span {
+    color: #FFFFFF;
+}
+.profile_aside .user_info p {
+    margin-top: 10px;
+}
+.profile_aside .user_info .other {
+    font-size: 14px;
+    line-height: 14px;
+    margin-top: 15px;
+}
+.profile_aside .user_info .other a {
+    background: url("http://static.meile.com/images/bg/sprite_vertical.png?v=15136.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 10px;
+    padding-left: 23px;
+}
+.profile_aside .user_info .other .player a {
+    background-position: 0 0;
+}
+.profile_aside .user_info .other .setting a {
+    background-position: 0 -30px;
+}
+.form-item .input-wrap, .form-item .textarea-wrap, .form-item .select-wrap {
+    margin-left: 120px;
+}
+.form-item select {
+    margin-right: 10px;
+    min-width: 110px;
+}
+.form-item label.title {
+    width: 110px;
+}
+.crud {
+    margin: 15px 0;
+}
+.crud .operate {
+    float: left;
+}
+.crud .operate label {
+    margin-left: 10px;
+}
+.crud .pagebar {
+    float: right;
+}
+.settings h1.title {
+    font-size: 24px;
+}
+.settings .tabs {
+    border-bottom: 1px solid #57B151;
+    margin-top: 20px;
+}
+.settings .tabs .tab {
+    float: left;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.settings .tabs .tab a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DFF1DD;
+    border-color: #DFF1DD #DFF1DD -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px 0;
+    float: left;
+    padding: 5px 20px;
+}
+.settings .tabs .tab.selected a {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    border-color: #57B151 #57B151 #FFFFFF;
+    color: #333333;
+    margin-bottom: -1px;
+    text-decoration: none;
+}
+.settings .views .view {
+    padding-top: 20px;
+}
+.settings .views .basicView {
+    display: block;
+    width: 700px;
+}
+.settings .form-item .title {
+    color: #555555;
+    font-size: 14px;
+    font-weight: bold;
+}
+.settings .form-item textarea {
+    font-size: 14px;
+    height: 50px;
+    padding: 5px;
+    width: 350px;
+}
+.settings .form-item .input-text {
+    font-size: 14px;
+    width: 170px;
+}
+.settings .form-item .webaddress {
+    font-size: 14px;
+}
+.settings .form-item .tips {
+    color: #EC6941;
+    line-height: 24px;
+}
+.settings .image-wrap {
+    margin-left: 120px;
+    vertical-align: baseline;
+}
+.settings .preview_big {
+    display: inline-block;
+    height: 200px;
+    margin-right: 20px;
+    overflow: hidden;
+    text-align: center;
+    width: 200px;
+}
+.settings .preview_small {
+    display: inline-block;
+    height: 50px;
+    margin-right: 20px;
+    overflow: hidden;
+    text-align: center;
+    width: 50px;
+}
+.settings .upload {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100px;
+}
+.settings .upload .input-button {
+    width: 100px;
+}
+.settings .submit-wrap {
+    padding-left: 120px;
+    text-align: left;
+}
+.settings .submit-wrap input {
+    margin-right: 15px;
+    width: 100px;
+}
+.settings .myaccount {
+    font-size: 14px;
+    font-weight: bold;
+}
+.settings .partline {
+    border-top: 1px solid #CCCCCC;
+    margin: 25px 0;
+}
+.settings .tips {
+    margin-left: 10px;
+}
+.settings .card {
+    margin-bottom: 20px;
+}
+.settings .card .type {
+    background-color: #DFF1DD;
+    border: 1px solid #57B151;
+    color: #118347;
+    cursor: pointer;
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    width: 120px;
+}
+.settings .card .split {
+    margin: 0 5px;
+}
+.settings .to-profile {
+    float: right;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 30px;
+}
+.settings .handlers {
+    margin-left: 28px;
+}
+.settings .handlers button {
+    margin-right: 5px;
+}
+.settings .handlers button.play-selected {
+}
+.settings .handlers .remove-libary {
+}
+.settings table {
+    width: 100%;
+}
+.settings th, .settings td {
+    border-bottom: 1px solid #CCCCCC;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+.settings th {
+    background-color: #F6F6F6;
+    color: #666666;
+    font-weight: normal;
+}
+.settings tr:hover {
+    background-color: #DFF1DD;
+}
+.settings .key {
+    width: 20px;
+}
+.settings .name {
+    height: 32px;
+    overflow: hidden;
+}
+.settings .playlist .name {
+    width: 227px;
+}
+.settings .album {
+    height: 32px;
+    overflow: hidden;
+    width: 150px;
+}
+.settings .artist {
+    height: 32px;
+    overflow: hidden;
+    width: 95px;
+}
+.settings .toolbar {
+    height: 32px;
+    overflow: hidden;
+    text-align: center;
+    width: 80px;
+}
+.settings .noresult {
+    background-color: #FFFFFF;
+    padding: 20px 0;
+}
+.settings .connect {
+    font-size: 14px;
+    padding: 4px 10px;
+}
+.settings .connect .connectname {
+    color: #037C3D;
+}
+.settings .modifyform {
+    display: none;
+}
+.settings .modifyform p {
+    margin-bottom: 5px;
+    position: relative;
+}
+.settings .modifyform p .input-text {
+    padding: 8px 5px;
+}
+.settings .modifyform p .labelholder {
+    left: 10px;
+    top: 10px;
+}
+.settings .modifyform p .error {
+    color: red;
+    display: none;
+    margin-left: 5px;
+}
+.settings .music_filter {
+    background-color: #F6F6F6;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+.settings .music_filter .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+.settings .music_filter select {
+    margin-right: 5px;
+    min-width: 110px;
+}
+.settings .bookType {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 15px 20px;
+}
+.settings .bookType a {
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+}
+.settings .bookType a.selected {
+    color: #333333;
+}
+.settings .bookType input {
+    float: right;
+}
+.settings .bookView .gatherSubView {
+    display: block;
+    width: 700px;
+}
+.playlistSubView .viewside {
+    float: left;
+    width: 700px;
+}
+.playlistSubView .listside {
+    background-color: #F6F6F6;
+    float: left;
+    margin-right: 20px;
+    padding: 10px 0;
+    width: 220px;
+}
+.playlistSubView .listside h3 {
+    padding: 0 10px;
+}
+.playlistSubView .listside .groups {
+    margin: 10px 0;
+}
+.playlistSubView .listside li {
+    border-bottom: 1px solid #FFFFFF;
+}
+.playlistSubView .listside li a {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 20px;
+    text-decoration: none;
+}
+.playlistSubView .listside li a:hover {
+    background-color: #DFF1DD;
+}
+.playlistSubView .listside li.selected a {
+    background-color: #31A62A;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.playlistSubView .listside .add_group {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 20px;
+}
+.artistlist ul {
+    border-bottom: 1px solid #E9E9E9;
+    padding-bottom: 10px;
+}
+.artistlist .artist {
+    float: left;
+    margin: 10px 35px 0 0;
+    width: 195px;
+}
+.artistlist .head {
+    float: left;
+    height: 100px;
+    overflow: hidden;
+    width: 100px;
+}
+.artistlist .info {
+    margin-left: 115px;
+    position: relative;
+}
+.artistlist .info .name {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.artistlist .info span {
+    display: block;
+}
+.artistlist .info span a {
+    color: #999999;
+}
+.profileinfo h2 .role {
+    font-size: 18px;
+    margin-left: 10px;
+}
+.follows-panel {
+    padding-top: 20px;
+}
+.follows-panel .topbar .num {
+    color: #666666;
+}
+.follows-panel .crud {
+    color: #666666;
+    padding: 0 10px;
+}
+.follows-panel .pagebar {
+    float: right;
+}
+.follows-list ul {
+    padding: 10px 0;
+}
+.follows-list li {
+    float: left;
+    margin: 10px;
+    text-align: center;
+    width: 50px;
+}
+.follows-list .name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.settings-h1 {
+    font-size: 22px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.settings-h2 {
+    font-size: 14px;
+    font-weight: normal;
+    height: 24px;
+    line-height: 24px;
+    margin-left: 20px;
+}
+.settings-h3 {
+    font-size: 14px;
+}
+.settings-h4 {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 14px 0 8px;
+}
+.invite_by_link, .invite_by_email {
+    background-color: #F1F1F1;
+    height: 180px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 20px 30px;
+    width: 590px;
+}
+.invite_by_email {
+    height: 280px;
+}
+.invite_by_email-labelHolder {
+    color: #7A7A7A;
+    height: 30px;
+    left: 9px;
+    line-height: 30px;
+    position: relative;
+    top: 1px;
+}
+.invited_emails-item {
+    float: left;
+    height: 100px;
+    width: 90px;
+}
+.invited_emails-item div {
+    margin: 0 10px;
+    text-align: center;
+}
+.invited_user_head {
+    float: left;
+    height: 70px;
+    margin: 10px 10px 5px;
+    width: 70px;
+}
+.invited_user_info {
+    float: left;
+    padding-top: 16px;
+    width: 300px;
+}
+#invite_url, #invite_email {
+    color: gray;
+    height: 12px;
+    margin-right: 4px;
+    padding: 8px 5px;
+    width: 400px;
+}
+#invite_by_email_labelholder {
+    margin-left: 7px;
+    margin-top: 7px;
+}
+#invite_url {
+    float: left;
+}
+.unfollow-artist {
+    margin: 28px 0 0 42px;
+}
+.otherAccount {
+    float: left;
+    padding: 4px 0 25px 3px;
+    width: 500px;
+}
+

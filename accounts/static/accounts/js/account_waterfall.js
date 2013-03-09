@@ -26,8 +26,8 @@ function applyLayout() {
       handler = $('#pins .pin');
       handler.wookmark({
           autoResize: true,
-          offset: 10,
-          itemWidth: 280,
+          offset: 40,
+          itemWidth: 200,
           container: $('#pins')
       });
   });
@@ -39,6 +39,7 @@ function applyLayout() {
 function loadData(tag) {
     isLoading = true;
     $('#loader').show();
+
     if (tag !== undefined) {
         globalTag = tag;
         window.history.pushState(tag, 'Pinry - Tag - '+tag, '/pins/tag/'+tag+'/');
@@ -72,7 +73,6 @@ function loadData(tag) {
  * Receives data from the API, creates HTML for images and updates the layout
  */
 function onLoadData(data) {
-    var user_auth = Boolean(user_auth_flag.toLowerCase());
     var user_pic = user_pic_url;
     var user_name = username;
     var submitter_name;
@@ -108,7 +108,6 @@ function onLoadData(data) {
               //请求出错处理
             }
           });*/
-      if(image.userProfile.snsName == user_name)
       {
       html += '<div class="pin">';
           html += '<div class="pin-options">';
@@ -116,29 +115,33 @@ function onLoadData(data) {
                   html += '<i class="icon-trash"></i>';
               html += '</a>';
           html += '</div>';
-          html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
+          html += "<h4 style='color:#F47D31; background-color:#fff; -webkit-box-shadow: 2px 2px 20px #888; -moz-box-shadow:2px 2px 20px #888; -webkit-transform:rotate(-45deg); -moz-transform:rotate(-45deg); position:absolute; text-align:center; left:-20px; margin-top:0px'>出售闲置</h4>";
+       //   html += '<a class="fancybox" rel="pins" href="'+image.image+'">';
+              html += "<a  rel='pins' href='/item/" + image.id + "/detail/'>";
               html += '<img src="'+image.thumbnail+'" width="200" >';
           html += '</a>';
-          if (image.description) html += "<p style='padding-bottom:5px'>"+image.description+'</p>';
-          if (image.price) html +="<p style='padding-top:5px; border-top:2px solid black'>价格: " + image.price + '元</p>';
+          html += "<div style='border-bottom:1px solid #ddd'>";
+          if (image.description) html += "<p style='padding-bottom:5px; border: 1px solid #DDDDD'>"+ image.description+'</p>';
+          html += '</div>';
+          if (image.price) html +="<p style='padding-top:5px; border-bottom: 1px solid #DDD'>价格: " + image.price + '元</p>';
           if (image.tags) {
               html += "<div class='clearfix' style='margin-bottom:5px'>";
               html += '<p>';
-              html += "<a style='width:30px;height:30px' href='/accounts/" + image.user + "'> <img style='width:30px; height:30px' src='" + image.user_img_url + "' /></a>";
-              html += "<span> " + image.user + " 发布在</span>"
+              html += "<a style='width:30px;height:30px' href='/accounts/" + image.userProfile.snsName + "'> <img style='width:30px; height:30px' src='" + image.userProfile.socialImageUrl + "' /></a>";
+              html += "<span> " + image.userProfile.snsName + " 发布在</span>"
               for (tag in image.tags) {
                   html += '<span class="label tag" onclick="loadData(\'' + image.tags[tag] + '\')">' + image.tags[tag] + '</span> ';
               }
               html += '</p>';
               html += '</div>';
           }
-          if(user_auth)
+          if(user_auth_flag == "True")
           {
-            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.user + "/' method='POST'> <input type='hidden' name='to' value='" + image.user + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='item' value='" + image.id + "'/> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {
-            html += "<div class='write convo clearfix' style='display:block'><img src='/static/vendor/utility/smile.jpg' style='width:30px; height:30px'><textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><ul style='display: none; z-index: 42; opacity: 0;' class='ac-choices'></ul><button  class='grid_comment_button' onclick='window.location='/accounts/signup;'/>留言</button></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a class='img x'><img src='/static/vendor/utility/user2.jpg' style='width:30px; height:30px'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='width:160px; padding-right:0px; background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='还没有登录，没法留言哦亲!' class='GridComment ani-affected '></textarea></form></div>";
           }
       html += '</div>';
       }
@@ -152,12 +155,14 @@ function onLoadData(data) {
 $(document).ready(new function() {
     $(document).bind('scroll', onScroll);
     loadData();
+    $("#example").popover(); 
 });
+
 
 /**
  * On clicking an image show fancybox original.
  */
-$('.fancybox').fancybox({
+/*$('.fancybox').fancybox({
     openEffect: 'none',
     closeEffect: 'none'
-});
+});*/

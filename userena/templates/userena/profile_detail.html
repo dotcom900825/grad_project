@@ -2,8 +2,8 @@
 {% load i18n %}
 {% load url from future %}
 
-{% block profile_detail%}
-
+{% block profile_css%}
+  <link href="/static/vendor/utility/user_management/profile.css" rel="stylesheet" />
 {% endblock %}
 
 {% block title %}
@@ -15,8 +15,31 @@
 {% endblock %}
 
 {% block content_title %}
-<div class='profile-header'>
-<h2>
+{% endblock %}
+
+{% block content %}
+  <div class="white-box" style="margin-top:-80px; background-color:#FFDFB1">
+    <div class='profile-header'>
+      <h2>个人设置</h2>
+    </div>
+    <div class='tabs'>
+    {% block profile_navigation %}
+      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
+      {% if user.username == profile.user.username %}
+        <ul class="clearfix" id="box-nav">
+          {% block profile_navigation_items %}
+            <!--<li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "View profile" %}</a></li>-->
+            <li class='tab account'><a href="{% url 'userena_profile_edit' user.username %}">{% trans '修改账户信息' %}</a></li>
+            <li class='tab account'><a href="{% url 'userena_password_change' user.username %}">{% trans '修改密码' %}</a></li>
+            <li class='tab account'><a href="{% url 'userena_email_change' user.username %}">{% trans '修改邮箱' %}</a></li>
+          {% endblock %}
+        </ul>
+      {% endif %}
+    {% endblock %}
+  </div>
+    <div id="details">
+      {% block profile_details %}
+        <h2>
 {% if profile.snsName%}
 {{ profile.snsName }}
 {% else %}
@@ -25,28 +48,6 @@
   <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
      
 </h2>
-
-</div>
-{% endblock %}
-
-{% block content %}
-  <div class="white-box">
-    {% block profile_navigation %}
-      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-      {% if user.username == profile.user.username %}
-        <ul class="nav nav-pills" id="box-nav">
-          {% block profile_navigation_items %}
-            <!--<li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "View profile" %}</a></li>-->
-            <li><a href="{% url 'userena_profile_edit' user.username %}">{% trans '修改账户信息' %}</a></li>
-            <li><a href="{% url 'userena_password_change' user.username %}">{% trans '修改密码' %}</a></li>
-            <li><a href="{% url 'userena_email_change' user.username %}">{% trans '修改邮箱' %}</a></li>
-          {% endblock %}
-        </ul>
-      {% endif %}
-    {% endblock %}
-
-    <div id="details">
-      {% block profile_details %}
            <table class='table' style='width:30%'>
           {% block profile_definition_list %}
             {% if profile.snsName %}

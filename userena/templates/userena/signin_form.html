@@ -1,32 +1,123 @@
-{% extends 'userena/base_userena.html' %}
-{% load i18n %}
+
 {% load url from future %}
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>登录 喜拾网 - 出售闲置 发现朋友</title>
+  <meta name="description" content="美乐网(meile.com)，更海量的音乐曲库、更流畅的视听体验、更懂您的音乐喜好、更多您喜爱的音乐人、让您在分享音乐的同时发现志同道合的朋友，美乐网是一个基于兴趣社交的音乐试听、分享主题社区">
+  <meta name="keywords" content="美乐网,美乐网,在线听歌,音乐网站,在线音乐试听,主题音乐社区,音乐搜索,音乐下载,排行榜,APE,AAC,数字音乐,高品质音乐,热门音乐人,高品质mp3,音乐分享,乐评,网络电台,无损音乐,兴趣社交,SNS,320K,320Kbps">
+  <link type="image/x-icon" rel="shortcut icon" href="http://static.meile.com/images/favicon.ico">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/sign_in_page/resources/base_new.css">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/sign_in_page/resources/common.css">
+  <link type="text/css" rel="stylesheet" href="/static/vendor/utility/sign_in_page/resources/login.css">
+  <!--[if lt IE 9]><script src="http://static.meile.com/v37/scripts/html5.js"></script><![endif]-->
+</head>
 
-{% block title %}{% trans "Signin" %}{% endblock %}
+<body class="login">
+  <header id="header">
+    <h1 id="logo"><a href="http://www.meile.com/"><img src="/static/vendor/utility/xishi.jpg" alt="喜拾"></a></h1>
+    <span id="noAccount" class="green fl f14 pa">还没有账号？</span>
+    <span id="register"><a href="{% url 'userena_signin'%}">立即注册</a></span>
+  </header>
 
-{% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>登录你的帐户 </legend>
-    {{ form.non_field_errors }}
-    {% for field in form %}
-    {{ field.errors }}
-    {% comment %} Displaying checkboxes differently {% endcomment %}
-    {% if field.name == 'remember_me' %}
-    <p class="checkbox">
-    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
-    </p>
-    {% else %}
-    <p>
-    {{ field.label_tag }}
-    {{ field }}
-    </p>
-    {% endif %}
-    {% endfor %}
-  </fieldset>
-  <input type="submit" class='btn btn-primary' value="登录" />
-  <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">忘记密码?</a></p>
-  {% if next %}<input type="hidden" class='btn btn-primary' name="next" value="{{ next }}" />{% endif %}
-</form>
-{% endblock %}
+  <div id="content" class="clearfix">
+    <div class="panel">
+      <div class="login-part">
+        <header>
+          <h2 class="title">登录美乐</h2>
+        </header>
+        <section class="clearfix">
+          <form action="" method="post">
+            {% csrf_token %}
+            
+              {{ form.non_field_errors }}
+                          
+                  <p class="item">
+                    <label id='account_label' for="account" class="labelholder">你的注册邮箱或者账户名</label>
+                    <input class="input-text email" id='account' type="text" maxlength="75" name="identification" >
+                  </p>  
+                           
+                  <p class='item'>
+                  <label class='labelholder' for="password">密码</label>
+                  <input class='input-text password' id='password' type="password" name="password">
+                  <a title="Forgot your password?" href="/accounts/password/reset/">忘记密码?</a>
+                  </p>              
+
+                 
+                  
+                  <p class="item submit-wraper">
+                     <input type="submit" value="登录" class="input-login">
+                    <span class='for-remember'>
+                      <input type="checkbox" id="id_remember_me" name="remember_me"/>
+                      <label for="remember" class="for f12">记住登录状态</label>
+                    </span>
+                  </p>           
+           
+            
+            
+            
+          </form>
+          <span class="tips"></span>
+        </section>
+  </div>
+<div class="other-part clearfix">
+  <div class="devices">
+    <div class="device-panel">
+      <ul class="clearfix">
+        <li class="iphone"><a href="http://itunes.apple.com/cn/app/id490091674" target="_blank"></a></li>
+        <li class="android"><a href="http://www.meile.com/mobile/radio" target="_blank"></a></li>
+        <li class="winphone"><a></a></li>
+      </ul>
+      <p>美乐电台App 毫无约束 自在聆听</p>
+    </div>
+  </div>
+  
+  <div class="otherAccount">
+    <h3>用以下账号登录：</h3>
+    <ul class="clearfix f12 fb">
+      <li class="otherAccountQQ">
+        <a href="http://www.meile.com/connect/1/qzone?f=http://www.meile.com/ugc/26938034887854/user/274879355824?from=feedpic">
+          <span class="qqIcon"></span>
+          <span class="otherAccountText">QQ空间</span>
+        </a>
+      </li>
+      
+      <li class="otherAccountWeibo">
+        <a href="http://www.meile.com/connect/1/weibo?f=http://www.meile.com/ugc/26938034887854/user/274879355824?from=feedpic">
+        <span class="weiboIcon"></span>
+        <span class="otherAccountText">新浪微博</span>
+        </a>
+      </li>
+      
+      <li class="otherAccountRenren">
+        <a href="http://www.meile.com/connect/1/renren?f=http://www.meile.com/ugc/26938034887854/user/274879355824?from=feedpic">
+        <span class="renrenIcon"></span>
+        <span class="otherAccountText">人人网</span>
+        </a>
+      </li>
+      
+      <li class="otherAccountKaixin">
+        <a href="http://www.meile.com/connect/1/kaixin?f=http://www.meile.com/ugc/26938034887854/user/274879355824?from=feedpic">
+        <span class="kaixinIcon"></span>
+        <span class="otherAccountText">开心网</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+
+<footer id="footer">
+  <p class="copyright">©&nbsp;2012 meile.com 京ICP备12025174号</p>
+</footer>
+
+<script type="text/javascript" src="/static/vendor/jquery/1.7.2/jquery.js"></script>
+<!--[if lt IE 7]><script src="http://static.meile.com/scripts/fixpng.js"></script><![endif]-->
+<script type="text/javascript" src="/static/vendor/utility/sign_in_page/resources/md5.js"></script>
+<script type="text/javascript" src="/static/vendor/utility/sign_in_page/resources/login.js"></script>
+
+
+</body>
+</html>

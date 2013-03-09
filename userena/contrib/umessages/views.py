@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 from django.core.urlresolvers import reverse
 from django.views.generic.simple import direct_to_template
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.contrib.auth.models import User
 from django.template import loader
 from django.contrib import messages
@@ -170,9 +170,15 @@ def message_compose(request, recipients=None, compose_form=ComposeForm,
         form = compose_form(request.POST)
         if form.is_valid():
             requested_redirect = request.REQUEST.get("next", False)
-
-            message = form.save(request.user)
+            # added by Yu Xia 
+            try:
+                item_id = request.POST['item']
+            except:
+                item_id = ''
+            message = form.save(request.user, item_id)
+            # 
             recipients = form.cleaned_data['to']
+           
 
             if userena_settings.USERENA_USE_MESSAGES:
                 messages.success(request, _('Message is sent.'),
@@ -188,7 +194,7 @@ def message_compose(request, recipients=None, compose_form=ComposeForm,
             elif len(recipients) == 1:
                 redirect_to = reverse('userena_umessages_detail',
                                       kwargs={'username': recipients[0].username})
-            return redirect(redirect_to)
+            return HttpResponse('finish')
 
     if not extra_context: extra_context = dict()
     extra_context["form"] = form

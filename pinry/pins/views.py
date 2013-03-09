@@ -10,7 +10,7 @@ from .models import Pin
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
+from userena.contrib.umessages.models import Message
 
 def recent_pins(request):
     return TemplateResponse(request, 'pins/recent_pins.html', None)
@@ -76,6 +76,8 @@ def delete_pin(request, pin_id):
 def pin_detail(request, pin_id):
     try:
         pin = Pin.objects.get(id=pin_id)
+        comments = Message.objects.filter(pin=pin)
+        size_of_comment = len(comments)
         submitter = pin.submitter
         media_root = settings.MEDIA_ROOT
         return render_to_response('pins/detail.html',locals(),context_instance=RequestContext(request))

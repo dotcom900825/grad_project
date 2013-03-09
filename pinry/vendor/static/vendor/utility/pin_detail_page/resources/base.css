@@ -1,0 +1,1138 @@
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, progress, time, mark, audio, video {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    line-height: normal;
+}
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, progress {
+    display: block;
+}
+ol, ul {
+    list-style: none outside none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+:focus {
+    outline: 0 none;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+}
+html, body {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+html, body, textarea, input, select, option, button {
+    color: #333333;
+    font-family: 'Helvetica Neue','Arial','Hiragino Sans GB','Microsoft Yahei','微软雅黑';
+    font-size: 12px;
+    margin: 0;
+}
+a, a:link, a:visited {
+    color: #3862A0;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover {
+    color: #16387C;
+    text-decoration: underline;
+}
+a.disable {
+    cursor: default;
+}
+h1 {
+    font-size: 16px;
+}
+h2, h3 {
+    font-size: 14px;
+}
+h4, h5, h6 {
+    font-size: 12px;
+}
+small {
+    font-size: 11px;
+}
+.nobr {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: keep-all;
+}
+select, textarea {
+    border: 1px solid #CCCCCC;
+}
+textarea {
+    overflow: auto;
+}
+option {
+    border-radius: 0 0 0 0;
+    padding-left: 5px;
+}
+.input-check {
+    margin-right: 5px;
+}
+.input-text {
+    border: 1px solid #CCCCCC;
+    padding: 3px;
+}
+.input-button, .input-submit {
+    background-color: #57B151;
+    border: 1px solid #31A62A;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 20px;
+}
+.input-button:hover, .input-submit:hover {
+    background-color: #31A62A;
+    border-color: #037C3D;
+    box-shadow: 1px 1px 1px #EFEFEF;
+}
+.input-button.disabled, .input-submit.disabled {
+    background-color: #EEEEEE;
+    border-color: #E3E3E3;
+    color: #CCCCCC;
+    cursor: default;
+}
+.input-button.disabled:hover, .input-submit.disabled:hover {
+    background-color: #EEEEEE;
+    border-color: #E3E3E3;
+    color: #CCCCCC;
+}
+.input-button:active, .input-submit:active {
+    background-color: #389033;
+    border-color: #0D6520;
+    color: #E5E5E5;
+}
+.input-gray, .input-reset {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    color: #666666;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 20px;
+}
+.input-gray:hover, .input-reset:hover {
+    border-color: #AAAAAA;
+    box-shadow: 1px 1px 1px #EFEFEF;
+    color: #333333;
+}
+.input-gray:active, .input-reset:active {
+    background-color: #EEEEEE;
+    border-color: #999999;
+    color: #000000;
+}
+.input-disable, .input-disable:hover, .input-disable:active {
+    background-color: #EEEEEE;
+    border: 1px solid #E3E3E3;
+    box-shadow: none;
+    color: #CCCCCC;
+    cursor: default;
+    height: 30px;
+    padding: 0 20px;
+}
+.input-action {
+    background-color: #DFF1DD;
+    border: 1px solid #ABD8AB;
+    color: #037C3D;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 10px;
+}
+.input-action:hover {
+    background-color: #E1F5DF;
+    border-color: #93D38F;
+    box-shadow: 1px 1px 1px #EFEFEF;
+}
+.input-action:active {
+    background-color: #C9E9C5;
+    border-color: #93CD90;
+    color: #037C3D;
+}
+.input-check, .forcheck {
+    font-family: Tahoma;
+    line-height: 12px;
+    vertical-align: middle;
+}
+.input-check:focus {
+    outline: 1px solid #53B24C;
+}
+button .icon {
+    background: url("http://static.meile.com/images/bg/sprite_vertical.png?v=15140.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 20px;
+    white-space: nowrap;
+}
+button.like .icon {
+    background-position: 0 -57px;
+}
+button.like:hover .icon {
+    background-position: 0 -87px;
+}
+button.like:active .icon {
+    background-position: 0 -87px;
+}
+button.ilike {
+    background-color: #FAEBEB;
+    border-color: #F3CCCC;
+    color: #E66464;
+}
+button.ilike:hover {
+    background-color: #FFE7E7;
+    border-color: #EFB6B6;
+    color: #E66464;
+}
+button.ilike:active {
+    background-color: #F8D8D8;
+    border-color: #E89C9C;
+    color: #E66464;
+}
+button.ilike .icon {
+    background-position: 0 -117px;
+}
+button.ilike:hover .icon {
+    background-position: 0 -117px;
+}
+button.ilike:active .icon {
+    background-position: 0 -117px;
+}
+button.gather .icon {
+    background-position: 0 -59px;
+}
+button.gather:hover .icon {
+    background-position: 0 -89px;
+}
+button.gather:active .icon {
+    background-position: 0 -88px;
+}
+button.share .icon {
+    background-position: 0 -207px;
+}
+button.share:hover .icon {
+    background-position: 0 -237px;
+}
+button.share:active .icon {
+    background-position: 0 -237px;
+}
+button.add .icon {
+    background-position: 0 -1352px;
+}
+button.add:hover .icon {
+    background-position: 0 -1386px;
+}
+button.add:active .icon {
+    background-position: 0 -1385px;
+}
+button.follow .icon {
+    background-position: 0 -519px;
+}
+button.follow:hover .icon {
+    background-position: 0 -519px;
+}
+button.follow:active .icon {
+    background-position: 0 -519px;
+}
+button.player {
+    padding: 0 10px;
+}
+button.player .icon, button.player:hover, button.player:active .icon {
+    background-position: 3px -547px;
+}
+button.gather {
+}
+button.follow, button.unfollow-artist {
+}
+button.unfollow-artist:hover {
+    background-color: #FFF1ED;
+    border-color: #FF987E;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #FF734F;
+}
+button.like, button.ilike {
+}
+button.play-songs, button.library-songs, button.play-album-songs {
+}
+:-moz-placeholder {
+    color: #999999;
+}
+a.input-button, a.input-submit, a.input-gray, a.input-reset {
+    color: #FFFFFF !important;
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 10px;
+}
+a.input-button:hover, a.input-submit:hover, a.input-gray:hover, a.input-reset:hover {
+    text-decoration: none;
+}
+a.input-gray, a.input-reset {
+    color: #333333 !important;
+}
+.form-item {
+    margin-bottom: 15px;
+    padding: 4px 0;
+}
+.form-item .input-wrap, .form-item .textarea-wrap, .form-item .select-wrap {
+    margin-left: 80px;
+}
+.form-item .submit-wrap {
+    text-align: center;
+}
+.form-item label.title {
+    float: left;
+    text-align: right;
+    width: 80px;
+}
+.form-item .text-editor {
+    height: 50px;
+    width: 98%;
+}
+.form-item .ke-editor {
+    height: 200px;
+}
+.noborder {
+    border: medium none !important;
+}
+.nopadding {
+    padding: 0 !important;
+}
+.gray {
+    color: #999999;
+}
+.red {
+    color: #FF0000;
+}
+#jsContainer {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+#maskLayer {
+    background: url("http://static.meile.com/images/dialog/masklayer.png") repeat scroll 0 0 transparent;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 9998;
+}
+#maskLayer .maskpanel {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.hackflash {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.dialog {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    color: #333333;
+    display: none;
+    position: absolute;
+    top: 100px;
+    width: 400px;
+    z-index: 9999;
+}
+.dialog .dtl, .dialog .dtr, .dialog .dbl, .dialog .dbr {
+    height: 0;
+    width: 0;
+}
+.dialog .dtl {
+    background-position: -10px -30px;
+}
+.dialog .dtr {
+    background-position: -10px -10px;
+}
+.dialog .dbl {
+    background-position: -10px -40px;
+}
+.dialog .dbr {
+    background-position: -10px -20px;
+}
+.dialog .effect {
+    background-color: #000000;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+.dialog_container {
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+}
+.message-dialog .dialog_container {
+    padding: 15px;
+}
+.dialog_body {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: center;
+}
+.dialog_header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    display: none;
+}
+.dialog_header h3 {
+    float: left;
+    line-height: 24px;
+    padding: 5px 10px;
+}
+.dialog_header .close {
+    background: url("http://static.meile.com/images/dialog/dialog_close.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 9px;
+    margin: 10px 10px 0 0;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 10px;
+}
+.dialog_header .close:hover {
+    background-position: -21px 0;
+}
+.dialog_footer {
+    background: none repeat scroll 0 center transparent;
+    border-top: 0 none;
+    padding: 20px 0 0;
+    text-align: center;
+}
+.dialog_footer input {
+    cursor: pointer;
+    height: 25px;
+    overflow-x: visible;
+    padding: 3px 15px;
+}
+.dialog_footer input.confirm {
+    background-color: #57B151;
+    border: 1px solid #31A62A;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    height: 30px;
+    padding: 0 20px;
+}
+.dialog_footer input.confirm:hover {
+    background-color: #31A62A;
+    border-color: #037C3D;
+    box-shadow: none;
+}
+.dialog_footer input.confirm:active {
+    background-color: #389033;
+    border-color: #0D6520;
+    color: #E5E5E5;
+}
+.dialog_footer input.cancel {
+    background-color: #CCCCCC;
+    border: 1px solid #666666;
+    color: #333333;
+    font-size: 14px;
+    height: 30px;
+    margin: 0 0 0 10px;
+    padding: 0 20px;
+}
+.dialog_footer input.cancel:hover {
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+.dialog_footer input.cancel:active {
+    background-color: #EEEEEE;
+    border-color: #999999;
+    color: #000000;
+}
+.dialog_footer input.disable {
+    background-color: #CCCCCC;
+    background-image: none;
+    border-color: #C7C7C7;
+}
+.normal .dialog_body {
+    color: #333333;
+    font-size: 12px;
+    text-align: left;
+}
+.normal .dialog_container {
+    padding: 0;
+}
+.normal .dialog_content {
+    padding: 10px;
+}
+.normal .dialog_header {
+    display: block;
+}
+.normal .dialog_body {
+    background-color: #F9F9F9;
+    border: 1px solid #DDDDDD;
+}
+.normal .dialog_footer {
+    background-color: #FEFEFE;
+    border-top: 1px solid #E0E0E0;
+    padding: 10px;
+    text-align: right;
+}
+.normal .dialog_footer input.confirm {
+    background-color: #57B151;
+    border: 1px solid #31A62A;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.normal .dialog_footer input.confirm:hover {
+    background-color: #31A62A;
+    border-color: #037C3D;
+    box-shadow: 1px 1px 1px #EFEFEF;
+}
+.normal .dialog_footer input.cancel {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    color: #666666;
+    cursor: pointer;
+}
+.normal .dialog_footer input.cancel:hover {
+    border-color: #AAAAAA;
+    box-shadow: 1px 1px 1px #EFEFEF;
+    color: #333333;
+}
+.dialog_body h1 {
+    padding: 10px 0;
+}
+.dialog_body p {
+    font-size: 12px;
+}
+.dialog_body img {
+    vertical-align: middle;
+}
+.dialog_body img.figure {
+    width: 30px;
+}
+.dialog_body .nopadding {
+    padding: 0;
+}
+.dialog_body .center {
+    text-align: center;
+}
+.dialog_body a, .dialog_body a:link, .dialog_body a:visited {
+    color: #AAAAAA;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.dialog_body a:hover {
+    color: #AAAAAA;
+    text-decoration: underline;
+}
+.pagebar li {
+    display: inline-block;
+}
+.pagebar li a {
+    background-color: #FEFEFE;
+    display: inline-block;
+    padding: 4px 9px;
+    text-decoration: none;
+}
+.pagebar li a:hover {
+    background-color: #DFF1DD;
+}
+.pagebar li.cur a {
+    background-color: #31A62A;
+    color: #FFFFFF;
+}
+.pagebar li.dis a, .pagebar li.dis a:hover {
+    background-color: #FEFEFE;
+    color: #AAAAAA;
+    cursor: default;
+    text-decoration: none;
+}
+.list-table {
+    width: 100%;
+}
+.list-table td, .list-table th {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    padding: 8px;
+    text-align: center;
+}
+.list-table th {
+    background: -moz-linear-gradient(center top , #F9F9F9, #F5F5F5) repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #D0D0D0;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+.tl {
+    text-align: left;
+}
+.tc {
+    text-align: center;
+}
+.tr {
+    text-align: right;
+}
+.bc {
+    margin-left: auto;
+    margin-right: auto;
+}
+.fl {
+    display: inline;
+    float: left;
+}
+.fr {
+    display: inline;
+    float: right;
+}
+.cb {
+    clear: both;
+}
+.cl {
+    clear: left;
+}
+.cr {
+    clear: right;
+}
+.pr {
+    position: relative;
+}
+.pa {
+    position: absolute;
+}
+.abs-right {
+    position: absolute;
+    right: 0;
+}
+.hidden {
+    visibility: hidden;
+}
+.none {
+    display: none;
+}
+.z1 {
+    z-index: 1;
+}
+.z2 {
+    z-index: 2;
+}
+.h {
+    height: 100%;
+}
+.h10 {
+    height: 10px;
+}
+.h20 {
+    height: 20px;
+}
+.h30 {
+    height: 30px;
+}
+.h40 {
+    height: 40px;
+}
+.h50 {
+    height: 50px;
+}
+.h60 {
+    height: 60px;
+}
+.h70 {
+    height: 70px;
+}
+.h80 {
+    height: 80px;
+}
+.h90 {
+    height: 90px;
+}
+.h100 {
+    height: 100px;
+}
+.h150 {
+    height: 150px;
+}
+.h200 {
+    height: 200px;
+}
+.h250 {
+    height: 250px;
+}
+.h300 {
+    height: 300px;
+}
+.h400 {
+    height: 400px;
+}
+.h500 {
+    height: 500px;
+}
+.h600 {
+    height: 600px;
+}
+.h700 {
+    height: 700px;
+}
+.h36 {
+    height: 36px;
+}
+.w {
+    width: 100%;
+}
+.w10 {
+    width: 10px;
+}
+.w20 {
+    width: 20px;
+}
+.w30 {
+    width: 30px;
+}
+.w40 {
+    width: 40px;
+}
+.w50 {
+    width: 50px;
+}
+.w60 {
+    width: 60px;
+}
+.w70 {
+    width: 70px;
+}
+.w80 {
+    width: 80px;
+}
+.w90 {
+    width: 90px;
+}
+.w100 {
+    width: 100px;
+}
+.w150 {
+    width: 150px;
+}
+.w200 {
+    width: 200px;
+}
+.w250 {
+    width: 250px;
+}
+.w300 {
+    width: 300px;
+}
+.w400 {
+    width: 400px;
+}
+.w500 {
+    width: 500px;
+}
+.w600 {
+    width: 600px;
+}
+.w700 {
+    width: 700px;
+}
+.m10 {
+    margin: 10px;
+}
+.m20 {
+    margin: 20px;
+}
+.m30 {
+    margin: 30px;
+}
+.m40 {
+    margin: 40px;
+}
+.mt1 {
+    margin-top: 1px;
+}
+.mt5 {
+    margin-top: 5px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mb1 {
+    margin-bottom: 1px;
+}
+.mb5 {
+    margin-bottom: 5px;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.mr1 {
+    margin-right: 1px;
+}
+.mr5 {
+    margin-right: 5px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.ml1 {
+    margin-left: 1px;
+}
+.ml5 {
+    margin-left: 5px;
+}
+.ml10 {
+    margin-left: 10px;
+}
+.ml60 {
+    margin-left: 60px;
+}
+.fb {
+    font-weight: bold;
+}
+.f12 {
+    font-size: 12px;
+}
+.f14 {
+    font-size: 14px;
+}
+.f16 {
+    font-size: 16px;
+}
+.f18 {
+    font-size: 18px;
+}
+.f20 {
+    font-size: 20px;
+}
+.f24 {
+    font-size: 24px;
+}
+.green {
+    color: #007D3A;
+}
+#loginDialog {
+    width: 500px;
+}
+#loginDialog {
+    color: #666666;
+}
+#loginDialog:hover {
+}
+#loginDialog a {
+    color: #037C3D;
+}
+#loginDialog header .pos-fix {
+    padding: 15px 20px;
+}
+#loginDialog header .title {
+    float: left;
+    font-size: 16px;
+}
+#loginDialog header .close {
+    background: url("http://static.meile.com/images/close.png") no-repeat scroll 0 0 transparent;
+    float: right;
+    height: 18px;
+    width: 18px;
+}
+#loginDialog header .close:hover {
+    background-position: 0 -18px;
+}
+#loginDialog .content {
+    background-color: #F9F9F9;
+    border-bottom: 1px solid #EBEBEB;
+    border-top: 1px solid #EBEBEB;
+    padding: 12px 0 12px 40px;
+}
+#loginDialog .content .pos-fix {
+}
+#loginDialog .content .item {
+    margin-bottom: 15px;
+    position: relative;
+    width: 212px;
+}
+#loginDialog .content .submit-wrapper {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+#loginDialog .content .labelpanel {
+    background-color: #FFFFFF;
+}
+#loginDialog .content .input-text {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    padding: 7px 5px;
+    position: relative;
+    width: 200px;
+    z-index: 10;
+}
+#loginDialog .content .focus {
+    background-color: #DFF1DC;
+}
+#loginDialog .content .focus .input-text {
+    border-color: #53B24C;
+}
+#loginDialog .content .error {
+    background-color: #FFF3FC;
+}
+#loginDialog .content .error .input-text {
+    border-color: #EC6941;
+}
+#loginDialog .content .labelholder {
+    color: #999999;
+    font-size: 14px;
+    height: 36px;
+    left: 0;
+    line-height: 36px;
+    padding-left: 10px;
+    position: absolute;
+    top: 0;
+}
+#loginDialog .content .focus .labelholder {
+    color: #A9D8A6;
+}
+#loginDialog .content .error .labelholder {
+    color: #E1C3C3;
+}
+#loginDialog .content .submit {
+    background: url("http://static.meile.com/images/bg/login_btn.png") no-repeat scroll -445px 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    font-size: 0;
+    height: 40px;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 102px;
+}
+#loginDialog .content .submit:hover {
+    background-position: -445px -40px;
+}
+#loginDialog .content .submit:active {
+    background-position: -445px -80px;
+}
+#loginDialog .content .submit:focus {
+    background-position: -445px -80px;
+}
+#loginDialog .content .forget {
+    display: block;
+    margin-top: 5px;
+    visibility: hidden;
+}
+#loginDialog .content .msg {
+    color: #EC6941;
+    display: none;
+    margin-top: 10px;
+}
+#loginDialog footer {
+    background-color: #F3F3F3;
+    color: #AAAAAA;
+    padding: 10px 15px;
+    text-align: right;
+}
+#loginDialog .content .mysite {
+    border-left: 1px solid #CCCCCC;
+    float: left;
+    height: 196px;
+    margin-left: 30px;
+    padding-left: 30px;
+}
+#loginDialog .content h4 {
+    color: #888888;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+#loginDialog .content .code-panel, #loginDialog .content .image-panel {
+    display: none;
+}
+#loginDialog .content .image-panel img {
+    float: left;
+}
+#loginDialog .content .image-panel a {
+    float: left;
+    line-height: 40px;
+    margin-left: 20px;
+}
+#loginDialog .connect {
+    float: left;
+    width: 100px;
+}
+#loginDialog .connect .social-site li {
+    margin-bottom: 10px;
+}
+#loginDialog .connect .social-site li a {
+    display: block;
+    height: 30px;
+    width: 110px;
+}
+#loginDialog .connect .social-site .wb a {
+    background: url("http://static.meile.com/images/sina.png") no-repeat scroll 0 0 transparent;
+}
+#loginDialog .connect .social-site .rr a {
+    background: url("http://static.meile.com/images/renren.png") no-repeat scroll 0 0 transparent;
+}
+#loginDialog .connect .social-site .kx a {
+    background: url("http://static.meile.com/images/kaixin.png") no-repeat scroll 0 0 transparent;
+}
+#loginDialog .connect .social-site .qq a {
+    background: url("http://static.meile.com/images/qq-login-icon.png") no-repeat scroll 0 0 transparent;
+    height: 35px;
+}
+.otherAccount {
+    float: left;
+    padding: 25px 0 25px 40px;
+    width: 500px;
+}
+.otherAccount h3 {
+    color: #666666;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.otherAccount ul li {
+    float: left;
+    height: 36px;
+    margin-right: 14px;
+    overflow: hidden;
+    width: 92px;
+}
+.otherAccountText {
+    color: white;
+    float: left;
+    line-height: 37px;
+    margin-left: 7px;
+    text-align: left;
+    width: 56px;
+}
+.otherAccountWeibo {
+    background: none repeat scroll 0 0 #F0816F;
+    border: 1px solid #E66E5A;
+    cursor: pointer;
+}
+.otherAccountWeibo_hover {
+    background: none repeat scroll 0 0 #F2937F;
+    border: 1px solid #EA7E67;
+    cursor: pointer;
+}
+.weiboIcon {
+    background: url("http://static.meile.com/images/ugc/ugc-icon.png?v=16298.png") no-repeat scroll 0 -110px transparent;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 8px 0 0 8px;
+    width: 20px;
+}
+.otherAccountQQ {
+    background: none repeat scroll 0 0 #FBC96B;
+    border: 1px solid #E8B341;
+    cursor: pointer;
+}
+.otherAccountQQ_hover {
+    background: none repeat scroll 0 0 #FCD17A;
+    border: 1px solid #EBBE4A;
+    cursor: pointer;
+}
+.qqIcon {
+    background: url("http://static.meile.com/images/ugc/ugc-icon.png?v=16298.png") no-repeat scroll -20px -110px transparent;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 8px 0 0 8px;
+    width: 20px;
+}
+.otherAccountRenren {
+    background: none repeat scroll 0 0 #81ABC7;
+    border: 1px solid #6C95B1;
+    cursor: pointer;
+}
+.otherAccountRenren_hover {
+    background: none repeat scroll 0 0 #93B7CF;
+    border: 1px solid #7CA4BC;
+    cursor: pointer;
+}
+.renrenIcon {
+    background: url("http://static.meile.com/images/ugc/ugc-icon.png?v=16298.png") no-repeat scroll -40px -110px transparent;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 8px 0 0 8px;
+    width: 20px;
+}
+.otherAccountKaixin {
+    background: none repeat scroll 0 0 #F78A9B;
+    border: 1px solid #E67486;
+    cursor: pointer;
+}
+.otherAccountKaixin_hover {
+    background: none repeat scroll 0 0 #F89BA9;
+    border: 1px solid #EA8597;
+    cursor: pointer;
+}
+.kaixinIcon {
+    background: url("http://static.meile.com/images/ugc/ugc-icon.png?v=16298.png") no-repeat scroll -60px -110px transparent;
+    display: block;
+    float: left;
+    height: 20px;
+    margin: 8px 0 0 8px;
+    width: 20px;
+}
+#loginDialog .dialogLoginForm {
+    margin-top: 16px;
+    padding-bottom: 22px;
+}
+#loginDialog .otherAccount {
+    float: left;
+    padding: 0;
+    width: 100px;
+}
+#loginDialog .otherAccount ul li {
+    float: left;
+    height: 36px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 92px;
+}

@@ -1,3 +1,69 @@
+// index page css
+.navbar{
+    margin-bottom: 0px;
+}
+
+.navbar .container{
+    width:1170px;
+}
+
+#motto{
+    margin-left:28%;
+}
+
+#motto a{
+    color:white;
+}
+
+#nav_pic{
+    height: 50px;
+}
+
+#nav_pic a{
+    padding-top:0px; margin-top:-5px;
+}
+
+#nav_pic img{
+    width:50px; 
+    height:50px;
+}
+
+#lower_nav_left{
+    margin-left:30%;    
+}
+
+#lower_nav_right{
+    margin-left:44.5%;
+}
+#recent_activity{
+    margin-top:10px;
+}
+
+#publish_activity{
+    margin-top:10px; 
+    margin-left:10px;
+}
+
+#not_using{
+    margin-top:10px; 
+}
+
+#i_want{
+    margin-top:10px; 
+    margin-left:10px;
+}
+
+.container .row{
+    margin-top:5%;
+}
+
+#content{
+margin-left:50px;  
+}
+
+
+//----------------------------------------------------
+
 body {
    // margin-top: 70px;
    // background: url(/static/vendor/tile/img/bg.png);
@@ -5,7 +71,7 @@ body {
 
 .navbar-inner {
     background-image: none;
-    //background: white;
+    background-color:#333;
     filter: none;
     border-bottom: 1px solid #999;
     height: 45px;
@@ -25,10 +91,11 @@ a.menu:after, .dropdown-toggle:after {
     padding-bottom: 17px;
 }
     .navbar .brand {
-        margin-left: 0;
         color: #333;
         font-family: 'Monoton';
         font-size: 30px;
+        margin-left:15px; 
+        padding:0px 0px;
     }
 
     .navbar .nav > li > a {
@@ -96,7 +163,7 @@ a.menu:after, .dropdown-toggle:after {
         float: left;
         border: 1px solid #ccc;
         padding: 15px;
-        display: none;
+        display: block;
     }
 
         .pin img {

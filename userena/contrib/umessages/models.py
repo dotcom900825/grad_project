@@ -104,11 +104,9 @@ class Message(models.Model):
     sender_deleted_at = models.DateTimeField(_("sender deleted at"),
                                              null=True,
                                              blank=True)
- #   relate_pin = models.ForeignKey(Pin,
- #                                  related_name='associate_item',
- #                                  verbose_name='associate_item',
- #                                  null=True,
- #                                  blank=True)
+    
+    pin = models.ForeignKey(Pin, verbose_name = ("pin"), related_name=('related_pin'), blank=True, null=True)
+
     objects = MessageManager()
 
     class Meta:

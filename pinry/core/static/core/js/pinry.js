@@ -120,8 +120,10 @@ function onLoadData(data) {
               html += "<a  rel='pins' href='/item/" + image.id + "/detail/'>";
               html += '<img src="'+image.thumbnail+'" width="200" >';
           html += '</a>';
-          if (image.description) html += "<p style='padding-bottom:5px'>"+ image.description+'</p>';
-          if (image.price) html +="<p style='padding-top:5px;'>价格: " + image.price + '元</p>';
+          html += "<div style='border-bottom:1px solid #ddd'>";
+          if (image.description) html += "<p style='padding-bottom:5px; border: 1px solid #DDDDD'>"+ image.description+'</p>';
+          html += '</div>';
+          if (image.price) html +="<p style='padding-top:5px; border-bottom: 1px solid #DDD'>价格: " + image.price + '元</p>';
           if (image.tags) {
               html += "<div class='clearfix' style='margin-bottom:5px'>";
               html += '<p>';
@@ -135,7 +137,7 @@ function onLoadData(data) {
           }
           if(user_auth_flag == "True")
           {
-            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
+            html += "<div class='write convo clearfix' style='display:block'><a href='/accounts/" + user_name + "' title='' class='img x'><img style='width:30px; height:30px'  src='" + user_pic + "'/></a><form action='/messages/compose/" + image.userProfile.user.username + "/' method='POST'> <input type='hidden' name='item' value='" + image.id + "'/> <input type='hidden' name='to' value='" + image.userProfile.user.username + "'/> <textarea name='body' style='background-color: rgb(255, 255, 255);' autocomplete='off' placeholder='感兴趣吗？留个言吧！' class='GridComment ani-affected '></textarea><input type='submit' value='留言' name='send' class='btn btn-info grid_comment_button'/></form></div>";
           }
           else
           {

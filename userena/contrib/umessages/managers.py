@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Q
-
+from pinry.pins.models import Pin
 import datetime
 
 class MessageContactManager(models.Manager):
@@ -21,6 +21,7 @@ class MessageContactManager(models.Manager):
 
         except self.model.DoesNotExist:
             created = True
+      
             contact = self.create(from_user=from_user,
                                   to_user=to_user,
                                   latest_message=message)
@@ -56,7 +57,7 @@ class MessageContactManager(models.Manager):
 class MessageManager(models.Manager):
     """ Manager for the :class:`Message` model. """
 
-    def send_message(self, sender, to_user_list, body):
+    def send_message(self, sender, to_user_list, body, pin_id):
         """
         Send a message from a user, to a user.
 
@@ -70,8 +71,10 @@ class MessageManager(models.Manager):
             String containing the message.
 
         """
+        actual_pin = Pin.objects.get(id=pin_id)
         msg = self.model(sender=sender,
-                         body=body)
+                         body=body,
+                         pin=actual_pin)
         msg.save()
 
         # Save the recipients

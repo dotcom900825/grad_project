@@ -1,0 +1,213 @@
+
+#the_comment_form .submit-wrapper .comment-icon {
+    display: inline-block;
+    float: left;
+    font-size: 0;
+    height: 20px;
+    width: 20px;
+}
+#the_comment_form .submit-wrapper .song-icon {
+    background: url("http://static.meile.com/images/play.ico") no-repeat scroll 0 0 transparent;
+}
+#the_comment_form .submit-wrapper .dec {
+    line-height: 17px;
+}
+#the_comment_form .song-search {
+    background-color: #F9F9F9;
+    border: 1px solid #CCCCCC;
+    display: none;
+    left: -1px;
+    position: absolute;
+    top: -8px;
+    width: 320px;
+    z-index: 2;
+}
+#the_comment_form .song-search .close {
+    background-position: 0 -110px;
+    cursor: pointer;
+    display: block;
+    height: 14px;
+    opacity: 0.5;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 14px;
+}
+#the_comment_form .song-search .close:hover {
+    opacity: 0.8;
+}
+#the_comment_form .song-search .searchHolder {
+    margin: 10px;
+    position: relative;
+    width: 230px;
+}
+#the_comment_form .song-search .resultHolder {
+    background-color: #EEEEEE;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+#the_comment_form .searchHolder .labelholder {
+    height: 32px;
+    left: 35px;
+    line-height: 32px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+#the_comment_form .searchHolder .search-key {
+    -moz-transition: width 0.2s ease 0s;
+    background: url("http://static.meile.com/images/bg/search_bg.png") no-repeat scroll 8px 8px #FFFFFF;
+    font-size: 14px;
+    height: 16px;
+    line-height: 16px;
+    padding: 7px 30px 7px 28px;
+    position: relative;
+    width: 170px;
+}
+#the_comment_form .searchHolder .search-key:focus {
+    -moz-transition: width 0.2s ease 0s;
+    background-position: 8px -22px;
+    border: 1px solid #79CA74;
+}
+#the_comment_form .searchHolder .submit-search {
+    background: url("http://static.meile.com/images/bg/sprite_range.png?v=9663.png") no-repeat scroll -195px 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    display: none;
+    height: 22px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 22px;
+}
+#the_comment_form .resultHolder li {
+    margin-bottom: 5px;
+}
+#the_comment_form .resultHolder li:hover {
+    background-color: #FFFFFF;
+}
+#the_comment_form .resultHolder li .info .basic {
+    color: #999999;
+    cursor: pointer;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    margin-left: 5px;
+    padding: 3px 20px 3px 5px;
+    text-decoration: none;
+}
+#the_comment_form .resultHolder li .info .basic .song-name {
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80px;
+}
+#the_comment_form .resultHolder li .info .basic .album-name {
+    float: left;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60px;
+}
+#the_comment_form .resultHolder li .info .basic .artist-name {
+    float: left;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 60px;
+}
+#the_comment_form .resultHolder li .play-icon {
+    background: url("http://static.meile.com/images/bg/sprite_range.png") no-repeat scroll -114px 0 transparent;
+    display: block;
+    float: left;
+    height: 18px;
+    margin-top: 3px;
+    width: 23px;
+}
+#the_comment_form .resultHolder li .play-icon:hover {
+    background-position: -114px -20px;
+}
+#the_comment_form .song-search .pagebar {
+    display: none;
+    margin-left: -30px;
+    text-align: center;
+}
+#the_comment_form .song-search .page-num {
+    color: #8C8C8C;
+    display: inline-block;
+}
+#the_comment_form .song-search .page-num .cur-page {
+    color: #037C3D;
+}
+#the_comment_form .song-search .pagebar a {
+    border: 1px solid transparent;
+    color: #8C8C8C;
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 65px;
+}
+#the_comment_form .song-search .pagebar a:hover {
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+}
+#the_comment_form a.figure {
+    left: 0;
+    top: 0;
+}
+#the_comment_form a.figure img {
+    display: block;
+    height: 50px;
+    width: 50px;
+}
+#the_comment_form .submit-wrapper {
+    margin: 0 1px 0 63px;
+}
+#the_comment_form .submit-wrapper h4 {
+    margin: 0 0 1em;
+}
+#the_comment_form .submit-wrapper .count {
+    color: #999999;
+    margin-right: 10px;
+}
+#the_comment_form .submit-wrapper textarea {
+    height: 32px;
+    margin: 0 0 10px -1px;
+    min-height: 32px;
+    padding: 8px 2%;
+    resize: vertical;
+    width: 96%;
+}
+#the_comment_form .submit-wrapper textarea:focus {
+    border-color: #76CB70;
+}
+#the_comment_form .submit-wrapper .input-submit {
+    padding: 0;
+    width: 72px;
+}
+#the_comment_form .submit-wrapper .input-submit.disabled {
+    background-color: #EEEEEE;
+    border-color: #E3E3E3;
+    color: #CCCCCC;
+    cursor: default;
+}
+body.profile #the_comment_form .submit-wrapper {
+    margin: 0 1px 0 73px;
+}
+body.album #the_comment_form textarea, body.artist #the_comment_form textarea, body.song #the_comment_form textarea, body.profile #the_comment_form textarea {
+    height: 50px;
+    min-height: 50px;
+}
+body.album #the_comment_form .submit-wrapper, body.artist #the_comment_form .submit-wrapper, body.song #the_comment_form .submit-wrapper {
+    margin: 0 1px 0 72px;
+}
+body.album #the_comment_form .submit-inner, body.artist #the_comment_form .submit-inner, body.song #the_comment_form .submit-inner {
+    width: 76%;
+}

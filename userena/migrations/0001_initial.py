@@ -21,11 +21,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('userena', ['UserenaSignup'])
 
-
     def backwards(self, orm):
         # Deleting model 'UserenaSignup'
         db.delete_table('userena_userenasignup')
-
 
     models = {
         'auth.group': {

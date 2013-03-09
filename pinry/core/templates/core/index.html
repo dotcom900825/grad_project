@@ -17,6 +17,8 @@
     <link href="/static/vendor/tile/css/custom.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/vendor/fancybox/2.0.6/jquery.fancybox.css">
     <link rel="stylesheet" href="/static/core/css/pinry.css">
+    {% block profile_css %}
+    {% endblock %}
     {% endcompress %}
 
     {% compress js %}
@@ -72,7 +74,13 @@
     {% block uploadPic %}
     {% endblock %}
 
-    {% block profile_css %}
+    {% block pin_detail %}
+    {% endblock %}
+
+    {% block pin_detail_js %}
+    {% endblock %}
+
+    {% block user_detail %}
     {% endblock %}
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,10 +88,10 @@
 </head>
 
 <body>
-    <div class="navbar" data-scrollspy="scrollspy" style='margin-bottom:0px'>
-                <div style="background-color:#333;"  class="navbar-inner">
-                    <div class="container" style="width:1170px">
-                        <a class="brand" style="margin-left:15px; padding:0px 0px"href="/" data-original-title>
+    <div class="navbar" data-scrollspy="scrollspy" style="margin-bottom:0px;">
+                <div  class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="/" data-original-title>
                             <img width="100px" src="/static/vendor/utility/xishi.jpg" />
                         </a>
                         <ul class='nav'>
@@ -139,9 +147,9 @@
                                 </div>
                             </li> -->
                         </ul>
-                        <ul style='margin-left:28%'class='nav'>
+                        <ul  class='nav' id='motto'>
                             <li>
-                                <a src='#' style='color:white'> 易物,换米,得知音.</a> 
+                                <a src='#' > 易物,换米,得知音.</a> 
                             </li>
                         </ul>
                        
@@ -161,9 +169,13 @@
                                     
                                     <a href="{% url userena_umessages_list %}"><span>{{unread_message_count}} 条新信息</span></a> 
                                 </li>
-                                <li style="height:50px">
-                                    <a style="padding-top:0px; margin-top:-5px"  href="/accounts/{{ user.username }}"><img style='width:50px; height:50px' src="{{user.get_profile.get_mugshot_url}}" alt="Index page"/> </a>
+
+                                <li id='nav_pic'>
+                                    <a  href="/accounts/{{ user.username }}">
+                                        <img style='border-radius:20em 20em 20em 20em'  src="{{user.get_profile.socialImageUrl}}" alt="Index page"/> 
+                                    </a>
                                 </li>
+
                                 <li id='dropdown' class="dropdown">
                                     <a class='dropdown-toggle' data-toggle="dropdown" target='_blank' href="#">                   
                                             {{user.get_profile.snsName}}
@@ -207,25 +219,25 @@
     </div>
     
     <div class="navbar subnav" data-scrollspy="scrollspy">
-                <div style="background-color:#333;"  class="navbar-inner">
+                <div class="navbar-inner">
                     <div class="container">
                         {% if user.is_authenticated %}
-                        <ul class='nav' style='margin-left:30%'>
+                        <!-- <ul class='nav' id='lower_nav_left' >
                             <li>
-                                    <input style='margin-top:10px' type='button' class='btn btn-warning' onclick="location.href='/activities/'" value='最近活动'/>
+                                    <input id='recent_activity' type='button' class='btn btn-warning' onclick="location.href='/activities/'" value='最近活动'/>
                             </li>
                             
                             <li>
-                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-success' onclick="location.href='/activities/new-activity/'" value='发布活动'/>
+                                    <input id='publish_activity' type='button' class='btn btn-success' onclick="location.href='/activities/new-activity/'" value='发布活动'/>
                             </li>
-                        </ul>
-                        <ul class='nav' style='margin-left:3%'> 
+                        </ul> -->
+                        <ul id='lower_nav_right' class='nav' > 
                                                       
                                 <li>
-                                    <input style='margin-top:10px' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin/'" value='新闲置'/>
+                                    <input id='not_using' type='button' class='btn btn-primary' onclick="location.href='/pins/new-pin/'" value='新闲置'/>
                                 </li>
                                 <li>
-                                    <input style='margin-top:10px; margin-left:10px' type='button' class='btn btn-danger' onclick="location.href='/pins/new-wish-pin/'" value='我想要'/>
+                                    <input id='i_want'  type='button' class='btn btn-danger' onclick="location.href='/pins/new-wish-pin/'" value='我想要'/>
                                 </li>
                             {% endif %}
                         </ul>
@@ -239,7 +251,10 @@
             <a href="">about us</a>
           </div>
         </div>
-
+    
+    {% block no_constrain_body %}
+    {% endblock %}
+    
     <div class="container" id='content_container'>
          {% if messages %}
             <ul class="messages">
@@ -249,8 +264,8 @@
             </ul>
         {% endif %}
         
-        <div class="row" style='margin-top:5%' >
-            <div class="span12" id="content" style='margin-left:50px'>
+        <div class="row"  >
+            <div class="span12" id="content">
                 {% block yield %}
                     <div class="content_title">
                         {% block content_title %}{% endblock %}

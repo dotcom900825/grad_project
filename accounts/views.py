@@ -15,10 +15,11 @@ from django.middleware.csrf import get_token
 from django.conf  import settings 
 from PIL import Image  
 
+from pinry.pins.models import Pin
 
-def user_pins(request, username):
-    return TemplateResponse(request, 'accounts/user_pins.html', None)
-
+def user_pins(request,username):
+	detail_user = User.objects.get(username = username)
+	return render_to_response('accounts/user_pins.html',locals(),context_instance=RequestContext(request))
 
 @secure_required
 @permission_required_or_403('change_user', (User, 'username', 'username'))
